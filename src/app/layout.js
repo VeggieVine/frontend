@@ -1,4 +1,6 @@
 import "./globals.css";
+import { poppins } from "./font";
+import { Providers } from "../components/providers";
 
 const siteTitle = "VeggieVine";
 const siteDesc =
@@ -23,7 +25,11 @@ export default function RootLayout({ children }) {
         <meta property="og:site_name" content={siteTitle} />
         <meta property="og:type" content="website" />
       </head>
-      <body>{children}</body>
+      <body className={poppins.className}>
+        <Providers>
+          {children}
+        </Providers>
+      </body>
     </html>
   );
 }

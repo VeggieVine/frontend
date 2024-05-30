@@ -3,14 +3,15 @@
 import Footer from '../../components/footer';
 import Navbar from '../../components/navbar';
 import Image from 'next/image';
+import Products from '../../components/product';
 
 function HomePage() {
   return (
     <>
-      <section className='w-full h-full'>
+      <div className='w-full h-full tracking-wide'>
         <Navbar />
-        <div className='w-full h-[300px] pt-[545px] mb-[286px] flex justify-center items-center content-center'>
-          <div className='relative'>
+        <div className='flex items-center content-center justify-center w-full h-full mb-[-260px]'>
+          <div className='relative h-full'>
             <Image
               className='px-3'
               src='/assets/image/main.svg'
@@ -18,26 +19,25 @@ function HomePage() {
               height='300'
               width='1350'
             />
-            <div className='absolute top-64 left-20'>
-              <div className='container text-white'>
-                <h1 className='font-bold text-[42px]'>
-                  Menyediakan Berbagai
-                  <br />
-                  Macam Pilihan Sayur
-                  <br />
-                  Dan Buah-buahan Segar
-                </h1>
-                <p className='font-medium text-lg pt-4'>
-                  Kami membantu memenuhi kebutuhan
-                  <br />
-                  harian Anda dengan sayur dan buah berkualitas terjamin.
-                </p>
-              </div>
+            <div className='absolute text-white top-64 left-20 '>
+              <h1 className='font-bold text-[38px]'>
+                Menyediakan Berbagai
+                <br />
+                Macam Pilihan Sayur
+                <br />
+                Dan Buah-buahan Segar
+              </h1>
+              <p className='pt-4 text-lg font-medium'>
+                Kami membantu memenuhi kebutuhan
+                <br />
+                harian Anda dengan sayur dan buah berkualitas terjamin.
+              </p>
             </div>
           </div>
         </div>
+        {/* <Products /> */}
         <Footer />
-      </section>
+      </div>
     </>
   );
 }
