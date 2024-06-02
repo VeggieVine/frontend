@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-function LoginPage() {
+function RegisterPage() {
   return (
     <>
       <div className='w-full h-full bg-gradient-to-tr from-primary to-[#36C770] flex justify-center items-center p-20'>
@@ -17,8 +17,16 @@ function LoginPage() {
 
           <div className='flex justify-center pt-4'>
             <p className='text-lg font-semibold text-secondary'>
-              SELAMAT DATANG KEMBALI
+              DAFTAR
             </p>
+          </div>
+
+          <div className='flex justify-center px-8 pt-4'>
+            <input
+              className='w-full h-12 px-4 py-2 mt-4 border bg-[#E7E6E6] rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent'
+              placeholder='Masukkan nama lengkap'
+              type='text'
+            />
           </div>
 
           <div className='flex justify-center px-8 pt-4'>
@@ -54,29 +62,24 @@ function LoginPage() {
                 width='24'
                 height='24'
               />
-              <span>Masuk menggunakan Google</span>
+              <span>Daftar menggunakan Google</span>
             </button>
           </div>
 
           <div className='flex justify-between px-8 pt-4'>
-            <div className='flex items-center content-center'>
+            <div className='flex'>
               <input
                 id='terms'
                 type='checkbox'
-                className='w-[15px] h-[15px]'
+                className='w-[15px] h-[15px] mt-1'
               ></input>
-              <label for='terms' className='ml-2 text-sm '>
-                Ingat saya
+              <label for='terms' className='ml-2 text-sm w-52'>
+                Saya menyetujui Perjanjian Pengguna dan Kebijakan Privasi yang Berlaku
               </label>
             </div>
-            <div>
-              <Link href='/forgotpass' className='text-sm hover:text-primary'>
-                Lupa Kata Sandi?
-              </Link>
-            </div>
+            <p className='text-sm'>Sudah punya akun? <Link href="/login" className="text-primary hover:text-secondary">Login</Link></p>
           </div>
 
-          <p className='px-8 pt-1 text-sm'>Belum punya akun? <Link href="/register" className="text-primary hover:text-secondary">Daftar</Link></p>
 
           <div className='flex justify-center px-8 pt-8'>
             <button className='w-full h-12 text-lg font-semibold text-white bg-secondary rounded-xl'>MASUK</button>
@@ -87,4 +90,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;
