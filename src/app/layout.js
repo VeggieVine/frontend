@@ -1,6 +1,6 @@
 import "./globals.css";
 import { poppins } from "./font";
-import { Providers } from "../components/providers";
+import { Providers } from "./__components__/providers";
 
 const siteTitle = "VeggieVine";
 const siteDesc =
