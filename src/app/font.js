@@ -1,8 +1,8 @@
-import { Poppins } from "next/font/google";
+import { IBM_Plex_Sans } from 'next/font/google';
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+const ibm_plex_sans = IBM_Plex_Sans({
+    subsets: ['cyrillic-ext', 'cyrillic', 'latin-ext', 'latin'],
+    weight: ['100', '200', '300', '400', '500', '600', '700',],
 });
 
-export { poppins };
+export { ibm_plex_sans };

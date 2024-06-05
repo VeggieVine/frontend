@@ -70,7 +70,7 @@ function RegisterPage() {
                                 className="w-[15px] h-[15px] mt-1"
                             ></input>
                             <label
-                                for="terms"
+                                htmlFor="terms"
                                 className="ml-2 text-sm w-52"
                             >
                                 Saya menyetujui Perjanjian Pengguna dan Kebijakan Privasi yang Berlaku

@@ -1,7 +1,7 @@
 'use client';
 
-import Footer from '../__components__/footer';
-import Navbar from '../__components__/navbar';
+import Footer from '../__components__/Footer';
+import Navbar from '../__components__/Navbar';
 import Image from 'next/image';
 
 function HomePage() {
