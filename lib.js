@@ -3,7 +3,7 @@ export const handleGoogleLogin = async () => {
 
     try {
         const accessToken = 'veg_NA.TTlVTzdfZmFPRzE3WUw1cDhHWXlYZmxQdG1QMklwT2thTmlQNGdfYzMyODYzNzUxNTM';
-        const tokens = await fetch(`${process.env.NEXT_PUBLIC_ADONIS_API_URL}/tokens`, {
+        const tokens = await fetch(`${process.env.NEXT_PUBLIC_ADONIS_API_URL}/google/redirect`, {
             method: 'GET',
             credentials: 'include',
             headers: {

@@ -7,7 +7,7 @@ export default function GoogleButton() {
     return (
         <div className="flex justify-center pt-2">
             <button
-                className="text-[14px] font-medium px-4 py-2 border flex gap-2 border-slate-300 shadow-xl rounded-lg text-slate-700 hover:border-slate-400 hover:text-slate-900 hover:shadow transition duration-150"
+                className="btn btn-lg btn-square"
                 onClick={() => handleGoogleLogin()}
             >
                 <Image
@@ -17,7 +17,7 @@ export default function GoogleButton() {
                     width="24"
                     height="24"
                 />
-                <span>Masuk menggunakan Google</span>
+                {/* <span>Google</span> */}
             </button>
         </div>
     );
