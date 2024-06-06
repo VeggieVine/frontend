@@ -1,5 +1,6 @@
 'use client';
 
+import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import Link from 'next/link';
 
@@ -8,20 +9,37 @@ import { useInput } from '@/src/hooks/useInput';
 import TextInput from '@/src/app/__components__/form/TextInput';
 import SubmitButton from '@/src/app/__components__/ui/SubmitButton';
 
-import { PasswordSVG, EmailSVG } from '@/src/app/__components__/ui/Icons';
+import { UserSVG, PasswordSVG, EmailSVG } from '@/src/app/__components__/ui/Icons';
 
-function LoginForm({ handleLogin }) {
+function RegisterForm({ handleRegister }) {
+    const dispatch = useDispatch();
+
     const [showPassword, setShowPassword] = useState(false);
 
-    const [email, handleEmail] = useInput('');
-    const [password, handlePassword] = useInput('');
+    const [name, setName] = useInput('');
+    const [email, setEmail] = useInput('');
+    const [password, setPassword] = useInput('');
 
     return (
         <form
-            aria-label="form"
-            className="flex flex-col mb-0 space-y-4 rounded-lg px-6 pb-6 lg:px-8 lg:pb-8"
-            onSubmit={(event) => handleLogin(event, { email, password })}
+            className="flex flex-col space-y-4 px-6 pb-6 lg:px-8 lg:pb-8 bg-none"
+            onSubmit={(event) => handleRegister(event)}
         >
+            {/* NAME */}
+            <div>
+                <TextInput
+                    id="name"
+                    type="text"
+                    placeholder="Masukkan nama"
+                    value={name}
+                    onChange={setName}
+                >
+                    <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
+                        <UserSVG className="size-4 stroke-current" />
+                    </span>
+                </TextInput>
+            </div>
+
             {/* EMAIL */}
             <div>
                 <TextInput
@@ -29,8 +47,7 @@ function LoginForm({ handleLogin }) {
                     type="email"
                     placeholder="Masukkan email"
                     value={email}
-                    onChange={handleEmail}
-                    required
+                    onChange={setEmail}
                 >
                     <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                         <EmailSVG className="size-4 stroke-current" />
@@ -45,8 +62,7 @@ function LoginForm({ handleLogin }) {
                     type={showPassword ? 'text' : 'password'}
                     placeholder="Masukkan kata sandi"
                     value={password}
-                    onChange={handlePassword}
-                    required
+                    onChange={setPassword}
                 >
                     <button
                         type="button"
@@ -59,31 +75,18 @@ function LoginForm({ handleLogin }) {
                 </TextInput>
             </div>
 
-            <div className="form-control">
-                <label className="label cursor-pointer justify-start gap-x-2">
-                    <input
-                        type="checkbox"
-                        defaultChecked
-                        className="checkbox checkbox-primary"
-                    />
-                    <span className="label-text">Ingat saya</span>
-                </label>
-            </div>
-
             {/* SUBMIT BUTTON */}
-            <div className="flex items-center justify-end">
-                <SubmitButton id="login-button">Masuk</SubmitButton>
-            </div>
+            <SubmitButton id="register-button">Daftar</SubmitButton>
 
-            {/* REGISTER LINK */}
+            {/* LOGIN LINK */}
             <p className="self-center lg:self-start text-sm text-neutral">
-                <span>Belum punya akun? </span>
-                <Link href="/register">
-                    <span className="underline text-primary">Daftar sekarang</span>
+                <span>Sudah punya akun? </span>
+                <Link href="/login">
+                    <span className="underline text-secondary">Masuk</span>
                 </Link>
             </p>
         </form>
     );
 }
 
-export default LoginForm;
+export default RegisterForm;

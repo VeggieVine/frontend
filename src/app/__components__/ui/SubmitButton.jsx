@@ -6,7 +6,7 @@ function SubmitButton({ id, children = null, variant = 'block' }) {
         <button
             type="submit"
             id={id}
-            className={`btn btn-primary text-base-100 ${variant === 'block' ? 'btn-block' : 'btn-wide'}`}
+            className={`btn btn-primary ${variant === 'block' ? 'btn-block' : 'btn-wide'}`}
         >
             {children}
         </button>
