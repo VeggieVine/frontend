@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import PropTypes from 'prop-types';
 
 function LinkButton({ id, children = null, tooltip = null, variant = null, destination = null }) {
-    const location = useLocation();
+    const pathname = usePathname();
 
     if (variant === 'solid') {
         return (
@@ -51,7 +52,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
                     <button
                         id={id}
                         type="button"
-                        className={`btn btn-ghost btn-block justify-start group ${location.pathname === destination ? 'text-secondary' : ''} hover:text-secondary`}
+                        className={`btn btn-ghost btn-block justify-start group ${pathname === destination ? 'text-secondary' : ''} hover:text-secondary`}
                     >
                         {children}
                     </button>
@@ -73,7 +74,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
                 <button
                     type="button"
                     className={`btn btn-link btn-wide rounded-none rounded-b-sm border-0 group-hover:border-b-2 group-hover:border-secondary ${
-                        location.pathname === destination ? 'border-b-2 border-secondary' : ''
+                        pathname === destination ? 'border-b-2 border-secondary' : ''
                     }`}
                 >
                     {children}
