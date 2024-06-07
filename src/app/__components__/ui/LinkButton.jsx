@@ -16,7 +16,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
                     <button
                         id={id}
                         type="button"
-                        className="btn btn-block btn-secondary justify-start"
+                        className="btn btn-block btn-primary justify-start"
                     >
                         {children}
                     </button>
@@ -34,7 +34,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
                     <button
                         id={id}
                         type="button"
-                        className="btn glass btn-block btn-outline font-bold btn-secondary "
+                        className="btn glass btn-block btn-outline font-bold btn-primary "
                     >
                         {children}
                     </button>
@@ -52,7 +52,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
                     <button
                         id={id}
                         type="button"
-                        className={`btn btn-ghost btn-block justify-start group ${pathname === destination ? 'text-secondary' : ''} `}
+                        className={`btn btn-ghost btn-block justify-start hover:text-primary group ${pathname === destination ? 'text-primary' : ''} `}
                     >
                         {children}
                     </button>
@@ -73,8 +73,8 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
             >
                 <button
                     type="button"
-                    className={`btn btn-link btn-wide rounded-none rounded-b-sm border-0 group-hover:border-b-2 group-hover:border-secondary ${
-                        pathname === destination ? 'border-b-2 border-secondary' : ''
+                    className={`btn btn-link btn-wide rounded-none rounded-b-sm border-0 group-hover:border-b-2 group-hover:border-primary ${
+                        pathname === destination ? 'border-b-2 border-primary' : ''
                     }`}
                 >
                     {children}

@@ -82,7 +82,7 @@ function RegisterForm({ handleRegister }) {
             <p className="self-center lg:self-start text-sm text-neutral">
                 <span>Sudah punya akun? </span>
                 <Link href="/login">
-                    <span className="underline text-secondary">Masuk</span>
+                    <span className="underline text-primary">Masuk</span>
                 </Link>
             </p>
         </form>

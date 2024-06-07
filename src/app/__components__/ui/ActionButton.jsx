@@ -7,7 +7,7 @@ function ActionButton({ id, children = null, variant = null, onClick = () => {} 
             <button
                 id={id}
                 type="button"
-                className="btn btn-ghost justify-start group hover:text-secondary btn-block"
+                className="btn btn-ghost justify-start group hover:text-primary btn-block"
                 onClick={() => onClick()}
             >
                 {children}
@@ -19,7 +19,7 @@ function ActionButton({ id, children = null, variant = null, onClick = () => {} 
             <button
                 id={id}
                 type="button"
-                className="btn btn-secondary justify-start group btn-block"
+                className="btn btn-primary justify-start group btn-block"
                 onClick={() => onClick()}
             >
                 {children}
