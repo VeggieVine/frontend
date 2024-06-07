@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 
 export default function Footer() {
@@ -8,15 +6,15 @@ export default function Footer() {
             <div className="container">
                 <div className="flex justify-between">
                     <div className="text-left">
-                        <h5 className="mb-4 text-xl font-bold">Hubungi Kami</h5>
+                        <h5 className="mb-4 text-xl font-bold">Contact</h5>
                         <ul>
-                            <li className="mb-2">
-                                <span className="font-semibold">Address: </span>Jl. Permata Regensi No.45,<br /> Jakarta, Jawa Barat, Indonesia
+                            <li>
+                                <span className="font-semibold">Address: </span>Jakarta
                             </li>
-                            <li className="mb-2">
-                                <span className="font-semibold">Phone: </span>(62) 85425273511
+                            <li>
+                                <span className="font-semibold">Phone: </span>08514444444
                             </li>
-                            <li className="mb-2">
+                            <li>
                                 <span className="font-semibold">Hours: </span>08.00-18.00
                             </li>
                         </ul>
@@ -24,23 +22,22 @@ export default function Footer() {
                     <div className="text-left">
                         <h5 className="mb-4 text-xl font-bold">Kategori Populer</h5>
                         <ul>
-                            <li className="mb-2">Sayur - mayur</li>
-                            <li className="mb-2">Buah - buahan</li>
+                            <li>Sayur - mayur</li>
+                            <li>Buah - buahan</li>
                         </ul>
                     </div>
                     <div className="text-left">
-                        <h5 className="mb-4 text-xl font-bold">Navigasi</h5>
+                        <h5 className="mb-4 text-xl font-bold">My Account</h5>
                         <ul>
-                            <li className="mb-2"><Link href="/">Beranda</Link></li>
-                            <li className="mb-2"><Link href="/product">Produk</Link></li>
-                            <li className="mb-2"><Link href="/manfaat">Manfaat</Link></li>
-                            <li className="mb-2">Kontak</li>
+                            <li>Sign In</li>
+                            <li>View Cart</li>
+                            <li>My Wishlist</li>
                         </ul>
                     </div>
                     <div className="text-left">
                         <h5 className="mb-4 text-xl font-bold">Secured Payment Gateway</h5>
                         <ul>
-                            <li className="mb-2">Pembayaran aman dan terpercaya.</li>
+                            <li>Pembayaran aman dan terpercaya.</li>
                         </ul>
                     </div>
                 </div>
