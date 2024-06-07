@@ -9,7 +9,7 @@ import { signOut } from 'next-auth/react';
 
 import LinkButton from '@/src/app/__components__/ui/LinkButton';
 import ActionButton from '@/src/app/__components__/ui/ActionButton';
-import { ExitSVG, ProfileSVG } from './ui/Icons';
+import { ExitSVG, ProfileSVG, CartSVG, HamburgerSVG, HomeSVG, NotificationSVG } from '@/src/app/__components__/ui/Icons';
 
 export default function Navbar({ user }) {
     const pathname = usePathname();
@@ -33,73 +33,126 @@ export default function Navbar({ user }) {
     }, []);
 
     return (
-        <nav className={`${navbarBg} navbar fixed top-0 z-50`}>
-            <div className="navbar-start">
+        <nav className={`${navbarBg} navbar fixed top-0 left-0 right-0 mx-auto z-50 max-w-screen-xl rounded-btn`}>
+            <div className="navbar-start gap-x-2">
+                <div className="dropdown">
+                    <button
+                        type="button"
+                        className="btn btn-ghost"
+                    >
+                        <span className="sr-only">Hamburger Icon</span>
+                        <HamburgerSVG className="h-6 w-6 stroke-primary" />
+                    </button>
+                    <ul className="dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 border-2 border-primary rounded-box w-60">
+                        <li>
+                            <LinkButton
+                                id="home-sm-button"
+                                tooltip="Home"
+                                destination="/"
+                                variant="ghost"
+                            >
+                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <span>Home</span>
+                            </LinkButton>
+                        </li>
+                        <li>
+                            <LinkButton
+                                id="products-sm-button"
+                                tooltip="Products"
+                                destination="/products"
+                                variant="ghost"
+                            >
+                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/products' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <span>Products</span>
+                            </LinkButton>
+                        </li>
+                        <li>
+                            <LinkButton
+                                id="advantage-sm-button"
+                                tooltip="Advantage"
+                                destination="/advantage"
+                                variant="ghost"
+                            >
+                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/advantage' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <span>Advantage</span>
+                            </LinkButton>
+                        </li>
+                        <li>
+                            <LinkButton
+                                id="contact-sm-button"
+                                tooltip="Contact"
+                                destination="/contact"
+                                variant="ghost"
+                            >
+                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/contact' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <span>Contact</span>
+                            </LinkButton>
+                        </li>
+                    </ul>
+                </div>
                 <Link
                     className=""
                     href="/"
                 >
-                    <div className="flex justify-center w-52 h-full">
-                        <Image
-                            src="/assets/image/logo.svg"
-                            width="250"
-                            height="250"
-                            alt="Logo"
-                            className="w-auto h-auto"
-                        />
-                    </div>
+                    <Image
+                        src="/assets/image/logo.svg"
+                        width="100"
+                        height="100"
+                        alt="Logo"
+                        className="w-40 h-auto"
+                    />
                 </Link>
-            </div>
-            <div className="navbar-center">
-                <div className="space-x-4">
-                    <Link href="/">Home</Link>
-                    <Link href="/product">Products</Link>
-                    <Link href="/about">Manfaat</Link>
-                    <Link href="/contact">Contact</Link>
-                </div>
             </div>
             <div className="navbar-end gap-x-2">
                 {(() => {
                     if (user) {
                         return (
                             <>
+                                {/* CART */}
                                 <div className="dropdown dropdown-end">
-                                    <div
-                                        tabIndex={0}
-                                        role="button"
-                                        className="btn btn-outline btn-primary btn-square"
+                                    <button
+                                        type="button"
+                                        className="btn btn-ghost btn-square"
                                     >
                                         <div className="indicator">
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                className="h-5 w-5"
-                                                fill="none"
-                                                viewBox="0 0 24 24"
-                                                stroke="currentColor"
-                                            >
-                                                <path
-                                                    strokeLinecap="round"
-                                                    strokeLinejoin="round"
-                                                    strokeWidth="2"
-                                                    d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                                                />
-                                            </svg>
+                                            <CartSVG className="w-6 h-6 stroke-secondary" />
                                             <span className="badge badge-sm indicator-item">8</span>
                                         </div>
-                                    </div>
-                                    <div
-                                        tabIndex={0}
-                                        className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
-                                    >
+                                    </button>
+                                    <div className="dropdown-content mt-3 z-10 shadow bg-base-100 rounded-box w-60">
                                         <div className="card-body">
                                             <span className="font-bold text-lg">8 Items</span>
-                                            <span className="text-info">Subtotal: $999</span>
+                                            <span className="text-info">Subtotal: Rp99.900</span>
                                             <div className="card-actions">
-                                                <button className="btn btn-primary btn-block">View cart</button>
+                                                <button className="btn btn-secondary btn-block">View cart</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                {/* NOTIFICATION */}
+                                <div className="dropdown dropdown-end">
+                                    <button
+                                        type="button"
+                                        className="btn btn-ghost btn-square"
+                                    >
+                                        <div className="indicator">
+                                            <NotificationSVG className="w-6 h-6 stroke-accent" />
+                                            <span className="badge badge-sm indicator-item">8</span>
+                                        </div>
+                                    </button>
+                                    <div className="dropdown-content mt-3 z-10 shadow bg-base-100 rounded-box w-60">
+                                        <div className="card-body">
+                                            <span className="font-bold text-lg">8 Items</span>
+                                            <span className="text-info">Subtotal: Rp99.900</span>
+                                            <div className="card-actions">
+                                                <button className="btn btn-accent btn-block">View cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* PROFILE */}
                                 <div className="dropdown dropdown-end">
                                     <button
                                         type="button"
@@ -109,11 +162,11 @@ export default function Navbar({ user }) {
                                             <Image
                                                 alt="User Avatar"
                                                 src={user?.image}
-                                                width="40"
-                                                height="40"
+                                                width={100}
+                                                height={100}
                                             />
                                         </div>
-                                        <span className="text-base-content">{user?.name}</span>
+                                        <span className="hidden text-base-content lg:block">{user?.name}</span>
                                     </button>
                                     <ul className="dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-60">
                                         <li>
@@ -123,9 +176,7 @@ export default function Navbar({ user }) {
                                                 destination="/profile"
                                                 variant="ghost"
                                             >
-                                                <ProfileSVG
-                                                    className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/settings/profile' ? 'stroke-primary ' : 'stroke-base-content'}`}
-                                                />
+                                                <ProfileSVG className="w-6 h-6 stroke-base-content group-hover:stroke-primary" />
                                                 <span>Profil Saya</span>
                                             </LinkButton>
                                         </li>

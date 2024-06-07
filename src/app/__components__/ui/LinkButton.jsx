@@ -52,7 +52,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
                     <button
                         id={id}
                         type="button"
-                        className={`btn btn-ghost btn-block justify-start group ${pathname === destination ? 'text-primary' : ''} `}
+                        className={`btn btn-ghost btn-block justify-start hover:text-primary group ${pathname === destination ? 'text-primary' : ''} `}
                     >
                         {children}
                     </button>
