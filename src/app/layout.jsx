@@ -56,7 +56,7 @@ export default function RootLayout({ children }) {
                     content="website"
                 />
             </head>
-            <body className={ibm_plex_sans.className + ' bg-base-100'}>
+            <body className={ibm_plex_sans.className + ' bg-base-100 text-base-content'}>
                 <Providers>{children}</Providers>
             </body>
         </html>
