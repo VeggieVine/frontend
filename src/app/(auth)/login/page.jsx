@@ -1,5 +1,5 @@
 import LoginForm from './__components__/LoginForm';
-import GoogleButton from '../../__components__/GoogleButton';
+import GoogleButton from '../../__components__/ui/GoogleButton';
 
 async function LoginPage() {
     const handleLogin = (event, { email, password }) => {

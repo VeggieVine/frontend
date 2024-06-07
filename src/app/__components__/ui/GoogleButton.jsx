@@ -1,13 +1,16 @@
 'use client';
 
 import Image from 'next/image';
-import { handleGoogleLogin } from '../../../lib';
+
+import { signIn } from 'next-auth/react';
+
+// import { handleGoogleLogin } from '../../../../lib';
 
 export default function GoogleButton() {
     return (
         <button
+            onClick={() => signIn('google')}
             className="btn btn-lg btn-square bg-base-100"
-            onClick={() => handleGoogleLogin()}
         >
             <Image
                 src="https://www.svgrepo.com/show/475656/google-color.svg"

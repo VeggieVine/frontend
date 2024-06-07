@@ -2,8 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
+/* @layer components {
     .btn {
         @apply text-base-100;
     }
-}
+} */
