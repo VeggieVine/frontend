@@ -11,6 +11,11 @@ module.exports = {
     },
     daisyui: {
         themes: [
+            'light',
+            'dark',
+            'cupcake',
+            'emerald',
+            'forest',
             {
                 mytheme: {
                     primary: '#17A04E',

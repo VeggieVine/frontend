@@ -8,7 +8,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
 
     if (variant === 'solid') {
         return (
-            <Link to={destination}>
+            <Link href={destination}>
                 <div
                     className="lg:tooltip lg:tooltip-bottom w-full"
                     data-tip={tooltip}
@@ -26,7 +26,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
     }
     if (variant === 'glass') {
         return (
-            <Link to={destination}>
+            <Link href={destination}>
                 <div
                     className="lg:tooltip lg:tooltip-bottom w-full"
                     data-tip={tooltip}
@@ -44,7 +44,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
     }
     if (variant === 'ghost') {
         return (
-            <Link to={destination}>
+            <Link href={destination}>
                 <div
                     className="lg:tooltip lg:tooltip-bottom w-full"
                     data-tip={tooltip}
@@ -52,7 +52,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
                     <button
                         id={id}
                         type="button"
-                        className={`btn btn-ghost btn-block justify-start group ${pathname === destination ? 'text-secondary' : ''} hover:text-secondary`}
+                        className={`btn btn-ghost btn-block justify-start group ${pathname === destination ? 'text-secondary' : ''} `}
                     >
                         {children}
                     </button>
@@ -63,7 +63,7 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
 
     return (
         <Link
-            to={destination}
+            href={destination}
             className="group"
             replace
         >

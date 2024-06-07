@@ -1,6 +1,7 @@
 import './globals.css';
 import { ibm_plex_sans } from './font';
-import { Providers } from './__components__/Providers';
+
+import { Providers } from '@/src/app/__components__/Providers';
 
 const siteTitle = 'VeggieVine';
 const siteDesc = 'VeggieVine adalah platform online shop yang menyediakan berbagai macam sayuran segar dan buah-buahan yang dijual langsung oleh petani.';
@@ -9,7 +10,7 @@ const siteKey =
 
 export default function RootLayout({ children }) {
     return (
-        <html lang="id">
+        <html lang="id" data-theme="emerald">
             <head>
                 <meta charSet="UTF-8" />
                 <meta
@@ -55,7 +56,7 @@ export default function RootLayout({ children }) {
                     content="website"
                 />
             </head>
-            <body className={ibm_plex_sans.className + " bg-base-100"}>
+            <body className={ibm_plex_sans.className + ' bg-base-100'}>
                 <Providers>{children}</Providers>
             </body>
         </html>

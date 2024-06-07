@@ -1,4 +1,4 @@
-import GoogleButton from '../../__components__/GoogleButton';
+import GoogleButton from '../../__components__/ui/GoogleButton';
 import RegisterForm from './__components__/RegisterForm';
 
 function RegisterPage() {
