@@ -1,11 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import { signOut } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 
-import { signOut } from 'next-auth/react';
 
 import LinkButton from '@/src/app/__components__/ui/LinkButton';
 import ActionButton from '@/src/app/__components__/ui/ActionButton';
@@ -19,7 +19,7 @@ export default function Navbar({ user }) {
         const handleScroll = () => {
             const currentScrollPos = window.pageYOffset;
             if (currentScrollPos > 20) {
-                setNavbarBg('bg-white shadow-xl');
+                setNavbarBg('bg-base-100 shadow-2xl shadow-primary');
             } else {
                 setNavbarBg('');
             }
@@ -119,7 +119,7 @@ export default function Navbar({ user }) {
                                             <span className="badge badge-sm indicator-item">8</span>
                                         </div>
                                     </button>
-                                    <div className="dropdown-content mt-3 z-10 shadow bg-base-100 rounded-box w-60">
+                                    <div className="dropdown-content mt-3 z-10 shadow bg-base-100 border-2 border-secondary rounded-box w-60">
                                         <div className="card-body">
                                             <span className="font-bold text-lg">8 Items</span>
                                             <span className="text-info">Subtotal: Rp99.900</span>
@@ -141,7 +141,7 @@ export default function Navbar({ user }) {
                                             <span className="badge badge-sm indicator-item">8</span>
                                         </div>
                                     </button>
-                                    <div className="dropdown-content mt-3 z-10 shadow bg-base-100 rounded-box w-60">
+                                    <div className="dropdown-content mt-3 z-10 shadow bg-base-100 border-2 border-accent rounded-box w-60">
                                         <div className="card-body">
                                             <span className="font-bold text-lg">8 Items</span>
                                             <span className="text-info">Subtotal: Rp99.900</span>
@@ -168,7 +168,7 @@ export default function Navbar({ user }) {
                                         </div>
                                         <span className="hidden text-base-content lg:block">{user?.name}</span>
                                     </button>
-                                    <ul className="dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-60">
+                                    <ul className="dropdown-content mt-3 z-10 p-2 shadow bg-base-100 border-2 border-primary rounded-box w-60">
                                         <li>
                                             <LinkButton
                                                 id="profile-button"
