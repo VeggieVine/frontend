@@ -2,6 +2,7 @@ import { auth } from '@/auth';
 
 import Navbar from '@/src/app/__components__/Navbar';
 import Footer from '@/src/app/__components__/Footer';
+import TestimonialCard from '@/src/app/__components__/ui/Card';
 import Image from 'next/image';
 
 export default async function LandingPage() {
@@ -192,6 +193,32 @@ export default async function LandingPage() {
                     </div>
                 </div>
             </div>
+            <div className='w-full h-full py-12'>
+          <p className='text-3xl font-bold text-center text-secondary'>
+            Apa Kata Mereka
+          </p>
+          <p className='pt-8 text-lg font-medium text-center text-secondary'>
+            Simak Kisah mereka dapat penghasilan tambahan via MerdekaWorks. Kini
+            giliranmu!
+          </p>
+          <div className='flex flex-row justify-between px-8 pt-24'>
+            <TestimonialCard
+              imageSrc='/assets/image/profile.jpg'
+              name='John Doe'
+              testimonial='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis mattis dolor, vel sagittis turpis tristique ac. Aenean efficitur, purus et pellentesque rhoncus, libero augue aliquam libero, eu auctor ipsum felis in leo. Etiam at lobortis erat, ac volutpat sapien. Pellentesque laoreet in magna non aliquet. Quisque et varius ligula, sit amet imperdiet lorem. Pellentesque rutrum nisl in nunc consectetur, nec sagittis enim vestibulum. Ut vel orci at libero placerat ultrices quis vitae leo. Aliquam convallis tellus ex, sed fringilla eros malesuada at. Phasellus tempus ut nibh nec lobortis. Suspendisse porttitor condimentum diam ut auctor. Sed et hendrerit tellus, eu iaculis sapien.'
+            />
+            <TestimonialCard
+              imageSrc='/assets/image/profile.jpg'
+              name='John Doe'
+              testimonial='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis mattis dolor, vel sagittis turpis tristique ac. Aenean efficitur, purus et pellentesque rhoncus, libero augue aliquam libero, eu auctor ipsum felis in leo. Etiam at lobortis erat, ac volutpat sapien. Pellentesque laoreet in magna non aliquet. Quisque et varius ligula, sit amet imperdiet lorem. Pellentesque rutrum nisl in nunc consectetur, nec sagittis enim vestibulum. Ut vel orci at libero placerat ultrices quis vitae leo. Aliquam convallis tellus ex, sed fringilla eros malesuada at. Phasellus tempus ut nibh nec lobortis. Suspendisse porttitor condimentum diam ut auctor. Sed et hendrerit tellus, eu iaculis sapien.'
+            />
+            <TestimonialCard
+              imageSrc='/assets/image/profile.jpg'
+              name='John Doe'
+              testimonial='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis mattis dolor, vel sagittis turpis tristique ac. Aenean efficitur, purus et pellentesque rhoncus, libero augue aliquam libero, eu auctor ipsum felis in leo. Etiam at lobortis erat, ac volutpat sapien. Pellentesque laoreet in magna non aliquet. Quisque et varius ligula, sit amet imperdiet lorem. Pellentesque rutrum nisl in nunc consectetur, nec sagittis enim vestibulum. Ut vel orci at libero placerat ultrices quis vitae leo. Aliquam convallis tellus ex, sed fringilla eros malesuada at. Phasellus tempus ut nibh nec lobortis. Suspendisse porttitor condimentum diam ut auctor. Sed et hendrerit tellus, eu iaculis sapien.'
+            />
+          </div>
+        </div>
 
             <Footer />
         </>
