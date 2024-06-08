@@ -1,11 +1,19 @@
-import React, { useState, useEffect } from 'react';
+'use client';
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { FaRegCircleUser } from "react-icons/fa6";
-import { IoMdCart } from 'react-icons/io';
+import { usePathname } from 'next/navigation';
 
-export default function Navbar() {
-    const [navbarBg, setNavbarBg] = useState('bg-white');
+import { signOut } from 'next-auth/react';
+
+import LinkButton from '@/src/app/__components__/ui/LinkButton';
+import ActionButton from '@/src/app/__components__/ui/ActionButton';
+import { ExitSVG, ProfileSVG, CartSVG, HamburgerSVG, HomeSVG, NotificationSVG } from '@/src/app/__components__/ui/Icons';
+
+export default function Navbar({ user }) {
+    const pathname = usePathname();
+    const [navbarBg, setNavbarBg] = useState('');
 
     useEffect(() => {
         const handleScroll = () => {
@@ -13,7 +21,7 @@ export default function Navbar() {
             if (currentScrollPos > 20) {
                 setNavbarBg('bg-white shadow-xl');
             } else {
-                setNavbarBg('bg-white');
+                setNavbarBg('');
             }
         };
 
@@ -25,47 +33,189 @@ export default function Navbar() {
     }, []);
 
     return (
-        <nav className={`${navbarBg} text-secondary font-medium text-lg w-full fixed top-0 z-50 transition-all duration-300 h-[80px]`}>
-            <div className="flex justify-between px-12 h-[80px] items-center">
-                <div className="inline-flex items-center content-center space-x-12">
-                    <Link
-                        className=""
-                        href="/"
+        <nav className={`${navbarBg} navbar fixed top-0 left-0 right-0 mx-auto z-50 max-w-screen-xl rounded-btn`}>
+            <div className="navbar-start gap-x-2">
+                <div className="dropdown">
+                    <button
+                        type="button"
+                        className="btn btn-ghost"
                     >
-                        <div className="flex justify-center h-full w-52">
-                            <Image
-                                src="/assets/image/logo.svg"
-                                width="250"
-                                height="250"
-                                alt="Logo"
-                                className="w-auto h-auto"
-                            />
-                        </div>
-                    </Link>
-                    <div className="space-x-4">
-                        <Link href="/">Home</Link>
-                        <Link href="/product">Products</Link>
-                        <Link href="/about">Manfaat</Link>
-                        <Link href="/contact">Contact</Link>
-                    </div>
+                        <span className="sr-only">Hamburger Icon</span>
+                        <HamburgerSVG className="h-6 w-6 stroke-primary" />
+                    </button>
+                    <ul className="dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 border-2 border-primary rounded-box w-60">
+                        <li>
+                            <LinkButton
+                                id="home-sm-button"
+                                tooltip="Home"
+                                destination="/"
+                                variant="ghost"
+                            >
+                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <span>Home</span>
+                            </LinkButton>
+                        </li>
+                        <li>
+                            <LinkButton
+                                id="products-sm-button"
+                                tooltip="Products"
+                                destination="/products"
+                                variant="ghost"
+                            >
+                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/products' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <span>Products</span>
+                            </LinkButton>
+                        </li>
+                        <li>
+                            <LinkButton
+                                id="advantage-sm-button"
+                                tooltip="Advantage"
+                                destination="/advantage"
+                                variant="ghost"
+                            >
+                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/advantage' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <span>Advantage</span>
+                            </LinkButton>
+                        </li>
+                        <li>
+                            <LinkButton
+                                id="contact-sm-button"
+                                tooltip="Contact"
+                                destination="/contact"
+                                variant="ghost"
+                            >
+                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/contact' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <span>Contact</span>
+                            </LinkButton>
+                        </li>
+                    </ul>
                 </div>
-                <div className="space-x-4">
-                    <Link
-                        href="/login"
-                        className="inline-flex space-x-2 items-center px-2.5 py-1.5 border-2 border-tertiary rounded-2xl shadow-lg"
-                    >
-                        <FaRegCircleUser size="20" />
-                        <p className="text-base">Login</p>
-                        {/* login text will change to profile, if user has login*/}
-                    </Link>
-                    <Link
-                        href="/cart"
-                        className="inline-flex space-x-2 items-center px-2.5 py-1.5 border-2 border-tertiary rounded-2xl shadow-lg"
-                    >
-                        <IoMdCart size="20" />
-                        <p className="text-base">lenght</p>
-                    </Link>
-                </div>
+                <Link
+                    className=""
+                    href="/"
+                >
+                    <Image
+                        src="/assets/image/logo.svg"
+                        width="100"
+                        height="100"
+                        alt="Logo"
+                        className="w-40 h-auto"
+                    />
+                </Link>
+            </div>
+            <div className="navbar-end gap-x-2">
+                {(() => {
+                    if (user) {
+                        return (
+                            <>
+                                {/* CART */}
+                                <div className="dropdown dropdown-end">
+                                    <button
+                                        type="button"
+                                        className="btn btn-ghost btn-square"
+                                    >
+                                        <div className="indicator">
+                                            <CartSVG className="w-6 h-6 stroke-secondary" />
+                                            <span className="badge badge-sm indicator-item">8</span>
+                                        </div>
+                                    </button>
+                                    <div className="dropdown-content mt-3 z-10 shadow bg-base-100 rounded-box w-60">
+                                        <div className="card-body">
+                                            <span className="font-bold text-lg">8 Items</span>
+                                            <span className="text-info">Subtotal: Rp99.900</span>
+                                            <div className="card-actions">
+                                                <button className="btn btn-secondary btn-block">View cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* NOTIFICATION */}
+                                <div className="dropdown dropdown-end">
+                                    <button
+                                        type="button"
+                                        className="btn btn-ghost btn-square"
+                                    >
+                                        <div className="indicator">
+                                            <NotificationSVG className="w-6 h-6 stroke-accent" />
+                                            <span className="badge badge-sm indicator-item">8</span>
+                                        </div>
+                                    </button>
+                                    <div className="dropdown-content mt-3 z-10 shadow bg-base-100 rounded-box w-60">
+                                        <div className="card-body">
+                                            <span className="font-bold text-lg">8 Items</span>
+                                            <span className="text-info">Subtotal: Rp99.900</span>
+                                            <div className="card-actions">
+                                                <button className="btn btn-accent btn-block">View cart</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* PROFILE */}
+                                <div className="dropdown dropdown-end">
+                                    <button
+                                        type="button"
+                                        className="btn btn-ghost font-bold uppercase avatar justify-start"
+                                    >
+                                        <div className="w-10 rounded-full">
+                                            <Image
+                                                alt="User Avatar"
+                                                src={user?.image}
+                                                width={100}
+                                                height={100}
+                                            />
+                                        </div>
+                                        <span className="hidden text-base-content lg:block">{user?.name}</span>
+                                    </button>
+                                    <ul className="dropdown-content mt-3 z-10 p-2 shadow bg-base-100 rounded-box w-60">
+                                        <li>
+                                            <LinkButton
+                                                id="profile-button"
+                                                tooltip="Profile"
+                                                destination="/profile"
+                                                variant="ghost"
+                                            >
+                                                <ProfileSVG className="w-6 h-6 stroke-base-content group-hover:stroke-primary" />
+                                                <span>Profil Saya</span>
+                                            </LinkButton>
+                                        </li>
+                                        <li>
+                                            <ActionButton
+                                                id="logout-button"
+                                                variant="ghost"
+                                                onClick={() => signOut()}
+                                            >
+                                                <ExitSVG className="w-6 h-6 stroke-base-content group-hover:stroke-primary" />
+                                                <span>Logout</span>
+                                            </ActionButton>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </>
+                        );
+                    }
+                    return (
+                        <>
+                            <LinkButton
+                                id="login-button"
+                                tooltip="Login"
+                                destination="/login"
+                                variant="ghost"
+                            >
+                                Masuk
+                            </LinkButton>
+                            <LinkButton
+                                id="login-button"
+                                tooltip="Daftar"
+                                destination="/register"
+                                variant="solid"
+                            >
+                                Daftar
+                            </LinkButton>
+                        </>
+                    );
+                })()}
             </div>
         </nav>
     );

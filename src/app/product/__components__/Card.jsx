@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ProductCard = ({ imageSrc, name, price }) => {
+const ProductCard = ({ imageSrc, name, price, renderButtons }) => {
   return (
     <div className='w-[500px] h-full rounded-[16px] border-2 shadow-lg'>
       <Link href=''>
@@ -28,10 +28,11 @@ const ProductCard = ({ imageSrc, name, price }) => {
         </div>
         <hr className='mb-2 border-gray-500 border-1' />
         <div className='px-6 pb-4'>
-          <p className='text-lg font-bold text-secondary'>Rp. {price}</p>
-          <p className='text-base font-semibold text-secondary'>1 Pack = 950 - 1.050 gram</p>
+          <p className='text-lg font-bold text-primary'>Rp. {price}</p>
+          <p className='text-base font-semibold text-primary'>1 Pack = 950 - 1.050 gram</p>
         </div>
       </Link>
+      {renderButtons && renderButtons()} {/* Render buttons if provided */}
     </div>
   );
 };
