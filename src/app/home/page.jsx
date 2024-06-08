@@ -3,7 +3,7 @@
 import Footer from '../__components__/footer';
 import Navbar from '../__components__/navbar';
 import Image from 'next/image';
-import TestimonialCard from './__components__/Card';
+import TestimonialCard from '../__components__/ui/Card';
 
 function HomePage() {
   return (
