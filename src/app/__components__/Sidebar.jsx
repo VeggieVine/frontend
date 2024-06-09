@@ -69,26 +69,26 @@ export default function Sidebar({ user }) {
       </nav>
 
       <aside
-        className='fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform border-r border-[#17A04E] -translate-x-full sm:translate-x-0  bg-primary'
+        className='fixed top-0 left-0 z-40 w-fit lg:w-64 h-screen pt-20 transition-transform border-r border-[#17A04E] sm:translate-x-0 bg-primary'
         aria-label='Sidebar'
       >
-        <div className='h-full px-3 pb-4 overflow-y-auto'>
+        <div className='h-full lg:px-3 pb-4 overflow-y-auto'>
           <div className='space-y-2 font-medium'>
             <Link
               href='/admin'
-              class='flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#5CAF7D] group'
+              className='flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#5CAF7D] group'
             >
               <span className='ms-3'>Dashboard</span>
             </Link>
             <Link
               href='/admin/products'
-              class='flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#5CAF7D] group'
+              className='flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#5CAF7D] group'
             >
               <span className='ms-3'>Data Barang</span>
             </Link>
             <Link
               href='/admin/orders'
-              class='flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#5CAF7D] group'
+              className='flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#5CAF7D] group'
             >
               <span className='flex-1 ms-3 whitespace-nowrap'>
                 Pesanan Masuk
@@ -99,7 +99,7 @@ export default function Sidebar({ user }) {
             </Link>
             <Link
               href='/admin/invoices'
-              class='flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#5CAF7D] group'
+              className='flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#5CAF7D] group'
             >
               <span className='ms-3'>Invoice</span>
             </Link>
