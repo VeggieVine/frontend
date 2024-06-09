@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import Footer from '../__components__/footer';
 import Navbar from '../__components__/navbar';
 import ProductCard from './__components__/Card';

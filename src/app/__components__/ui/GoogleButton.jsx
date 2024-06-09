@@ -4,8 +4,6 @@ import Image from 'next/image';
 
 import { signIn } from 'next-auth/react';
 
-// import { handleGoogleLogin } from '../../../../lib';
-
 export default function GoogleButton() {
     return (
         <button
