@@ -2,7 +2,7 @@ import { auth } from '@/auth';
 import Sidebar from '../__components__/Sidebar';
 import Card from './__components__/Card';
 
-export default async function DashboardPage() {
+export default async function AdminPage() {
   const { user } = (await auth()) || {};
 
   const cardData = [
