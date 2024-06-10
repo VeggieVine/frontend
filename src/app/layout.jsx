@@ -1,5 +1,6 @@
 import './globals.css';
 import { ibm_plex_sans } from './font';
+import { Analytics } from "@vercel/analytics/react"
 
 import { Providers } from '@/src/app/__components__/Providers';
 
@@ -58,6 +59,7 @@ export default function RootLayout({ children }) {
             </head>
             <body className={ibm_plex_sans.className + ' bg-base-100 text-base-content'}>
                 <Providers>{children}</Providers>
+                <Analytics />
             </body>
         </html>
     );
