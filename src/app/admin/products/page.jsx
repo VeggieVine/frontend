@@ -7,9 +7,9 @@ export default async function AdminProductsPage() {
 
   const data = [
     { id: 1, itemName: 'Barang 1', description: 'Deskripsi 1', category: 'Kategori 1', price: 10000, stock: 10, image: '/assets/image/apel.png' },
-    { id: 2, itemName: 'Barang 2', description: 'Deskripsi 2', category: 'Kategori 2', price: 20000, stock: 20, image: '/assets/image/apel.png' },
-    { id: 3, itemName: 'Barang 3', description: 'Deskripsi 3', category: 'Kategori 3', price: 30000, stock: 30, image: '/assets/image/apel.png' },
-    { id: 4, itemName: 'Barang 4', description: 'Deskripsi 4', category: 'Kategori 4', price: 40000, stock: 40, image: '/assets/image/apel.png' },
+    { id: 2, itemName: 'Barang 2', description: 'Deskripsi 2', category: 'Kategori 2', price: 20000, stock: 20, image: '/assets/image/pokcoy.png' },
+    { id: 3, itemName: 'Barang 3', description: 'Deskripsi 3', category: 'Kategori 3', price: 30000, stock: 30, image: '/assets/image/mangga.png' },
+    { id: 4, itemName: 'Barang 4', description: 'Deskripsi 4', category: 'Kategori 4', price: 40000, stock: 40, image: '/assets/image/kiwi.png' },
     { id: 5, itemName: 'Barang 5', description: 'Deskripsi 5', category: 'Kategori 5', price: 50000, stock: 50, image: '/assets/image/apel.png' },
     { id: 6, itemName: 'Barang 6', description: 'Deskripsi 6', category: 'Kategori 6', price: 60000, stock: 60, image: '/assets/image/apel.png' },
     { id: 7, itemName: 'Barang 7', description: 'Deskripsi 7', category: 'Kategori 7', price: 70000, stock: 70, image: '/assets/image/apel.png' },
