@@ -1,16 +1,16 @@
-"use client";
+"use client"
 
-import Image from "next/image";
-import Link from "next/link";
-import { redirect } from "next/navigation";
+import Image from "next/image"
+import Link from "next/link"
+import { redirect } from "next/navigation"
 
-import { useAuth } from "@/src/hooks/useAuth";
+import { useAuth } from "@/src/hooks/useAuth"
 
 export default function AuthLayout({ children }) {
-    const { user } = useAuth({ middleware: "guest" });
+    const { user } = useAuth({ middleware: "guest" })
 
     if (user) {
-        redirect("/");
+        redirect("/")
     }
 
     return (
@@ -29,5 +29,5 @@ export default function AuthLayout({ children }) {
                 {children}
             </div>
         </div>
-    );
+    )
 }
