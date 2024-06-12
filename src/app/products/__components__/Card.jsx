@@ -1,6 +1,6 @@
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React from "react"
+import Image from "next/image"
+import Link from "next/link"
 
 const ProductCard = ({ imageSrc, name, price, renderButtons }) => {
     return (
@@ -39,7 +39,7 @@ const ProductCard = ({ imageSrc, name, price, renderButtons }) => {
             {renderButtons && renderButtons()}{" "}
             {/* Render buttons if provided */}
         </div>
-    );
-};
+    )
+}
 
-export default ProductCard;
+export default ProductCard

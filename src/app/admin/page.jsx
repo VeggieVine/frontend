@@ -1,9 +1,9 @@
-import { auth } from "@/src/lib/auth";
-import Sidebar from "../__components__/Sidebar";
-import Card from "./__components__/Card";
+import { auth } from "@/src/lib/auth"
+import Sidebar from "../__components__/Sidebar"
+import Card from "./__components__/Card"
 
 export default async function AdminPage() {
-    const { user } = (await auth()) || {};
+    const { user } = (await auth()) || {}
 
     const cardData = [
         {
@@ -21,7 +21,7 @@ export default async function AdminPage() {
             title: "Invoice",
             description: "ini invoice",
         },
-    ];
+    ]
 
     return (
         <>
@@ -41,5 +41,5 @@ export default async function AdminPage() {
                 </div>
             </div>
         </>
-    );
+    )
 }

@@ -1,11 +1,11 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import Image from "next/image";
-import ActionButton from "@/src/app/__components__/ui/ActionButton";
-import LinkButton from "@/src/app/__components__/ui/LinkButton";
-import { ProfileSVG, ExitSVG } from "@/src/app/__components__/ui/Icons";
-import { signOut } from "next-auth/react";
+import Link from "next/link"
+import Image from "next/image"
+import ActionButton from "@/src/app/__components__/ui/ActionButton"
+import LinkButton from "@/src/app/__components__/ui/LinkButton"
+import { ProfileSVG, ExitSVG } from "@/src/app/__components__/ui/Icons"
+import { signOut } from "next-auth/react"
 
 export default function Sidebar({ user }) {
     return (
@@ -107,5 +107,5 @@ export default function Sidebar({ user }) {
                 </div>
             </aside>
         </>
-    );
+    )
 }

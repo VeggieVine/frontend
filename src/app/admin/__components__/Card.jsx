@@ -6,7 +6,7 @@ const Card = ({ title, description }) => {
                 <p>{description}</p>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Card;
+export default Card

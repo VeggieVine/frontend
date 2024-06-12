@@ -1,9 +1,9 @@
-import { auth } from "@/src/lib/auth";
-import Sidebar from "../../__components__/Sidebar";
-import Table from "./__components__/Table";
+import { auth } from "@/src/lib/auth"
+import Sidebar from "../../__components__/Sidebar"
+import Table from "./__components__/Table"
 
 export default async function AdminInvoicesPage() {
-    const { user } = (await auth()) || {};
+    const { user } = (await auth()) || {}
 
     const data = [
         {
@@ -41,7 +41,7 @@ export default async function AdminInvoicesPage() {
             totalPayment: 1000000,
             status: "Terbayar",
         },
-    ];
+    ]
 
     return (
         <>
@@ -55,5 +55,5 @@ export default async function AdminInvoicesPage() {
                 </div>
             </div>
         </>
-    );
+    )
 }

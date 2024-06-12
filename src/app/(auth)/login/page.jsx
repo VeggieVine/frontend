@@ -1,21 +1,21 @@
-"use client";
+"use client"
 
-import { useAuth } from "@/src/hooks/useAuth";
+import { useAuth } from "@/src/hooks/useAuth"
 
-import LoginForm from "./__components__/LoginForm";
-import GoogleButton from "../../__components__/ui/GoogleButton";
+import LoginForm from "./__components__/LoginForm"
+import GoogleButton from "../../__components__/ui/GoogleButton"
 
 function LoginPage() {
     const { login } = useAuth({
         middleware: "guest",
         redirectIfAuthenticated: "/dashboard",
-    });
+    })
 
     const handleLogin = (
         event,
         { email, password, remember, setErrors, setStatus },
     ) => {
-        event.preventDefault();
+        event.preventDefault()
 
         login({
             email,
@@ -23,8 +23,8 @@ function LoginPage() {
             remember,
             setErrors,
             setStatus,
-        });
-    };
+        })
+    }
 
     return (
         <div className="mx-auto max-w-lg space-y-6 rounded-btn shadow-2xl">
@@ -46,7 +46,7 @@ function LoginPage() {
 
             <LoginForm handleLogin={handleLogin} />
         </div>
-    );
+    )
 }
 
-export default LoginPage;
+export default LoginPage

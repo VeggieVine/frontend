@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 // import { signOut } from 'next-auth/react'
-import Image from "next/image";
-import Link from "next/link";
+import Image from "next/image"
+import Link from "next/link"
 
-import { useAuth } from "@/src/hooks/useAuth";
+import { useAuth } from "@/src/hooks/useAuth"
 
-import LinkButton from "@/src/app/__components__/ui/LinkButton";
-import ActionButton from "@/src/app/__components__/ui/ActionButton";
+import LinkButton from "@/src/app/__components__/ui/LinkButton"
+import ActionButton from "@/src/app/__components__/ui/ActionButton"
 import {
     ExitSVG,
     ProfileSVG,
@@ -17,30 +17,30 @@ import {
     HamburgerSVG,
     HomeSVG,
     NotificationSVG,
-} from "@/src/app/__components__/ui/Icons";
+} from "@/src/app/__components__/ui/Icons"
 
 export default function Navbar() {
-    const { user, logout } = useAuth({ middleware: "guest" });
+    const { user, logout } = useAuth({ middleware: "guest" })
 
-    const pathname = usePathname();
-    const [navbarBg, setNavbarBg] = useState("");
+    const pathname = usePathname()
+    const [navbarBg, setNavbarBg] = useState("")
 
     useEffect(() => {
         const handleScroll = () => {
-            const currentScrollPos = window.pageYOffset;
+            const currentScrollPos = window.pageYOffset
             if (currentScrollPos > 20) {
-                setNavbarBg("bg-base-100 shadow-2xl shadow-primary");
+                setNavbarBg("bg-base-100 shadow-2xl shadow-primary")
             } else {
-                setNavbarBg("");
+                setNavbarBg("")
             }
-        };
+        }
 
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll)
 
         return () => {
-            window.removeEventListener("scroll", handleScroll);
-        };
-    }, []);
+            window.removeEventListener("scroll", handleScroll)
+        }
+    }, [])
 
     return (
         <nav
@@ -228,7 +228,7 @@ export default function Navbar() {
                                     </ul>
                                 </div>
                             </>
-                        );
+                        )
                     }
                     return (
                         <>
@@ -249,9 +249,9 @@ export default function Navbar() {
                                 Daftar
                             </LinkButton>
                         </>
-                    );
+                    )
                 })()}
             </div>
         </nav>
-    );
+    )
 }

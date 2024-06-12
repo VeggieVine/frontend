@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 
 function TextInput({
     id,
@@ -29,7 +29,7 @@ function TextInput({
                 <span className="sr-only">Icon</span>
             </label>
         </div>
-    );
+    )
 }
 
 TextInput.propTypes = {
@@ -40,6 +40,6 @@ TextInput.propTypes = {
     onChange: PropTypes.func.isRequired,
     children: PropTypes.node,
     required: PropTypes.bool,
-};
+}
 
-export default TextInput;
+export default TextInput

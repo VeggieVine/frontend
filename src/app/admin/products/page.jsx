@@ -1,9 +1,9 @@
-import { auth } from "@/src/lib/auth";
-import Sidebar from "../../__components__/Sidebar";
-import Table from "./__components__/Table";
+import { auth } from "@/src/lib/auth"
+import Sidebar from "../../__components__/Sidebar"
+import Table from "./__components__/Table"
 
 export default async function AdminProductsPage() {
-    const { user } = (await auth()) || {};
+    const { user } = (await auth()) || {}
 
     const data = [
         {
@@ -96,7 +96,7 @@ export default async function AdminProductsPage() {
             stock: 100,
             image: "/assets/image/apel.png",
         },
-    ];
+    ]
 
     return (
         <>
@@ -113,5 +113,5 @@ export default async function AdminProductsPage() {
                 </div>
             </div>
         </>
-    );
+    )
 }

@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 
 function ActionButton({
     id,
@@ -17,7 +17,7 @@ function ActionButton({
             >
                 {children}
             </button>
-        );
+        )
     }
     if (variant === "solid") {
         return (
@@ -29,7 +29,7 @@ function ActionButton({
             >
                 {children}
             </button>
-        );
+        )
     }
 
     return (
@@ -40,7 +40,7 @@ function ActionButton({
         >
             {children}
         </button>
-    );
+    )
 }
 
 ActionButton.propTypes = {
@@ -48,6 +48,6 @@ ActionButton.propTypes = {
     children: PropTypes.node,
     variant: PropTypes.string,
     onClick: PropTypes.func,
-};
+}
 
-export default ActionButton;
+export default ActionButton

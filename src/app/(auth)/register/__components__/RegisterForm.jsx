@@ -1,32 +1,32 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 
-import { useInput } from "@/src/hooks/useInput";
+import { useInput } from "@/src/hooks/useInput"
 
-import TextInput from "@/src/app/__components__/form/TextInput";
-import SubmitButton from "@/src/app/__components__/ui/SubmitButton";
+import TextInput from "@/src/app/__components__/form/TextInput"
+import SubmitButton from "@/src/app/__components__/ui/SubmitButton"
 
 import {
     UserSVG,
     PasswordSVG,
     EmailSVG,
-} from "@/src/app/__components__/ui/Icons";
+} from "@/src/app/__components__/ui/Icons"
 
 function RegisterForm({ handleRegister }) {
-    const router = useRouter();
-    const [errors, setErrors] = useState([]);
-    const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter()
+    const [errors, setErrors] = useState([])
+    const [showPassword, setShowPassword] = useState(false)
 
-    const [name, setName] = useInput("");
-    const [email, setEmail] = useInput("");
-    const [password, setPassword] = useInput("");
+    const [name, setName] = useInput("")
+    const [email, setEmail] = useInput("")
+    const [password, setPassword] = useInput("")
 
     useEffect(() => {
-        console.error(errors);
-    }, [router.reset, errors]);
+        console.error(errors)
+    }, [router.reset, errors])
 
     return (
         <form
@@ -96,7 +96,7 @@ function RegisterForm({ handleRegister }) {
                 </Link>
             </p>
         </form>
-    );
+    )
 }
 
-export default RegisterForm;
+export default RegisterForm

@@ -1,14 +1,14 @@
-"use client";
+"use client"
 
-import { useState } from "react";
+import { useState } from "react"
 
-import Footer from "@/src/app/__components__/Footer";
-import Navbar from "@/src/app/__components__/Navbar";
-import ProductCard from "./__components__/Card";
+import Footer from "@/src/app/__components__/Footer"
+import Navbar from "@/src/app/__components__/Navbar"
+import ProductCard from "./__components__/Card"
 
 function ProductPage() {
-    const [category, setCategory] = useState("all");
-    const [searchQuery, setSearchQuery] = useState("");
+    const [category, setCategory] = useState("all")
+    const [searchQuery, setSearchQuery] = useState("")
 
     const buahProducts = [
         {
@@ -67,7 +67,7 @@ function ProductPage() {
             imageSrc: "/assets/image/pepaya.jpg",
             price: "30.000",
         },
-    ];
+    ]
 
     const sayurProducts = [
         {
@@ -118,15 +118,15 @@ function ProductPage() {
             imageSrc: "/assets/image/kol unggu.jpeg",
             price: "49.000",
         },
-    ];
+    ]
 
-    const allProducts = [...buahProducts, ...sayurProducts];
+    const allProducts = [...buahProducts, ...sayurProducts]
 
     const filteredProducts = (products) => {
         return products.filter((product) =>
             product.name.toLowerCase().includes(searchQuery.toLowerCase()),
-        );
-    };
+        )
+    }
 
     const renderProducts = (products) => {
         return filteredProducts(products).map((product) => (
@@ -152,8 +152,8 @@ function ProductPage() {
                     </div>
                 )}
             />
-        ));
-    };
+        ))
+    }
 
     return (
         <div className="w-full h-full">
@@ -198,7 +198,7 @@ function ProductPage() {
             </div>
             <Footer />
         </div>
-    );
+    )
 }
 
-export default ProductPage;
+export default ProductPage

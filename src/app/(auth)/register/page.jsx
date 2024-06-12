@@ -1,26 +1,26 @@
-"use client";
+"use client"
 
-import { useAuth } from "@/src/hooks/useAuth";
+import { useAuth } from "@/src/hooks/useAuth"
 
-import RegisterForm from "./__components__/RegisterForm";
-import GoogleButton from "../../__components__/ui/GoogleButton";
+import RegisterForm from "./__components__/RegisterForm"
+import GoogleButton from "../../__components__/ui/GoogleButton"
 
 function RegisterPage() {
     const { register } = useAuth({
         middleware: "guest",
         redirectIfAuthenticated: "/dashboard",
-    });
+    })
 
     const handleRegister = (event, { name, email, password, setErrors }) => {
-        event.preventDefault();
+        event.preventDefault()
 
         register({
             name,
             email,
             password,
             setErrors,
-        });
-    };
+        })
+    }
 
     return (
         <div className="mx-auto max-w-lg space-y-6 rounded-btn shadow-2xl">
@@ -42,7 +42,7 @@ function RegisterPage() {
 
             <RegisterForm handleRegister={handleRegister} />
         </div>
-    );
+    )
 }
 
-export default RegisterPage;
+export default RegisterPage

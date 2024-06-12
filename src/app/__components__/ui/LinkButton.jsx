@@ -1,7 +1,7 @@
-import React from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import PropTypes from "prop-types";
+import React from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import PropTypes from "prop-types"
 
 function LinkButton({
     id,
@@ -10,7 +10,7 @@ function LinkButton({
     variant = null,
     destination = null,
 }) {
-    const pathname = usePathname();
+    const pathname = usePathname()
 
     if (variant === "solid") {
         return (
@@ -28,7 +28,7 @@ function LinkButton({
                     </button>
                 </div>
             </Link>
-        );
+        )
     }
     if (variant === "glass") {
         return (
@@ -46,7 +46,7 @@ function LinkButton({
                     </button>
                 </div>
             </Link>
-        );
+        )
     }
     if (variant === "ghost") {
         return (
@@ -64,7 +64,7 @@ function LinkButton({
                     </button>
                 </div>
             </Link>
-        );
+        )
     }
 
     return (
@@ -82,7 +82,7 @@ function LinkButton({
                 </button>
             </div>
         </Link>
-    );
+    )
 }
 
 LinkButton.propTypes = {
@@ -91,6 +91,6 @@ LinkButton.propTypes = {
     children: PropTypes.node,
     variant: PropTypes.string,
     destination: PropTypes.string.isRequired,
-};
+}
 
-export default LinkButton;
+export default LinkButton

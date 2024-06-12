@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/image"
 
 const Table = ({ data }) => {
     return (
@@ -47,7 +47,7 @@ const Table = ({ data }) => {
                 </tbody>
             </table>
         </div>
-    );
-};
+    )
+}
 
-export default Table;
+export default Table

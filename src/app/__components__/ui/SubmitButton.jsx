@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 
 function SubmitButton({ id, children = null, variant = "block" }) {
     return (
@@ -10,13 +10,13 @@ function SubmitButton({ id, children = null, variant = "block" }) {
         >
             {children}
         </button>
-    );
+    )
 }
 
 SubmitButton.propTypes = {
     id: PropTypes.string.isRequired,
     children: PropTypes.node,
     variant: PropTypes.string,
-};
+}
 
-export default SubmitButton;
+export default SubmitButton

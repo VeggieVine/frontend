@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from "react"
+import PropTypes from "prop-types"
 
 function TextAreaInput({
     id,
@@ -21,7 +21,7 @@ function TextAreaInput({
             />
             {children}
         </label>
-    );
+    )
 }
 
 TextAreaInput.propTypes = {
@@ -31,6 +31,6 @@ TextAreaInput.propTypes = {
     onChange: PropTypes.func.isRequired,
     children: PropTypes.node,
     required: PropTypes.bool,
-};
+}
 
-export default TextAreaInput;
+export default TextAreaInput
