@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Footer from "../../__components__/Footer"
-import Navbar from "../../__components__/navbar"
+import Navbar from "../../__components__/Navbar"
 import { auth } from "../../../../auth"
 
 export default function CheckoutPage() {

@@ -1,7 +1,7 @@
-import Navbar from "@/src/app/__components__/Navbar";
-import Footer from "@/src/app/__components__/Footer";
-import TestimonialCard from "@/src/app/__components__/ui/Card";
-import Image from "next/image";
+import Navbar from "@/src/app/__components__/Navbar"
+import Footer from "@/src/app/__components__/Footer"
+import TestimonialCard from "@/src/app/__components__/ui/Card"
+import Image from "next/image"
 
 export default function LandingPage() {
     return (
@@ -252,5 +252,5 @@ export default function LandingPage() {
 
             <Footer />
         </>
-    );
+    )
 }

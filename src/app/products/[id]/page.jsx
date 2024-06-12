@@ -3,7 +3,7 @@
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import Footer from "../../__components__/Footer"
-import Navbar from "../../__components__/navbar"
+import Navbar from "../../__components__/Navbar"
 import productDetails from "../productDetails"
 import { usePathname } from "next/navigation"
 import { auth } from "@/auth"

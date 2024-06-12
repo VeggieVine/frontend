@@ -4,8 +4,7 @@ import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import Footer from "../../__components__/Footer"
-import Navbar from "../../__components__/navbar"
-import { auth } from "../../../../auth"
+import Navbar from "../../__components__/Navbar"
 
 const initialCartItems = [
     {
@@ -156,20 +155,10 @@ const initialCartItems = [
 ]
 
 export default function CartPage() {
-    const [user, setUser] = useState(null)
     const [items, setItems] = useState(
         initialCartItems.map((item) => ({ ...item, quantity: 1 })),
     )
     const router = useRouter()
-
-    useEffect(() => {
-        async function fetchUser() {
-            const { user } = (await auth()) || {}
-            setUser(user)
-        }
-
-        fetchUser()
-    }, [])
 
     useEffect(() => {
         console.log(
@@ -220,7 +209,7 @@ export default function CartPage() {
 
     return (
         <div className="w-full">
-            <Navbar user={user} />
+            <Navbar />
             <div className="flex justify-center my-10">
                 <div className="w-full max-w-6xl">
                     <h1 className="text-3xl font-bold mb-8 text-center">
