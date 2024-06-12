@@ -1,30 +1,35 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react"
+import PropTypes from "prop-types"
 
-function ActionButton({ id, children = null, variant = null, onClick = () => {} }) {
-    if (variant === 'ghost') {
+function ActionButton({
+    id,
+    children = null,
+    variant = null,
+    onClick = () => {},
+}) {
+    if (variant === "ghost") {
         return (
             <button
                 id={id}
                 type="button"
-                className="btn btn-ghost justify-start group hover:text-secondary btn-block"
+                className="btn btn-ghost justify-start group hover:text-primary btn-block"
                 onClick={() => onClick()}
             >
                 {children}
             </button>
-        );
+        )
     }
-    if (variant === 'solid') {
+    if (variant === "solid") {
         return (
             <button
                 id={id}
                 type="button"
-                className="btn btn-secondary justify-start group btn-block"
+                className="btn btn-primary justify-start group btn-block"
                 onClick={() => onClick()}
             >
                 {children}
             </button>
-        );
+        )
     }
 
     return (
@@ -35,7 +40,7 @@ function ActionButton({ id, children = null, variant = null, onClick = () => {} 
         >
             {children}
         </button>
-    );
+    )
 }
 
 ActionButton.propTypes = {
@@ -43,6 +48,6 @@ ActionButton.propTypes = {
     children: PropTypes.node,
     variant: PropTypes.string,
     onClick: PropTypes.func,
-};
+}
 
-export default ActionButton;
+export default ActionButton

@@ -1,29 +1,39 @@
-'use client';
+"use client"
 
-import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 
-import { useInput } from '@/src/hooks/useInput';
+import { useInput } from "@/src/hooks/useInput"
 
-import TextInput from '@/src/app/__components__/form/TextInput';
-import SubmitButton from '@/src/app/__components__/ui/SubmitButton';
+import TextInput from "@/src/app/__components__/form/TextInput"
+import SubmitButton from "@/src/app/__components__/ui/SubmitButton"
 
-import { UserSVG, PasswordSVG, EmailSVG } from '@/src/app/__components__/ui/Icons';
+import {
+    UserSVG,
+    PasswordSVG,
+    EmailSVG,
+} from "@/src/app/__components__/ui/Icons"
 
 function RegisterForm({ handleRegister }) {
-    const dispatch = useDispatch();
+    const router = useRouter()
+    const [errors, setErrors] = useState([])
+    const [showPassword, setShowPassword] = useState(false)
 
-    const [showPassword, setShowPassword] = useState(false);
+    const [name, setName] = useInput("")
+    const [email, setEmail] = useInput("")
+    const [password, setPassword] = useInput("")
 
-    const [name, setName] = useInput('');
-    const [email, setEmail] = useInput('');
-    const [password, setPassword] = useInput('');
+    useEffect(() => {
+        console.error(errors)
+    }, [router.reset, errors])
 
     return (
         <form
             className="flex flex-col space-y-4 px-6 pb-6 lg:px-8 lg:pb-8 bg-none"
-            onSubmit={(event) => handleRegister(event)}
+            onSubmit={(event) =>
+                handleRegister(event, { name, email, password, setErrors })
+            }
         >
             {/* NAME */}
             <div>
@@ -59,7 +69,7 @@ function RegisterForm({ handleRegister }) {
             <div>
                 <TextInput
                     id="password"
-                    type={showPassword ? 'text' : 'password'}
+                    type={showPassword ? "text" : "password"}
                     placeholder="Masukkan kata sandi"
                     value={password}
                     onChange={setPassword}
@@ -82,11 +92,11 @@ function RegisterForm({ handleRegister }) {
             <p className="self-center lg:self-start text-sm text-neutral">
                 <span>Sudah punya akun? </span>
                 <Link href="/login">
-                    <span className="underline text-secondary">Masuk</span>
+                    <span className="underline text-primary">Masuk</span>
                 </Link>
             </p>
         </form>
-    );
+    )
 }
 
-export default RegisterForm;
+export default RegisterForm

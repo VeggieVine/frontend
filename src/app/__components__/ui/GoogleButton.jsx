@@ -1,15 +1,13 @@
-'use client';
+"use client"
 
-import Image from 'next/image';
+import Image from "next/image"
 
-import { signIn } from 'next-auth/react';
-
-// import { handleGoogleLogin } from '../../../../lib';
+import { signIn } from "next-auth/react"
 
 export default function GoogleButton() {
     return (
         <button
-            onClick={() => signIn('google')}
+            onClick={() => signIn("google", { callbackUrl: "/" })}
             className="btn btn-lg btn-square bg-base-100"
         >
             <Image
@@ -20,5 +18,5 @@ export default function GoogleButton() {
                 height="24"
             />
         </button>
-    );
+    )
 }
