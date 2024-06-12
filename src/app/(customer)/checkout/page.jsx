@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react"
 import Footer from "../../__components__/Footer"
 import Navbar from "../../__components__/Navbar"
-import { auth } from "../../../../auth"
+// import { auth } from "../../../../auth"
 
 export default function CheckoutPage() {
-    const [user, setUser] = useState(null)
+    // const [user, setUser] = useState(null)
     const [items, setItems] = useState([])
     const [formData, setFormData] = useState({
         fullName: "",
@@ -17,16 +17,16 @@ export default function CheckoutPage() {
     })
     const [formComplete, setFormComplete] = useState(false) // Variabel formComplete harus didefinisikan di sini
 
-    useEffect(() => {
-        async function fetchUser() {
-            const { user } = (await auth()) || {}
-            setUser(user)
-        }
+    // useEffect(() => {
+    //     async function fetchUser() {
+    //         const { user } = (await auth()) || {}
+    //         setUser(user)
+    //     }
 
-        fetchUser()
-        const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]")
-        setItems(cartItems)
-    }, [])
+    //     fetchUser()
+    //     const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]")
+    //     setItems(cartItems)
+    // }, [])
 
     useEffect(() => {
         const isFormComplete = Object.values(formData).every(
@@ -57,7 +57,7 @@ export default function CheckoutPage() {
 
     return (
         <div className="w-full h-full">
-            <Navbar user={user} />
+            <Navbar />
             <div className="flex justify-center my-20">
                 <div className="w-full max-w-6xl">
                     <h1 className="text-3xl font-bold mb-8 text-center">

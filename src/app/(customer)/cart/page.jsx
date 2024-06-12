@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useState, useEffect } from "react"
 import Footer from "../../__components__/Footer"
 import Navbar from "../../__components__/Navbar"
+// import { auth } from "../../../../auth"
 
 const initialCartItems = [
     {
@@ -155,10 +156,20 @@ const initialCartItems = [
 ]
 
 export default function CartPage() {
+    // const [user, setUser] = useState(null)
     const [items, setItems] = useState(
         initialCartItems.map((item) => ({ ...item, quantity: 1 })),
     )
     const router = useRouter()
+
+    // useEffect(() => {
+    //     async function fetchUser() {
+    //         const { user } = (await auth()) || {}
+    //         setUser(user)
+    //     }
+
+    //     fetchUser()
+    // }, [])
 
     useEffect(() => {
         console.log(
