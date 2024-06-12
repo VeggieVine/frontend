@@ -1,14 +1,22 @@
-import Image from 'next/image';
-import Link from 'next/link';
+"use client"
+
+import Image from "next/image"
+import Link from "next/link"
+import { redirect } from "next/navigation"
+
+import { useAuth } from "@/src/hooks/useAuth"
 
 export default function AuthLayout({ children }) {
+    const { user } = useAuth({ middleware: "guest" })
+
+    if (user) {
+        redirect("/")
+    }
+
     return (
         <div className="flex items-center max-w-screen-xl min-h-screen mx-auto ">
             <div className="mx-auto max-w-screen-xl w-full px-4 py-16 sm:px-6 lg:px-8">
-                <Link
-                    className=""
-                    href="/"
-                >
+                <Link className="" href="/">
                     <Image
                         src="/assets/image/logo.svg"
                         width="165"
@@ -21,5 +29,5 @@ export default function AuthLayout({ children }) {
                 {children}
             </div>
         </div>
-    );
+    )
 }
