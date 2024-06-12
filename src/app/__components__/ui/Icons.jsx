@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function UserSVG(props) {
     return (
@@ -9,10 +9,7 @@ export function UserSVG(props) {
             viewBox="0 0 24 24"
             {...props}
         >
-            <g
-                id="SVGRepo_bgCarrier"
-                strokeWidth="0"
-            />
+            <g id="SVGRepo_bgCarrier" strokeWidth="0" />
             <g
                 id="SVGRepo_tracerCarrier"
                 strokeLinecap="round"
@@ -44,15 +41,8 @@ export function UsersSVG(props) {
             viewBox="0 0 24 24"
             {...props}
         >
-            <g
-                {...props}
-                strokeWidth={1.5}
-            >
-                <circle
-                    cx={12}
-                    cy={6}
-                    r={4}
-                />
+            <g {...props} strokeWidth={1.5}>
+                <circle cx={12} cy={6} r={4} />
                 <path
                     strokeLinecap="round"
                     // eslint-disable-next-line max-len
@@ -116,11 +106,7 @@ export function HomeSVG(props) {
             viewBox="0 0 24 24"
             {...props}
         >
-            <g
-                {...props}
-                strokeLinecap="round"
-                strokeWidth={1.5}
-            >
+            <g {...props} strokeLinecap="round" strokeWidth={1.5}>
                 {/* eslint-disable-next-line max-len */}
                 <path d="M22 12.204v1.521c0 3.9 0 5.851-1.172 7.063C19.657 22 17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.212C2 19.576 2 17.626 2 13.725v-1.521c0-2.289 0-3.433.52-4.381.518-.949 1.467-1.537 3.364-2.715l2-1.241C9.889 2.622 10.892 2 12 2c1.108 0 2.11.622 4.116 1.867l2 1.241c1.897 1.178 2.846 1.766 3.365 2.715M15 18H9" />
             </g>
@@ -136,10 +122,7 @@ export function LeaderboardSVG(props) {
             viewBox="0 0 24 24"
             {...props}
         >
-            <g
-                {...props}
-                strokeWidth={1.5}
-            >
+            <g {...props} strokeWidth={1.5}>
                 <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -147,10 +130,7 @@ export function LeaderboardSVG(props) {
                 />
                 {/* eslint-disable-next-line max-len */}
                 <path d="m19 5 .949.316c.99.33 1.485.495 1.768.888.283.393.283.915.283 1.958v.073c0 .86 0 1.291-.207 1.643-.207.352-.584.561-1.336.98L17.5 12.5M5 5l-.949.316c-.99.33-1.485.495-1.768.888C2 6.597 2 7.12 2 8.162v.073c0 .86 0 1.291.207 1.643.207.352.584.561 1.336.98L6.5 12.5" />
-                <path
-                    strokeLinecap="round"
-                    d="M12 16v3"
-                />
+                <path strokeLinecap="round" d="M12 16v3" />
                 <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
@@ -174,11 +154,7 @@ export function ExitSVG(props) {
             viewBox="0 0 24 24"
             {...props}
         >
-            <g
-                {...props}
-                strokeLinecap="round"
-                strokeWidth={1.5}
-            >
+            <g {...props} strokeLinecap="round" strokeWidth={1.5}>
                 {/* eslint-disable-next-line max-len */}
                 <path d="M9 4.5H8c-2.357 0-3.536 0-4.268.732C3 5.964 3 7.143 3 9.5v.5m6 9.5H8c-2.357 0-3.536 0-4.268-.732C3 18.035 3 16.857 3 14.5V14M13.658 2.347c-2.162-.377-3.243-.565-3.95.062C9 3.036 9 4.183 9 6.476v11.048c0 2.293 0 3.44.707 4.067.707.627 1.788.439 3.95.062l2.33-.406c2.394-.418 3.591-.627 4.302-1.505.711-.879.711-2.149.711-4.69V8.948c0-2.54 0-3.81-.71-4.689-.476-.587-1.168-.875-2.29-1.126M12 11v2" />
             </g>
@@ -213,15 +189,8 @@ export function ProfileSVG(props) {
             viewBox="0 0 24 24"
             {...props}
         >
-            <g
-                {...props}
-                strokeWidth={1.5}
-            >
-                <circle
-                    cx={9}
-                    cy={9}
-                    r={2}
-                />
+            <g {...props} strokeWidth={1.5}>
+                <circle cx={9} cy={9} r={2} />
                 <path d="M13 15c0 1.105 0 2-4 2s-4-.895-4-2 1.79-2 4-2 4 .895 4 2Z" />
                 <path
                     strokeLinecap="round"
@@ -339,16 +308,9 @@ export function TimeSVG(props) {
             viewBox="0 0 24 24"
             {...props}
         >
-            <g
-                {...props}
-                strokeLinecap="round"
-                strokeWidth={1.5}
-            >
+            <g {...props} strokeLinecap="round" strokeWidth={1.5}>
                 <path d="M2 12c0 5.523 4.477 10 10 10 1.821 0 3.53-.487 5-1.338M12 2c5.523 0 10 4.477 10 10 0 1.821-.487 3.53-1.338 5" />
-                <path
-                    strokeLinejoin="round"
-                    d="M12 9v4h4"
-                />
+                <path strokeLinejoin="round" d="M12 9v4h4" />
                 <path
                     strokeDasharray="0.5 3.5"
                     d="M17 20.662A9.955 9.955 0 0 1 12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10c0 1.821-.487 3.53-1.338 5"
@@ -366,11 +328,7 @@ export function WriteSVG(props) {
             viewBox="0 0 24 24"
             {...props}
         >
-            <g
-                {...props}
-                strokeLinecap="round"
-                strokeWidth={1.5}
-            >
+            <g {...props} strokeLinecap="round" strokeWidth={1.5}>
                 {/* eslint-disable-next-line max-len */}
                 <path d="M4 22h4m12 0h-8M13.888 3.663l.742-.742a3.146 3.146 0 1 1 4.449 4.45l-.742.74m-4.449-4.448s.093 1.576 1.483 2.966c1.39 1.39 2.966 1.483 2.966 1.483m-4.449-4.45L7.071 10.48c-.462.462-.693.692-.891.947a5.24 5.24 0 0 0-.599.969c-.139.291-.242.601-.449 1.22l-.875 2.626m14.08-8.13L14.93 11.52M11.52 14.93c-.462.462-.692.692-.947.891-.3.234-.625.435-.969.599-.291.139-.601.242-1.22.448l-2.626.876m0 0-.641.213a.848.848 0 0 1-1.073-1.073l.213-.641m1.501 1.5-1.5-1.5" />
             </g>

@@ -1,15 +1,15 @@
-'use client'
+"use client"
 
-import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
-import Link from 'next/link'
+import { useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
+import Link from "next/link"
 
-import { useInput } from '@/src/hooks/useInput'
+import { useInput } from "@/src/hooks/useInput"
 
-import AuthSessionStatus from '../../AuthSessionStatus'
-import TextInput from '@/src/app/__components__/form/TextInput'
-import SubmitButton from '@/src/app/__components__/ui/SubmitButton'
-import { PasswordSVG, EmailSVG } from '@/src/app/__components__/ui/Icons'
+import AuthSessionStatus from "../../AuthSessionStatus"
+import TextInput from "@/src/app/__components__/form/TextInput"
+import SubmitButton from "@/src/app/__components__/ui/SubmitButton"
+import { PasswordSVG, EmailSVG } from "@/src/app/__components__/ui/Icons"
 
 function LoginForm({ handleLogin }) {
     const router = useRouter()
@@ -19,8 +19,8 @@ function LoginForm({ handleLogin }) {
     const [showPassword, setShowPassword] = useState(false)
     const [shouldRemember, setShouldRemember] = useState(false)
 
-    const [email, handleEmail] = useInput('')
-    const [password, handlePassword] = useInput('')
+    const [email, handleEmail] = useInput("")
+    const [password, handlePassword] = useInput("")
 
     useEffect(() => {
         if (router.reset?.length > 0 && errors.length === 0) {
@@ -34,7 +34,15 @@ function LoginForm({ handleLogin }) {
         <form
             aria-label="form"
             className="flex flex-col space-y-4 px-6 pb-6 lg:px-8 lg:pb-8 bg-none"
-            onSubmit={(event) => handleLogin(event, { email, password, shouldRemember, setErrors, setStatus})}
+            onSubmit={(event) =>
+                handleLogin(event, {
+                    email,
+                    password,
+                    shouldRemember,
+                    setErrors,
+                    setStatus,
+                })
+            }
         >
             <AuthSessionStatus className="mb-4" status={status} />
             {/* EMAIL */}
@@ -57,7 +65,7 @@ function LoginForm({ handleLogin }) {
             <div>
                 <TextInput
                     id="password"
-                    type={showPassword ? 'text' : 'password'}
+                    type={showPassword ? "text" : "password"}
                     placeholder="Masukkan kata sandi"
                     value={password}
                     onChange={handlePassword}
@@ -80,7 +88,9 @@ function LoginForm({ handleLogin }) {
                         type="checkbox"
                         defaultChecked
                         className="checkbox checkbox-primary"
-                        onChange={(event) => setShouldRemember(event.target.checked)}
+                        onChange={(event) =>
+                            setShouldRemember(event.target.checked)
+                        }
                     />
                     <span className="label-text">Ingat saya</span>
                 </label>
@@ -93,7 +103,9 @@ function LoginForm({ handleLogin }) {
             <p className="self-center lg:self-start text-sm text-neutral">
                 <span>Belum punya akun? </span>
                 <Link href="/register">
-                    <span className="underline text-primary">Daftar sekarang</span>
+                    <span className="underline text-primary">
+                        Daftar sekarang
+                    </span>
                 </Link>
             </p>
         </form>

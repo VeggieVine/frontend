@@ -1,8 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-function ActionButton({ id, children = null, variant = null, onClick = () => {} }) {
-    if (variant === 'ghost') {
+function ActionButton({
+    id,
+    children = null,
+    variant = null,
+    onClick = () => {},
+}) {
+    if (variant === "ghost") {
         return (
             <button
                 id={id}
@@ -14,7 +19,7 @@ function ActionButton({ id, children = null, variant = null, onClick = () => {} 
             </button>
         );
     }
-    if (variant === 'solid') {
+    if (variant === "solid") {
         return (
             <button
                 id={id}

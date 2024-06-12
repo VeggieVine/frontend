@@ -1,12 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-function TextAreaInput({ id, value = '', placeholder, onChange, children = null, required = false }) {
+function TextAreaInput({
+    id,
+    value = "",
+    placeholder,
+    onChange,
+    children = null,
+    required = false,
+}) {
     return (
-        <label
-            htmlFor={id}
-            className="form-control w-full h-full"
-        >
+        <label htmlFor={id} className="form-control w-full h-full">
             <textarea
                 id={id}
                 className="textarea textarea-bordered textarea-md w-full h-full"

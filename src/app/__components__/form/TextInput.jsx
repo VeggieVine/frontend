@@ -1,7 +1,15 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-function TextInput({ id, value = '', type, placeholder, onChange, children = null, required = false }) {
+function TextInput({
+    id,
+    value = "",
+    type,
+    placeholder,
+    onChange,
+    children = null,
+    required = false,
+}) {
     return (
         <div className="relative w-full">
             <label

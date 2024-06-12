@@ -1,48 +1,54 @@
-'use client'
+"use client";
 
-import { useState, useEffect } from 'react'
-import { usePathname } from 'next/navigation'
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 // import { signOut } from 'next-auth/react'
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
-import { useAuth } from '@/src/hooks/useAuth'
+import { useAuth } from "@/src/hooks/useAuth";
 
-import LinkButton from '@/src/app/__components__/ui/LinkButton'
-import ActionButton from '@/src/app/__components__/ui/ActionButton'
-import { ExitSVG, ProfileSVG, CartSVG, HamburgerSVG, HomeSVG, NotificationSVG } from '@/src/app/__components__/ui/Icons'
+import LinkButton from "@/src/app/__components__/ui/LinkButton";
+import ActionButton from "@/src/app/__components__/ui/ActionButton";
+import {
+    ExitSVG,
+    ProfileSVG,
+    CartSVG,
+    HamburgerSVG,
+    HomeSVG,
+    NotificationSVG,
+} from "@/src/app/__components__/ui/Icons";
 
 export default function Navbar() {
-    const { user, logout } = useAuth({ middleware: 'guest' })
+    const { user, logout } = useAuth({ middleware: "guest" });
 
-    const pathname = usePathname()
-    const [navbarBg, setNavbarBg] = useState('')
+    const pathname = usePathname();
+    const [navbarBg, setNavbarBg] = useState("");
 
     useEffect(() => {
         const handleScroll = () => {
-            const currentScrollPos = window.pageYOffset
+            const currentScrollPos = window.pageYOffset;
             if (currentScrollPos > 20) {
-                setNavbarBg('bg-base-100 shadow-2xl shadow-primary')
+                setNavbarBg("bg-base-100 shadow-2xl shadow-primary");
             } else {
-                setNavbarBg('')
+                setNavbarBg("");
             }
-        }
+        };
 
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener("scroll", handleScroll);
 
         return () => {
-            window.removeEventListener('scroll', handleScroll)
-        }
-    }, [])
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
 
     return (
-        <nav className={`${navbarBg} navbar fixed top-0 left-0 right-0 mx-auto z-50 max-w-screen-xl rounded-btn`}>
+        <nav
+            className={`${navbarBg} navbar fixed top-0 left-0 right-0 mx-auto z-50 max-w-screen-xl rounded-btn`}
+        >
             <div className="navbar-start gap-x-2">
                 <div className="dropdown">
-                    <button
-                        type="button"
-                        className="btn btn-ghost"
-                    >
+                    <button type="button" className="btn btn-ghost">
                         <span className="sr-only">Hamburger Icon</span>
                         <HamburgerSVG className="h-6 w-6 stroke-primary" />
                     </button>
@@ -54,7 +60,9 @@ export default function Navbar() {
                                 destination="/"
                                 variant="ghost"
                             >
-                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <HomeSVG
+                                    className={`w-6 h-6 group-hover:stroke-primary ${pathname === "/" ? "stroke-primary" : "stroke-base-content"}`}
+                                />
                                 <span>Home</span>
                             </LinkButton>
                         </li>
@@ -65,7 +73,9 @@ export default function Navbar() {
                                 destination="/products"
                                 variant="ghost"
                             >
-                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/products' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <HomeSVG
+                                    className={`w-6 h-6 group-hover:stroke-primary ${pathname === "/products" ? "stroke-primary" : "stroke-base-content"}`}
+                                />
                                 <span>Products</span>
                             </LinkButton>
                         </li>
@@ -76,7 +86,9 @@ export default function Navbar() {
                                 destination="/advantage"
                                 variant="ghost"
                             >
-                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/advantage' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <HomeSVG
+                                    className={`w-6 h-6 group-hover:stroke-primary ${pathname === "/advantage" ? "stroke-primary" : "stroke-base-content"}`}
+                                />
                                 <span>Advantage</span>
                             </LinkButton>
                         </li>
@@ -87,16 +99,15 @@ export default function Navbar() {
                                 destination="/contact"
                                 variant="ghost"
                             >
-                                <HomeSVG className={`w-6 h-6 group-hover:stroke-primary ${pathname === '/contact' ? 'stroke-primary' : 'stroke-base-content'}`} />
+                                <HomeSVG
+                                    className={`w-6 h-6 group-hover:stroke-primary ${pathname === "/contact" ? "stroke-primary" : "stroke-base-content"}`}
+                                />
                                 <span>Contact</span>
                             </LinkButton>
                         </li>
                     </ul>
                 </div>
-                <Link
-                    className=""
-                    href="/"
-                >
+                <Link className="" href="/">
                     <Image
                         src="/assets/image/logo.svg"
                         width="100"
@@ -119,15 +130,23 @@ export default function Navbar() {
                                     >
                                         <div className="indicator">
                                             <CartSVG className="w-6 h-6 stroke-secondary" />
-                                            <span className="badge badge-sm indicator-item">8</span>
+                                            <span className="badge badge-sm indicator-item">
+                                                8
+                                            </span>
                                         </div>
                                     </button>
                                     <div className="dropdown-content mt-3 z-10 shadow bg-base-100 border-2 border-secondary rounded-box w-60">
                                         <div className="card-body">
-                                            <span className="font-bold text-lg">8 Items</span>
-                                            <span className="text-info">Subtotal: Rp99.900</span>
+                                            <span className="font-bold text-lg">
+                                                8 Items
+                                            </span>
+                                            <span className="text-info">
+                                                Subtotal: Rp99.900
+                                            </span>
                                             <div className="card-actions">
-                                                <button className="btn btn-secondary btn-block">View cart</button>
+                                                <button className="btn btn-secondary btn-block">
+                                                    View cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -141,15 +160,23 @@ export default function Navbar() {
                                     >
                                         <div className="indicator">
                                             <NotificationSVG className="w-6 h-6 stroke-accent" />
-                                            <span className="badge badge-sm indicator-item">8</span>
+                                            <span className="badge badge-sm indicator-item">
+                                                8
+                                            </span>
                                         </div>
                                     </button>
                                     <div className="dropdown-content mt-3 z-10 shadow bg-base-100 border-2 border-accent rounded-box w-60">
                                         <div className="card-body">
-                                            <span className="font-bold text-lg">8 Items</span>
-                                            <span className="text-info">Subtotal: Rp99.900</span>
+                                            <span className="font-bold text-lg">
+                                                8 Items
+                                            </span>
+                                            <span className="text-info">
+                                                Subtotal: Rp99.900
+                                            </span>
                                             <div className="card-actions">
-                                                <button className="btn btn-accent btn-block">View cart</button>
+                                                <button className="btn btn-accent btn-block">
+                                                    View cart
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -164,13 +191,17 @@ export default function Navbar() {
                                         <div className="w-10 rounded-full">
                                             <Image
                                                 alt="User Avatar"
-                                                src={user?.image || '/assets/image/brokoli.svg'}
+                                                src={
+                                                    user?.image ||
+                                                    "/assets/image/brokoli.svg"
+                                                }
                                                 width={100}
                                                 height={100}
-
                                             />
                                         </div>
-                                        <span className="hidden text-base-content lg:block">{user?.name}</span>
+                                        <span className="hidden text-base-content lg:block">
+                                            {user?.name}
+                                        </span>
                                     </button>
                                     <ul className="dropdown-content mt-3 z-10 p-2 shadow bg-base-100 border-2 border-primary rounded-box w-60">
                                         <li>
@@ -197,7 +228,7 @@ export default function Navbar() {
                                     </ul>
                                 </div>
                             </>
-                        )
+                        );
                     }
                     return (
                         <>
@@ -218,9 +249,9 @@ export default function Navbar() {
                                 Daftar
                             </LinkButton>
                         </>
-                    )
+                    );
                 })()}
             </div>
         </nav>
-    )
+    );
 }
