@@ -3,9 +3,9 @@
 import { useRouter } from 'next/navigation'; 
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
-import Footer from '../__components__/Footer';
-import Navbar from '../__components__/navbar';
-import { auth } from '../../../auth';
+import Footer from '../../__components__/Footer';
+import Navbar from '../../__components__/navbar';
+import { auth } from '../../../../auth';
 
 const initialCartItems = [
   { id: 1, name: 'Apel Fuji china', imageSrc: '/assets/image/apel.png', price: 40000 },

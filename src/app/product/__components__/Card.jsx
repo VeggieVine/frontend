@@ -23,7 +23,7 @@ const ProductCard = ({ imageSrc, name, price, renderButtons }) => {
             alt={name}
             width={500}
             height={500}
-            className='w-full h-full pb-2'
+            className='w-full h-[200px] pb-2'
           />
         </div>
         <hr className='mb-2 border-gray-500 border-1' />
