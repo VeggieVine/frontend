@@ -1,18 +1,18 @@
-import "./globals.css";
+import "./globals.css"
 
-import { ibm_plex_sans } from "./font";
+import { ibm_plex_sans } from "./font"
 
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/react"
 
-import { Providers } from "@/src/app/__components__/Providers";
+import { Providers } from "@/src/app/__components__/Providers"
 
-const siteTitle = "VeggieVine";
+const siteTitle = "VeggieVine"
 
 const siteDesc =
-    "VeggieVine adalah platform online shop yang menyediakan berbagai macam sayuran segar dan buah-buahan yang dijual langsung oleh petani.";
+    "VeggieVine adalah platform online shop yang menyediakan berbagai macam sayuran segar dan buah-buahan yang dijual langsung oleh petani."
 
 const siteKey =
-    "veggievine, sayur, buah, petani, online shop, sayuran segar, buah-buahan, petani lokal, petani indonesia, petani lokal indonesia, petani lokal jakarta, petani lokal bogor, petani lokal depok, petani lokal tangerang, petani lokal bekasi";
+    "veggievine, sayur, buah, petani, online shop, sayuran segar, buah-buahan, petani lokal, petani indonesia, petani lokal indonesia, petani lokal jakarta, petani lokal bogor, petani lokal depok, petani lokal tangerang, petani lokal bekasi"
 
 export default function RootLayout({ children }) {
     return (
@@ -56,5 +56,5 @@ export default function RootLayout({ children }) {
                 <Analytics />
             </body>
         </html>
-    );
+    )
 }

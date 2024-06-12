@@ -7,7 +7,7 @@ import Navbar from "../../__components__/Navbar"
 
 export default function CheckoutPage() {
     // const [user, setUser] = useState(null)
-    const [items, setItems] = useState([])
+    const [items] = useState([])
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",

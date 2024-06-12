@@ -150,7 +150,7 @@ function ProductPage() {
                             Detail
                         </button>
                         <button
-                            onClick={() => handleAddToCart(product)}
+                            // onClick={() => handleAddToCart(product)}
                             className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
                         >
                             Add Keranjang

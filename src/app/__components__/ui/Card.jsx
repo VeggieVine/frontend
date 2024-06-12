@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image from "next/image"
 
 const TestimonialCard = ({ imageSrc, name, testimonial }) => {
     return (
@@ -16,7 +16,7 @@ const TestimonialCard = ({ imageSrc, name, testimonial }) => {
                 <p className="mt-2 text-gray-600">{testimonial}</p>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default TestimonialCard;
+export default TestimonialCard
