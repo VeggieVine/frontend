@@ -131,7 +131,7 @@ function ProductPage() {
 
     const handleDetailClick = (product) => {
         const productId = encodeURIComponent(product.name)
-        router.push(`/product/${productId}`)
+        router.push(`/products/${productId}`)
     }
 
     const renderProducts = (products) => {
