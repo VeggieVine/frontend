@@ -1,27 +1,42 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
 
-import { useInput } from '@/src/hooks/useInput';
+import { useInput } from '@/src/hooks/useInput'
 
-import TextInput from '@/src/app/__components__/form/TextInput';
-import SubmitButton from '@/src/app/__components__/ui/SubmitButton';
-
-import { PasswordSVG, EmailSVG } from '@/src/app/__components__/ui/Icons';
+import AuthSessionStatus from '../../AuthSessionStatus'
+import TextInput from '@/src/app/__components__/form/TextInput'
+import SubmitButton from '@/src/app/__components__/ui/SubmitButton'
+import { PasswordSVG, EmailSVG } from '@/src/app/__components__/ui/Icons'
 
 function LoginForm({ handleLogin }) {
-    const [showPassword, setShowPassword] = useState(false);
+    const router = useRouter()
 
-    const [email, handleEmail] = useInput('');
-    const [password, handlePassword] = useInput('');
+    const [errors, setErrors] = useState([])
+    const [status, setStatus] = useState(null)
+    const [showPassword, setShowPassword] = useState(false)
+    const [shouldRemember, setShouldRemember] = useState(false)
+
+    const [email, handleEmail] = useInput('')
+    const [password, handlePassword] = useInput('')
+
+    useEffect(() => {
+        if (router.reset?.length > 0 && errors.length === 0) {
+            setStatus(atob(router.reset))
+        } else {
+            setStatus(null)
+        }
+    }, [router.reset, errors])
 
     return (
         <form
             aria-label="form"
             className="flex flex-col space-y-4 px-6 pb-6 lg:px-8 lg:pb-8 bg-none"
-            onSubmit={(event) => handleLogin(event, { email, password })}
+            onSubmit={(event) => handleLogin(event, { email, password, shouldRemember, setErrors, setStatus})}
         >
+            <AuthSessionStatus className="mb-4" status={status} />
             {/* EMAIL */}
             <div>
                 <TextInput
@@ -65,6 +80,7 @@ function LoginForm({ handleLogin }) {
                         type="checkbox"
                         defaultChecked
                         className="checkbox checkbox-primary"
+                        onChange={(event) => setShouldRemember(event.target.checked)}
                     />
                     <span className="label-text">Ingat saya</span>
                 </label>
@@ -81,7 +97,7 @@ function LoginForm({ handleLogin }) {
                 </Link>
             </p>
         </form>
-    );
+    )
 }
 
-export default LoginForm;
+export default LoginForm

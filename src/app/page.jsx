@@ -1,19 +1,15 @@
-import { auth } from '@/auth';
+import Navbar from '@/src/app/__components__/Navbar'
+import Footer from '@/src/app/__components__/Footer'
+import TestimonialCard from '@/src/app/__components__/ui/Card'
+import Image from 'next/image'
 
-import Navbar from '@/src/app/__components__/Navbar';
-import Footer from '@/src/app/__components__/Footer';
-import TestimonialCard from '@/src/app/__components__/ui/Card';
-import Image from 'next/image';
-
-export default async function LandingPage() {
-    const { user } = (await auth()) || {};
+export default function LandingPage() {
 
     return (
         <>
-            <Navbar user={user} />
-            {/* {JSON.stringify(user, null, '\t')} */}
+            <Navbar />
             <div className="flex tracking-widest max-w-screen-xl min-h-screen mx-auto px-6 lg:px-8">
-                <div className="relative flex basis-full justify-center items-center">
+                <div className="overflow-hidden flex basis-full justify-center items-center">
                     <div className="text-neutral space-y-4">
                         <h1 className="text-6xl font-bold text-center text-success lg:text-left mb-8">VeggieVine</h1>
                         <h1 className="text-3xl font-semibold text-center lg:text-left">
@@ -37,9 +33,9 @@ export default async function LandingPage() {
                         height={0}
                         className="w-auto h-auto hidden lg:block"
                     />
-                    <div className="absolute left-0 top-0 w-96 h-96 bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob"></div>
-                    <div className="absolute right-0 top-0 w-96 h-96 bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob"></div>
-                    <div className="absolute left-48 bottom-48 lg:bottom-0 w-96 h-96 bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob"></div>
+                    <div className="fixed left-0 top-1/4 w-[40vw] h-[30vh] bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob"/>
+                    <div className="fixed right-0 top-1/4 w-[40vw] h-[30vh] bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob"/>
+                    <div className="fixed left-1/2 bottom-1/4 lg:bottom-0 w-[40vw] h-[30vh] bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob"/>
                 </div>
             </div>
             <div className="max-w-screen-xl min-h-fit mx-auto mb-8 space-y-8 px-6 lg:px-8">
@@ -229,5 +225,5 @@ export default async function LandingPage() {
 
             <Footer />
         </>
-    );
+    )
 }

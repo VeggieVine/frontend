@@ -1,36 +1,39 @@
-'use client';
+'use client'
 
-import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-import { signOut } from 'next-auth/react';
-import Image from 'next/image';
-import Link from 'next/link';
+import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
+// import { signOut } from 'next-auth/react'
+import Image from 'next/image'
+import Link from 'next/link'
 
+import { useAuth } from '@/src/hooks/useAuth'
 
-import LinkButton from '@/src/app/__components__/ui/LinkButton';
-import ActionButton from '@/src/app/__components__/ui/ActionButton';
-import { ExitSVG, ProfileSVG, CartSVG, HamburgerSVG, HomeSVG, NotificationSVG } from '@/src/app/__components__/ui/Icons';
+import LinkButton from '@/src/app/__components__/ui/LinkButton'
+import ActionButton from '@/src/app/__components__/ui/ActionButton'
+import { ExitSVG, ProfileSVG, CartSVG, HamburgerSVG, HomeSVG, NotificationSVG } from '@/src/app/__components__/ui/Icons'
 
-export default function Navbar({ user }) {
-    const pathname = usePathname();
-    const [navbarBg, setNavbarBg] = useState('');
+export default function Navbar() {
+    const { user, logout } = useAuth({ middleware: 'guest' })
+
+    const pathname = usePathname()
+    const [navbarBg, setNavbarBg] = useState('')
 
     useEffect(() => {
         const handleScroll = () => {
-            const currentScrollPos = window.pageYOffset;
+            const currentScrollPos = window.pageYOffset
             if (currentScrollPos > 20) {
-                setNavbarBg('bg-base-100 shadow-2xl shadow-primary');
+                setNavbarBg('bg-base-100 shadow-2xl shadow-primary')
             } else {
-                setNavbarBg('');
+                setNavbarBg('')
             }
-        };
+        }
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll)
 
         return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
+            window.removeEventListener('scroll', handleScroll)
+        }
+    }, [])
 
     return (
         <nav className={`${navbarBg} navbar fixed top-0 left-0 right-0 mx-auto z-50 max-w-screen-xl rounded-btn`}>
@@ -161,9 +164,10 @@ export default function Navbar({ user }) {
                                         <div className="w-10 rounded-full">
                                             <Image
                                                 alt="User Avatar"
-                                                src={user?.image}
+                                                src={user?.image || '/assets/image/brokoli.svg'}
                                                 width={100}
                                                 height={100}
+
                                             />
                                         </div>
                                         <span className="hidden text-base-content lg:block">{user?.name}</span>
@@ -184,7 +188,7 @@ export default function Navbar({ user }) {
                                             <ActionButton
                                                 id="logout-button"
                                                 variant="ghost"
-                                                onClick={() => signOut()}
+                                                onClick={() => logout()}
                                             >
                                                 <ExitSVG className="w-6 h-6 stroke-base-content group-hover:stroke-primary" />
                                                 <span>Logout</span>
@@ -193,7 +197,7 @@ export default function Navbar({ user }) {
                                     </ul>
                                 </div>
                             </>
-                        );
+                        )
                     }
                     return (
                         <>
@@ -214,9 +218,9 @@ export default function Navbar({ user }) {
                                 Daftar
                             </LinkButton>
                         </>
-                    );
+                    )
                 })()}
             </div>
         </nav>
-    );
+    )
 }

@@ -1,10 +1,27 @@
-import LoginForm from './__components__/LoginForm';
-import GoogleButton from '../../__components__/ui/GoogleButton';
+'use client'
 
-async function LoginPage() {
-    const handleLogin = (event, { email, password }) => {
-        event.preventDefault();
-    };
+import { useAuth } from "@/src/hooks/useAuth"
+
+import LoginForm from './__components__/LoginForm'
+import GoogleButton from '../../__components__/ui/GoogleButton'
+
+function LoginPage() {
+    const { login } = useAuth({
+        middleware: 'guest',
+        redirectIfAuthenticated: '/dashboard',
+    })
+
+    const handleLogin = (event, { email, password, remember, setErrors, setStatus }) => {
+        event.preventDefault()
+
+        login({
+            email,
+            password,
+            remember,
+            setErrors,
+            setStatus,
+        })
+    }
 
     return (
         <div className="mx-auto max-w-lg space-y-6 rounded-btn shadow-2xl">
@@ -22,9 +39,9 @@ async function LoginPage() {
                 <hr className="border border-primary w-2/5" />
             </div>
 
-            <LoginForm />
+            <LoginForm handleLogin={handleLogin} />
         </div>
-    );
+    )
 }
 
-export default LoginPage;
+export default LoginPage
