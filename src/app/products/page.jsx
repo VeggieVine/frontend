@@ -1,14 +1,15 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { useState } from "react"
-
-import Footer from "@/src/app/__components__/Footer"
-import Navbar from "@/src/app/__components__/Navbar"
+import Footer from "../__components__/Footer"
+import Navbar from "../__components__/Navbar"
 import ProductCard from "./__components__/Card"
 
 function ProductPage() {
     const [category, setCategory] = useState("all")
     const [searchQuery, setSearchQuery] = useState("")
+    const router = useRouter()
 
     const buahProducts = [
         {
@@ -128,6 +129,11 @@ function ProductPage() {
         )
     }
 
+    const handleDetailClick = (product) => {
+        const productId = encodeURIComponent(product.name)
+        router.push(`/products/${productId}`)
+    }
+
     const renderProducts = (products) => {
         return filteredProducts(products).map((product) => (
             <ProductCard
@@ -136,9 +142,9 @@ function ProductPage() {
                 imageSrc={product.imageSrc}
                 price={product.price}
                 renderButtons={() => (
-                    <div className="flex justify-center mt-4 space-x-4">
+                    <div className="flex justify-center mb-4 space-x-4">
                         <button
-                            // onClick={() => handleDetailClick(product)}
+                            onClick={() => handleDetailClick(product)}
                             className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
                         >
                             Detail
@@ -190,6 +196,11 @@ function ProductPage() {
                         />
                     </div>
                     <div className="grid grid-cols-2 gap-x-20 gap-y-12 mb-8">
+                        {filteredProducts(allProducts).length === 0 && (
+                            <div className="text-center text-black-500 text-2xl">
+                                Produk tidak tersedia
+                            </div>
+                        )}
                         {category === "buah" && renderProducts(buahProducts)}
                         {category === "sayur" && renderProducts(sayurProducts)}
                         {category === "all" && renderProducts(allProducts)}
