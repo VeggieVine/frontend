@@ -6,21 +6,21 @@ import Footer from "../../__components__/Footer"
 import Navbar from "../../__components__/Navbar"
 import productDetails from "../productDetails"
 import { usePathname } from "next/navigation"
-import { auth } from "@/auth"
+// import { auth } from "@/auth"
 
 function ProductDetailPage() {
     const pathname = usePathname()
 
-    const [user, setUser] = useState(null)
+    // const [user, setUser] = useState(null)
     const [quantity, setQuantity] = useState(1)
 
-    useEffect(() => {
-        const fetchUser = async () => {
-            const { user } = (await auth()) || {}
-            setUser(user)
-        }
-        fetchUser()
-    }, [])
+    // useEffect(() => {
+    //     const fetchUser = async () => {
+    //         const { user } = (await auth()) || {}
+    //         setUser(user)
+    //     }
+    //     fetchUser()
+    // }, [])
 
     const decodedId = decodeURIComponent(pathname)
     console.log(decodedId)
@@ -49,7 +49,7 @@ function ProductDetailPage() {
 
     return (
         <div className="w-full h-full">
-            <Navbar user={user} />
+            <Navbar />
             <div className="flex justify-center my-20">
                 <div className="w-full max-w-6xl">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
