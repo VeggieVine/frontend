@@ -2,30 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-.animate-blob
-{
-    animation: blob 12s infinite
+.animate-blob {
+    animation: blob 12s infinite;
 }
 
-@keyframes blob
-{
-    0%
-    {
-        transform: translate(0) scale(1)
+@keyframes blob {
+    0% {
+        transform: translate(0) scale(1);
     }
 
-    33%
-    {
-        transform: translate(125px, -120px) scale(1.2)
+    33% {
+        transform: translate(125px, -120px) scale(1.2);
     }
 
-    66%
-    {
-        transform: translate(-90px, 70px) scale(.8)
+    66% {
+        transform: translate(-90px, 70px) scale(0.8);
     }
 
-    to
-    {
-        transform: translate(0) scale(1)
+    to {
+        transform: translate(0) scale(1);
     }
 }

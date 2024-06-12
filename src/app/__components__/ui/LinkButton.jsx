@@ -1,12 +1,18 @@
-import React from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import PropTypes from 'prop-types';
+import React from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import PropTypes from "prop-types"
 
-function LinkButton({ id, children = null, tooltip = null, variant = null, destination = null }) {
-    const pathname = usePathname();
+function LinkButton({
+    id,
+    children = null,
+    tooltip = null,
+    variant = null,
+    destination = null,
+}) {
+    const pathname = usePathname()
 
-    if (variant === 'solid') {
+    if (variant === "solid") {
         return (
             <Link href={destination}>
                 <div
@@ -22,9 +28,9 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
                     </button>
                 </div>
             </Link>
-        );
+        )
     }
-    if (variant === 'glass') {
+    if (variant === "glass") {
         return (
             <Link href={destination}>
                 <div
@@ -40,9 +46,9 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
                     </button>
                 </div>
             </Link>
-        );
+        )
     }
-    if (variant === 'ghost') {
+    if (variant === "ghost") {
         return (
             <Link href={destination}>
                 <div
@@ -52,36 +58,31 @@ function LinkButton({ id, children = null, tooltip = null, variant = null, desti
                     <button
                         id={id}
                         type="button"
-                        className={`btn btn-ghost btn-block justify-start hover:text-primary group ${pathname === destination ? 'text-primary' : ''} `}
+                        className={`btn btn-ghost btn-block justify-start hover:text-primary group ${pathname === destination ? "text-primary" : ""} `}
                     >
                         {children}
                     </button>
                 </div>
             </Link>
-        );
+        )
     }
 
     return (
-        <Link
-            href={destination}
-            className="group"
-            replace
-        >
-            <div
-                className="lg:tooltip lg:tooltip-bottom"
-                data-tip={tooltip}
-            >
+        <Link href={destination} className="group" replace>
+            <div className="lg:tooltip lg:tooltip-bottom" data-tip={tooltip}>
                 <button
                     type="button"
                     className={`btn btn-link btn-wide rounded-none rounded-b-sm border-0 group-hover:border-b-2 group-hover:border-primary ${
-                        pathname === destination ? 'border-b-2 border-primary' : ''
+                        pathname === destination
+                            ? "border-b-2 border-primary"
+                            : ""
                     }`}
                 >
                     {children}
                 </button>
             </div>
         </Link>
-    );
+    )
 }
 
 LinkButton.propTypes = {
@@ -90,6 +91,6 @@ LinkButton.propTypes = {
     children: PropTypes.node,
     variant: PropTypes.string,
     destination: PropTypes.string.isRequired,
-};
+}
 
-export default LinkButton;
+export default LinkButton
