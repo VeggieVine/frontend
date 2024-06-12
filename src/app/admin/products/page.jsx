@@ -1,4 +1,4 @@
-import { auth } from '@/auth';
+import { auth } from '@/src/lib/auth';
 import Sidebar from '../../__components__/Sidebar';
 import Table from './__components__/Table';
 
