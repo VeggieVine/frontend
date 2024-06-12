@@ -1,16 +1,26 @@
 'use client';
+import { auth } from '@/auth';
 
 import { useRouter } from 'next/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Footer from '../__components__/footer';
 import Navbar from '../__components__/navbar';
 import ProductCard from './__components__/Card';
-//import productDetails from './productDetail';
+import { signOut } from 'next-auth/react';
 
 function ProductPage() {
   const [category, setCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [user, setUser] = useState(null);
   const router = useRouter();
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      const { user } = (await auth()) || {};
+      setUser(user);
+    };
+    fetchUser();
+  }, []);
 
   const buahProducts = [
     { name: 'Apel Fuji China', imageSrc: '/assets/image/apel.png', price: '40.000' },
