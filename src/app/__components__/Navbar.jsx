@@ -29,7 +29,7 @@ export default function Navbar() {
         const handleScroll = () => {
             const currentScrollPos = window.pageYOffset
             if (currentScrollPos > 20) {
-                setNavbarBg("bg-base-100 shadow-2xl shadow-primary")
+                setNavbarBg("bg-base-100 border-b-2 border-primary")
             } else {
                 setNavbarBg("")
             }

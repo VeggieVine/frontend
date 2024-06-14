@@ -7,6 +7,7 @@ import Link from "next/link"
 import { useInput } from "@/src/hooks/useInput"
 
 import TextInput from "@/src/app/__components__/form/TextInput"
+import InputError from "@/src/app/__components__/form/InputError"
 import SubmitButton from "@/src/app/__components__/ui/SubmitButton"
 
 import {
@@ -48,6 +49,8 @@ function RegisterForm({ handleRegister }) {
                         <UserSVG className="size-4 stroke-current" />
                     </span>
                 </TextInput>
+
+                <InputError messages={errors.name} className="mt-2" />
             </div>
 
             {/* EMAIL */}
@@ -63,6 +66,8 @@ function RegisterForm({ handleRegister }) {
                         <EmailSVG className="size-4 stroke-current" />
                     </span>
                 </TextInput>
+
+                <InputError messages={errors.email} className="mt-2" />
             </div>
 
             {/* PASSWORD */}
@@ -83,6 +88,8 @@ function RegisterForm({ handleRegister }) {
                         <PasswordSVG className="size-4 hover:cursor-pointer stroke-current" />
                     </button>
                 </TextInput>
+
+                <InputError messages={errors.password} className="mt-2" />
             </div>
 
             {/* SUBMIT BUTTON */}
