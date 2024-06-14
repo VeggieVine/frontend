@@ -11,9 +11,9 @@ export async function POST(request) {
     try {
         const { items } = await request.json()
         const parsePrice = (price) => 
-          typeof price === "string" 
-              ? parseInt(price.replace(/\./g, ""), 10) 
-              : price
+            typeof price === "string" 
+                ? parseInt(price.replace(/\./g, ""), 10) 
+                : price
 
         const item_details = items.map(item => ({
             id: item.id,
@@ -24,8 +24,8 @@ export async function POST(request) {
 
 
         const gross_amount = item_details.reduce((sum, item) => {
-          const itemTotal = parsePrice(item.price) * item.quantity
-          return sum + itemTotal
+            const itemTotal = parsePrice(item.price) * item.quantity
+            return sum + itemTotal
         }, 0)
         
         let parameter = {
