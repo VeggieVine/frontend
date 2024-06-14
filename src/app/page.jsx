@@ -1,3 +1,5 @@
+"use client"
+
 import Navbar from "@/src/app/__components__/Navbar"
 import Footer from "@/src/app/__components__/Footer"
 import TestimonialCard from "@/src/app/__components__/ui/Card"
