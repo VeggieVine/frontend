@@ -7,8 +7,9 @@ export default function LandingPage() {
     return (
         <>
             <Navbar />
-            <div className="flex tracking-widest max-w-screen-xl min-h-screen mx-auto px-6 lg:px-8">
-                <div className="overflow-hidden flex basis-full justify-center items-center">
+
+            <main className="flex tracking-widest max-w-screen-xl min-h-screen mx-auto px-6 lg:px-8 mb-8">
+                <div className="relative flex basis-full justify-center items-center">
                     <div className="text-neutral space-y-4">
                         <h1 className="text-6xl font-bold text-center text-success lg:text-left mb-8">
                             VeggieVine
@@ -35,12 +36,12 @@ export default function LandingPage() {
                         height={0}
                         className="w-auto h-auto hidden lg:block"
                     />
-                    <div className="fixed left-0 top-1/4 w-[40vw] h-[30vh] bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob" />
-                    <div className="fixed right-0 top-1/4 w-[40vw] h-[30vh] bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob" />
-                    <div className="fixed left-1/2 bottom-1/4 lg:bottom-0 w-[40vw] h-[30vh] bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob" />
+                    <div className="absolute left-0 top-1/4 w-[40vw] h-[30vh] mx-auto bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob" />
+                    <div className="absolute left-0 lg:right-0 top-1/4 w-[40vw] h-[30vh] mx-auto bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob" />
+                    <div className="absolute left-0 lg:left-1/2 bottom-1/4 lg:bottom-0 w-[40vw] h-[30vh] mx-auto bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob" />
                 </div>
-            </div>
-            <div className="max-w-screen-xl min-h-fit mx-auto mb-8 space-y-8 px-6 lg:px-8">
+            </main>
+            <div className="flex flex-col max-w-screen-xl min-h-fit mx-auto mb-8 space-y-8 px-6 lg:px-8">
                 <div className="flex justify-center">
                     <h2 className="text-3xl font-bold text-center text-primary">
                         Kenapa Harus Makan Sayur dan Buah?
@@ -125,14 +126,7 @@ export default function LandingPage() {
                     </div>
                     <div>
                         <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
-                            <Image
-                                src="/assets/image/daunbawang.png"
-                                alt="daunbawang"
-                                priority
-                                width={200}
-                                height={200}
-                                className="w-auto h-auto"
-                            />
+                            <Image src="/assets/image/daunbawang.png" alt="daunbawang" priority width={200} height={200} className="w-auto h-auto" />
                         </div>
                         <p className="text-lg font-bold text-center">
                             Daun Bawang
@@ -225,7 +219,7 @@ export default function LandingPage() {
                     </div>
                 </div>
             </div>
-            <div className="max-w-screen-xl min-h-fit mx-auto px-6 lg:px-8 mb-8">
+            <div className="flex flex-col max-w-screen-xl min-h-fit mx-auto px-6 lg:px-8 mb-8">
                 <div className="flex justify-center">
                     <p className="text-3xl font-bold text-center text-accent">
                         Apa Kata Mereka Tentang VeggieVine
@@ -249,7 +243,7 @@ export default function LandingPage() {
                     />
                 </div>
             </div>
-
+            
             <Footer />
         </>
     )

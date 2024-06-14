@@ -19,11 +19,11 @@ export default function AuthLayout({ children }) {
                 <Link className="" href="/">
                     <Image
                         src="/assets/image/logo.svg"
-                        width="165"
-                        height="165"
+                        width="0"
+                        height="0"
                         alt="Logo"
                         priority
-                        className="hidden md:block absolute top-10 left-10 right-0 "
+                        className="hidden md:block absolute top-10 left-10 right-0 w-auto h-10"
                     />
                 </Link>
                 {children}
