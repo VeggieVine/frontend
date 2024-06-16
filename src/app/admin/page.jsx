@@ -1,9 +1,16 @@
-import { auth } from "@/src/lib/auth"
+"use client"
+
+import { redirect } from "next/navigation"
 import Sidebar from "../__components__/Sidebar"
 import Card from "./__components__/Card"
+import { useAuth } from "@/src/hooks/useAuth"
 
-export default async function AdminPage() {
-    const { user } = (await auth()) || {}
+export default function AdminPage() {
+    const { user } = useAuth({ middleware: "guest" })
+
+    if (user?.role !== "admin") {
+        redirect("/")
+    }
 
     const cardData = [
         {
