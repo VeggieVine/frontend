@@ -8,7 +8,7 @@ export default function AdvantagePage() {
         <>
             <Navbar />
             <div className="max-w-screen-xl min-h-screen mx-auto px-6 lg:px-8">
-                <div className="py-12 space-y-12">
+                <div className="py-16 space-y-12">
                     <h2 className="text-3xl font-bold text-center text-primary">
                         Kenapa Harus Makan Sayur dan Buah?
                     </h2>
