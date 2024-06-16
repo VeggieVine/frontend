@@ -92,19 +92,6 @@ export default function Navbar() {
                                 <span>Advantage</span>
                             </LinkButton>
                         </li>
-                        <li>
-                            <LinkButton
-                                id="contact-sm-button"
-                                tooltip="Contact"
-                                destination="/contact"
-                                variant="ghost"
-                            >
-                                <HomeSVG
-                                    className={`w-6 h-6 group-hover:stroke-primary ${pathname === "/contact" ? "stroke-primary" : "stroke-base-content"}`}
-                                />
-                                <span>Contact</span>
-                            </LinkButton>
-                        </li>
                     </ul>
                 </div>
                 <Link className="" href="/">
