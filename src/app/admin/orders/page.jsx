@@ -10,21 +10,24 @@ export default async function AdminOrdersPage() {
             orderId: "ORD001",
             username: "John Doe",
             date: "2023-06-01",
-            item: "Mangga, Pokcoy, Semangka",
+            item: "(2x) Mangga, (3x) Pokcoy, (1x) Semangka",
+            address: "Jl. Merpati No. 123, Jakarta",
             totalPrice: 150000,
         },
         {
             orderId: "ORD002",
             username: "Jane Smith",
             date: "2023-06-02",
-            item: "Mangga, Apel, Jeruk",
+            item: "(1x) Mangga, (2x) Apel, (4x) Jeruk",
+            address: "Jl. Kutilang No. 456, Bogor",
             totalPrice: 200000,
         },
         {
             orderId: "ORD003",
             username: "Michael Johnson",
             date: "2023-06-03",
-            item: "Semangka, Pisang, Pepaya",
+            item: "(1x) Semangka, (1x) Pisang, (1x) Pepaya",
+            address: "Jl. Elang No. 789, Bekasi",
             totalPrice: 250000,
         },
     ]
@@ -40,7 +43,6 @@ export default async function AdminOrdersPage() {
                     <Table data={data} />
                 </div>
             </div>
-            {/* Untuk detail order belum dibuatkan, detail order isinya kurang lebih sama, hanya ditambahkan detail peritemnya */}
         </>
     )
 }
