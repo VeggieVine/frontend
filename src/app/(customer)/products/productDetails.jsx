@@ -194,6 +194,6 @@ const productDetails = {
         description:
             "Harga yang tercantum adalah harga untuk pembelian 1 Pack, Happy Shopping!!!",
     },
-};
+}
 
-export default productDetails;
+export default productDetails

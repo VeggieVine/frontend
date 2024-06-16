@@ -1,15 +1,15 @@
-"use client";
+"use client"
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import Footer from "../../__components__/Footer";
-import Navbar from "../../__components__/Navbar";
-import ProductCard from "./__components__/Card";
+import { useRouter } from "next/navigation"
+import { useState } from "react"
+import Footer from "../../__components__/Footer"
+import Navbar from "../../__components__/Navbar"
+import ProductCard from "./__components__/Card"
 
 function ProductPage() {
-    const [category, setCategory] = useState("all");
-    const [searchQuery, setSearchQuery] = useState("");
-    const router = useRouter();
+    const [category, setCategory] = useState("all")
+    const [searchQuery, setSearchQuery] = useState("")
+    const router = useRouter()
 
     const buahProducts = [
         {
@@ -68,7 +68,7 @@ function ProductPage() {
             imageSrc: "/assets/image/pepaya.jpg",
             price: "30.000",
         },
-    ];
+    ]
 
     const sayurProducts = [
         {
@@ -119,20 +119,20 @@ function ProductPage() {
             imageSrc: "/assets/image/kol unggu.jpeg",
             price: "49.000",
         },
-    ];
+    ]
 
-    const allProducts = [...buahProducts, ...sayurProducts];
+    const allProducts = [...buahProducts, ...sayurProducts]
 
     const filteredProducts = (products) => {
         return products.filter((product) =>
             product.name.toLowerCase().includes(searchQuery.toLowerCase()),
-        );
-    };
+        )
+    }
 
     const handleDetailClick = (product) => {
-        const productId = encodeURIComponent(product.name);
-        router.push(`/products/${productId}`);
-    };
+        const productId = encodeURIComponent(product.name)
+        router.push(`/products/${productId}`)
+    }
 
     const renderProducts = (products) => {
         return filteredProducts(products).map((product) => (
@@ -158,8 +158,8 @@ function ProductPage() {
                     </div>
                 )}
             />
-        ));
-    };
+        ))
+    }
 
     return (
         <div className="w-full h-full">
@@ -209,7 +209,7 @@ function ProductPage() {
             </div>
             <Footer />
         </div>
-    );
+    )
 }
 
-export default ProductPage;
+export default ProductPage
