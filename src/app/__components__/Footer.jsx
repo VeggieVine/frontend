@@ -2,7 +2,7 @@
 
 export default function Footer() {
     return (
-        <footer className="w-full h-[260px] p-12 text-white bg-primary">
+        <footer className="justify-center p-12 text-white bg-primary hidden lg:flex">
             <div className="container">
                 <div className="flex justify-between">
                     <div className="text-left">

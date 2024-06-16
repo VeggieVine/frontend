@@ -1,6 +1,12 @@
 import Image from "next/image"
 
-const Table = ({ data }) => {
+const Table = ({ data, onEditItem, onDeleteItem }) => {
+    const handleDelete = (id) => {
+        if (window.confirm("Apakah Anda yakin ingin menghapus barang ini?")) {
+            onDeleteItem(id)
+        }
+    }
+
     return (
         <div className="overflow-auto max-h-screen">
             <table className="table table-md table-pin-rows table-pin-cols w-full">
@@ -35,10 +41,10 @@ const Table = ({ data }) => {
                                 />
                             </td>
                             <td>
-                                <button className="btn btn-sm btn-primary mr-4">
+                                <button className="btn btn-sm btn-primary mr-4" onClick={() => onEditItem(item)}>
                                     Edit
                                 </button>
-                                <button className="btn btn-sm btn-error">
+                                <button className="btn btn-sm btn-error" onClick={() => handleDelete(item.id)}>
                                     Delete
                                 </button>
                             </td>

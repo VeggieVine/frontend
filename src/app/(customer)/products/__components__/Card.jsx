@@ -23,21 +23,20 @@ const ProductCard = ({ imageSrc, name, price, renderButtons }) => {
                         alt={name}
                         width={500}
                         height={500}
-                        className="w-full h-full pb-2"
+                        className="w-full h-[200px] pb-2"
                     />
                 </div>
                 <hr className="mb-2 border-gray-500 border-1" />
                 <div className="px-6 pb-4">
-                    <p className="text-lg font-bold text-primary">
+                    <p className="text-lg font-bold text-secondary">
                         Rp. {price}
                     </p>
-                    <p className="text-base font-semibold text-primary">
+                    <p className="text-base font-semibold text-secondary">
                         1 Pack = 950 - 1.050 gram
                     </p>
                 </div>
             </Link>
-            {renderButtons && renderButtons()}{" "}
-            {/* Render buttons if provided */}
+            {renderButtons && renderButtons()}
         </div>
     )
 }

@@ -1,14 +1,32 @@
+"use client"
+
 import Navbar from "@/src/app/__components__/Navbar"
 import Footer from "@/src/app/__components__/Footer"
 import TestimonialCard from "@/src/app/__components__/ui/Card"
 import Image from "next/image"
+import { useEffect } from "react"
 
 export default function LandingPage() {
+    useEffect(() => {
+        const snapScript = "https://app.sandbox.midtrans.com/snap/snap,js" 
+        const clientKey = process.env.NEXT_PUBLIC_CLIENT_KEY
+        const script = document.createElement('script')
+        script.src = snapScript
+        script.setAttribute('data-client-key', clientKey)
+        script.async = true
+
+        document.body.appendChild(script)
+
+        return () => {
+            document.body.removeChild(script)
+        }
+    }, [])
+
     return (
         <>
             <Navbar />
 
-            <main className="flex tracking-widest max-w-screen-xl min-h-screen mx-auto px-6 lg:px-8 mb-8">
+            <main className="flex tracking-widest max-w-screen-xl max-h-screen mx-auto px-6 lg:px-8 mb-8">
                 <div className="relative flex basis-full justify-center items-center">
                     <div className="text-neutral space-y-4">
                         <h1 className="text-6xl font-bold text-center text-success lg:text-left mb-8">
@@ -30,11 +48,11 @@ export default function LandingPage() {
                     </div>
                     <Image
                         src="/assets/image/main-nobg.svg"
-                        alt="Fresh Produce"
+                        alt="Main Hero Background"
                         priority
                         width={0}
                         height={0}
-                        className="w-auto h-auto hidden lg:block"
+                        className="w-auto h-5/6 hidden lg:block"
                     />
                     <div className="absolute left-0 top-1/4 w-[40vw] h-[30vh] mx-auto bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob" />
                     <div className="absolute left-0 lg:right-0 top-1/4 w-[40vw] h-[30vh] mx-auto bg-primary rounded-full opacity-30 mix-blend-multiply blur-3xl lg:h-[60vh] lg:w-[40vw] animate-blob" />
@@ -110,7 +128,7 @@ export default function LandingPage() {
                         Kategori Sayur
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center items-center content-center justify-center">
                     <div>
                         <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
                             <Image
@@ -145,7 +163,7 @@ export default function LandingPage() {
                         </div>
                         <p className="text-lg font-bold text-center">Timun</p>
                     </div>
-                    <div>
+                    <div >
                         <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
                             <Image
                                 src="/assets/image/pokcoy.png"
