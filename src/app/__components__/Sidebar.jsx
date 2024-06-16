@@ -32,7 +32,10 @@ export default function Sidebar({ user }) {
                             <div className="w-10 rounded-full">
                                 <Image
                                     alt="User Avatar"
-                                    src={user?.image}
+                                    src={
+                                        user?.avatar ||
+                                        "/assets/image/brokoli.svg"
+                                    }
                                     width={100}
                                     height={100}
                                 />

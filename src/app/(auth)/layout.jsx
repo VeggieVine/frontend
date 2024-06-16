@@ -9,7 +9,10 @@ import { useAuth } from "@/src/hooks/useAuth"
 export default function AuthLayout({ children }) {
     const { user } = useAuth({ middleware: "guest" })
 
-    if (user) {
+    if (user && user?.role === "admin") {
+        redirect("/admin")
+    }
+    else if (user && user?.role === "customer") {
         redirect("/")
     }
 

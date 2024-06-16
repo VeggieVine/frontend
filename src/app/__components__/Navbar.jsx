@@ -20,16 +20,16 @@ import {
 } from "@/src/app/__components__/ui/Icons"
 
 export default function Navbar() {
-    const { user, logout } = useAuth({ middleware: "guest" })
+    const [navbarBg, setNavbarBg] = useState("")
 
     const pathname = usePathname()
-    const [navbarBg, setNavbarBg] = useState("")
+    const { user, logout } = useAuth({ middleware: "guest" })
 
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollPos = window.pageYOffset
             if (currentScrollPos > 20) {
-                setNavbarBg("bg-base-100 border-b-2 border-primary")
+                setNavbarBg("bg-base-100 shadow shadow-primary")
             } else {
                 setNavbarBg("")
             }
@@ -192,7 +192,7 @@ export default function Navbar() {
                                             <Image
                                                 alt="User Avatar"
                                                 src={
-                                                    user?.image ||
+                                                    user?.avatar ||
                                                     "/assets/image/brokoli.svg"
                                                 }
                                                 width={100}
