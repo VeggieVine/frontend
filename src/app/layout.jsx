@@ -2,7 +2,7 @@ import "./globals.css"
 
 import { ibm_plex_sans } from "./font"
 
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from '@vercel/analytics/react'
 
 import { Providers } from "@/src/app/__components__/Providers"
 

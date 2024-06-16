@@ -2,24 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-.animate-blob {
+.animate-blob
+{
     animation: blob 12s infinite;
 }
 
-@keyframes blob {
-    0% {
+@layer base
+{
+    :root
+    {
+        scroll-padding: 0
+    }
+
+    main
+    {
+        padding-block-start: calc(var(--navigate-banner-current-height) * 1px);
+    }
+}
+
+@keyframes blob
+{
+    0%
+    {
         transform: translate(0) scale(1);
     }
 
-    33% {
+    33%
+    {
         transform: translate(125px, -120px) scale(1.2);
     }
 
-    66% {
+    66%
+    {
         transform: translate(-90px, 70px) scale(0.8);
     }
 
-    to {
+    to
+    {
         transform: translate(0) scale(1);
     }
 }

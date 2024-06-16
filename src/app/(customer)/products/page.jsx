@@ -2,8 +2,8 @@
 
 import { useRouter } from "next/navigation"
 import { useState } from "react"
-import Footer from "../__components__/Footer"
-import Navbar from "../__components__/Navbar"
+import Footer from "../../__components__/Footer"
+import Navbar from "../../__components__/Navbar"
 import ProductCard from "./__components__/Card"
 
 function ProductPage() {

@@ -8,6 +8,7 @@ import { useInput } from "@/src/hooks/useInput"
 
 import AuthSessionStatus from "../../AuthSessionStatus"
 import TextInput from "@/src/app/__components__/form/TextInput"
+import InputError from "@/src/app/__components__/form/InputError"
 import SubmitButton from "@/src/app/__components__/ui/SubmitButton"
 import { PasswordSVG, EmailSVG } from "@/src/app/__components__/ui/Icons"
 
@@ -59,6 +60,8 @@ function LoginForm({ handleLogin }) {
                         <EmailSVG className="size-4 stroke-current" />
                     </span>
                 </TextInput>
+
+                <InputError messages={errors.email} className="mt-2" />
             </div>
 
             {/* PASSWORD */}
@@ -80,6 +83,8 @@ function LoginForm({ handleLogin }) {
                         <PasswordSVG className="size-4 hover:cursor-pointer stroke-current" />
                     </button>
                 </TextInput>
+
+                <InputError messages={errors.password} className="mt-2" />
             </div>
 
             <div className="form-control">

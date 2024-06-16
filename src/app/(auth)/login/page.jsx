@@ -8,7 +8,7 @@ import GoogleButton from "../../__components__/ui/GoogleButton"
 function LoginPage() {
     const { login } = useAuth({
         middleware: "guest",
-        redirectIfAuthenticated: "/dashboard",
+        redirectIfAuthenticated: "/",
     })
 
     const handleLogin = (

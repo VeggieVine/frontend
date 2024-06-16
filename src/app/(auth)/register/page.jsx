@@ -8,7 +8,7 @@ import GoogleButton from "../../__components__/ui/GoogleButton"
 function RegisterPage() {
     const { register } = useAuth({
         middleware: "guest",
-        redirectIfAuthenticated: "/dashboard",
+        redirectIfAuthenticated: "/",
     })
 
     const handleRegister = (event, { name, email, password, setErrors }) => {
