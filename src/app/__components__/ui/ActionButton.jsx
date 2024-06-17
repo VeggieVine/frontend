@@ -6,6 +6,7 @@ function ActionButton({
     children = null,
     variant = null,
     onClick = () => {},
+    ...props
 }) {
     if (variant === "ghost") {
         return (
@@ -14,6 +15,7 @@ function ActionButton({
                 type="button"
                 className="btn btn-ghost justify-start group hover:text-primary btn-block"
                 onClick={() => onClick()}
+                {...props}
             >
                 {children}
             </button>
@@ -26,6 +28,7 @@ function ActionButton({
                 type="button"
                 className="btn btn-primary justify-start group btn-block"
                 onClick={() => onClick()}
+                {...props}
             >
                 {children}
             </button>
@@ -37,6 +40,7 @@ function ActionButton({
             type="button"
             className="flex items-center font-bold text-base group"
             onClick={() => onClick()}
+            {...props}
         >
             {children}
         </button>

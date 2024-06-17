@@ -1,12 +1,10 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Footer from "../../__components__/Footer"
-import Navbar from "../../__components__/Navbar"
-// import { auth } from "../../../../auth"
+import Footer from "@/src/app/__components__/Footer"
+import Navbar from "@/src/app/__components__/Navbar"
 
 export default function CheckoutPage() {
-    // const [user, setUser] = useState(null)
     const [items] = useState([])
     const [formData, setFormData] = useState({
         fullName: "",
@@ -16,17 +14,6 @@ export default function CheckoutPage() {
         city: "",
     })
     const [formComplete, setFormComplete] = useState(false) // Variabel formComplete harus didefinisikan di sini
-
-    // useEffect(() => {
-    //     async function fetchUser() {
-    //         const { user } = (await auth()) || {}
-    //         setUser(user)
-    //     }
-
-    //     fetchUser()
-    //     const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]")
-    //     setItems(cartItems)
-    // }, [])
 
     useEffect(() => {
         const isFormComplete = Object.values(formData).every(

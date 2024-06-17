@@ -26,24 +26,18 @@ export default function LandingPage() {
         <>
             <Navbar />
 
-            <main className="flex tracking-widest max-w-screen-xl max-h-screen mx-auto px-6 lg:px-8 mb-8">
+            <main className="flex tracking-widest max-w-screen-xl min-h-screen lg:min-h-fit lg:max-h-screen mx-auto px-6 lg:px-8 mb-8">
                 <div className="relative flex basis-full justify-center items-center">
                     <div className="text-neutral space-y-4">
-                        <h1 className="text-6xl font-bold text-center text-success lg:text-left mb-8">
+                        <h1 className="text-6xl font-bold text-center text-primary lg:text-left mb-8">
                             VeggieVine
                         </h1>
-                        <h1 className="text-3xl font-semibold text-center lg:text-left">
-                            Menyediakan Berbagai
-                            <br />
-                            Macam Pilihan Sayur
-                            <br />
-                            Dan Buah-buahan Segar
+                        <h1 className="text-2xl font-semibold text-center lg:text-left">
+                            <span>"Tempatnya sayur dan buah-buahan segar yang berkualitas dari perkebunan terbaik di </span>
+                            <span className="underline font-black text-error">JABODETABEK</span>"
                         </h1>
-                        <blockquote className="text-lg text-center lg:text-left">
-                            Kami membantu memenuhi kebutuhan
-                            <br />
-                            harian Anda dengan sayur dan buah berkualitas
-                            terjamin.
+                        <blockquote className="text-lg text-center lg:text-left text-wrap">
+                            Kami membantu masyarakat JABODETABEK mendapakan buah dan sayur berkualitas hanya dengan beberapa klik saja.
                         </blockquote>
                     </div>
                     <Image
@@ -128,50 +122,52 @@ export default function LandingPage() {
                         Kategori Sayur
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center items-center content-center justify-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-stretch items-center content-center justify-center">
                     <div>
-                        <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
+                        <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
                                 src="/assets/image/kentang.png"
                                 alt="kentang"
                                 priority
-                                width={200}
-                                height={200}
-                                className="w-auto h-auto"
+                                fill
+                                className="p-16"
                             />
                         </div>
                         <p className="text-lg font-bold text-center">Kentang</p>
                     </div>
                     <div>
-                        <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
-                            <Image src="/assets/image/daunbawang.png" alt="daunbawang" priority width={200} height={200} className="w-auto h-auto" />
+                        <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
+                            <Image src="/assets/image/daunbawang.png" 
+                                alt="daun-bawang" 
+                                priority 
+                                fill
+                                className="p-16"
+                            />
                         </div>
                         <p className="text-lg font-bold text-center">
                             Daun Bawang
                         </p>
                     </div>
                     <div>
-                        <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
+                        <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
                                 src="/assets/image/timun.png"
                                 alt="timun"
                                 priority
-                                width={200}
-                                height={200}
-                                className="w-auto h-auto"
+                                fill
+                                className="p-16"
                             />
                         </div>
                         <p className="text-lg font-bold text-center">Timun</p>
                     </div>
                     <div >
-                        <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
+                        <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
                                 src="/assets/image/pokcoy.png"
                                 alt="pokcoy"
                                 priority
-                                width={200}
-                                height={200}
-                                className="w-auto h-auto"
+                                fill
+                                className="p-16"
                             />
                         </div>
                         <p className="text-lg font-bold text-center">Pokcoy</p>
@@ -182,55 +178,51 @@ export default function LandingPage() {
                         Kategori Buah
                     </p>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-stretch items-center content-center justify-center">
                     <div>
-                        <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
+                        <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
                                 src="/assets/image/persik.png"
                                 alt="peach"
                                 priority
-                                width={200}
-                                height={200}
-                                className="w-auto h-auto"
+                                fill
+                                className="p-16"
                             />
                         </div>
                         <p className="text-lg font-bold text-center">Peach</p>
                     </div>
                     <div>
-                        <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
+                        <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
                                 src="/assets/image/alpukat.png"
                                 alt="alpukat"
                                 priority
-                                width={200}
-                                height={200}
-                                className="w-auto h-auto"
+                                fill
+                                className="p-16"
                             />
                         </div>
                         <p className="text-lg font-bold text-center">Alpukat</p>
                     </div>
                     <div>
-                        <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
+                        <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
                                 src="/assets/image/kiwi.png"
                                 alt="kiwi"
                                 priority
-                                width={200}
-                                height={200}
-                                className="w-auto h-auto"
+                                fill
+                                className="p-16"
                             />
                         </div>
                         <p className="text-lg font-bold text-center">Kiwi</p>
                     </div>
                     <div>
-                        <div className="flex justify-center items-center content-center w-[300px] h-[200px] bg-white rounded-xl shadow-lg py-4 pb-2">
+                        <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
                                 src="/assets/image/mangga.png"
                                 alt="mangga"
                                 priority
-                                width={200}
-                                height={200}
-                                className="w-auto h-auto"
+                                fill
+                                className="p-16"
                             />
                         </div>
                         <p className="text-lg font-bold text-center">Mangga</p>
