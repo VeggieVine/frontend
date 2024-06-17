@@ -4,30 +4,17 @@ import Image from "next/image"
 import { useState } from "react"
 import Footer from "../../../__components__/Footer"
 import Navbar from "../../../__components__/Navbar"
-import productDetails from "../productDetails"
 import { usePathname } from "next/navigation"
-// import { auth } from "@/auth"
 
 function ProductDetailPage() {
     const pathname = usePathname()
 
-    // const [user, setUser] = useState(null)
     const [quantity, setQuantity] = useState(1)
 
-    // useEffect(() => {
-    //     const fetchUser = async () => {
-    //         const { user } = (await auth()) || {}
-    //         setUser(user)
-    //     }
-    //     fetchUser()
-    // }, [])
-
     const decodedId = decodeURIComponent(pathname)
-    console.log(decodedId)
     let data = decodedId.split("/")
-    console.log(data[data.length - 1])
     let getlastpath = data[data.length - 1]
-    const product = productDetails[getlastpath]
+    const product = []
 
     if (!product) {
         return <div>Produk tidak ditemukan</div>

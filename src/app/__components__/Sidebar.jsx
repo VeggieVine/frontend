@@ -34,7 +34,7 @@ export default function Sidebar({ user }) {
                                     alt="User Avatar"
                                     src={
                                         user?.avatar ||
-                                        "/assets/image/brokoli.svg"
+                                        "/assets/image/profile.jpg"
                                     }
                                     width={100}
                                     height={100}
