@@ -171,14 +171,6 @@ export default function CartPage() {
     //     fetchUser()
     // }, [])
 
-    useEffect(() => {
-        console.log(
-            "Data ID produk:",
-            items.map((item) => item.id),
-        )
-        console.log("items", items)
-    }, [items])
-
     const total = items.reduce((sum, product) => {
         const price =
             typeof product.price === "string"

@@ -37,7 +37,6 @@ export default function CheckoutPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log("Form submitted:", formData)
 
         try {
             const response = await fetch('/api/tokenizer', {
