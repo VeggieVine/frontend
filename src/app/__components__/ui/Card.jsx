@@ -12,7 +12,8 @@ const TestimonialCard = ({ imageSrc, name, testimonial }) => {
                     className="rounded-full w-[150px] h-[150px]"
                 />
             </div>
-            <div className="my-20 text-justify">
+            <div className="my-24 text-center space-y-4">
+                <h1 className="font-semibold text-2xl">{name}</h1>
                 <p className="mt-2 text-gray-600">{testimonial}</p>
             </div>
         </div>

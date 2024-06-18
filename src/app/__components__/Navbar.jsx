@@ -11,12 +11,14 @@ import { useAuth } from "@/src/hooks/useAuth"
 import LinkButton from "@/src/app/__components__/ui/LinkButton"
 import ActionButton from "@/src/app/__components__/ui/ActionButton"
 import {
-    ExitSVG,
-    ProfileSVG,
-    CartSVG,
     HamburgerSVG,
     HomeSVG,
+    ShopSVG,
+    AdvantageSVG,
+    CartSVG,
     NotificationSVG,
+    ProfileSVG,
+    ExitSVG,
 } from "@/src/app/__components__/ui/Icons"
 
 export default function Navbar() {
@@ -63,7 +65,7 @@ export default function Navbar() {
                                 <HomeSVG
                                     className={`w-6 h-6 group-hover:stroke-primary ${pathname === "/" ? "stroke-primary" : "stroke-base-content"}`}
                                 />
-                                <span>Home</span>
+                                <span>Halaman Utama</span>
                             </LinkButton>
                         </li>
                         <li>
@@ -73,10 +75,10 @@ export default function Navbar() {
                                 destination="/products"
                                 variant="ghost"
                             >
-                                <HomeSVG
-                                    className={`w-6 h-6 group-hover:stroke-primary ${pathname === "/products" ? "stroke-primary" : "stroke-base-content"}`}
+                                <ShopSVG
+                                    className={`w-6 h-6 group-hover:stroke-primary stroke-2 ${pathname === "/products" ? "stroke-primary" : "stroke-base-content"}`}
                                 />
-                                <span>Products</span>
+                                <span>Produk Kami</span>
                             </LinkButton>
                         </li>
                         <li>
@@ -86,10 +88,10 @@ export default function Navbar() {
                                 destination="/advantage"
                                 variant="ghost"
                             >
-                                <HomeSVG
-                                    className={`w-6 h-6 group-hover:stroke-primary ${pathname === "/advantage" ? "stroke-primary" : "stroke-base-content"}`}
+                                <AdvantageSVG
+                                    className={`w-6 h-6 group-hover:stroke-primary stroke-1 ${pathname === "/advantage" ? "stroke-primary" : "stroke-base-content"}`}
                                 />
-                                <span>Advantage</span>
+                                <span>Manfaat dan Benefit</span>
                             </LinkButton>
                         </li>
                     </ul>
@@ -110,34 +112,36 @@ export default function Navbar() {
                         return (
                             <>
                                 {/* CART */}
-                                <div className="dropdown dropdown-end">
-                                    <button
-                                        type="button"
-                                        className="btn btn-ghost btn-square"
-                                    >
-                                        <div className="indicator">
-                                            <CartSVG className="w-6 h-6 stroke-secondary" />
-                                            <span className="badge badge-sm indicator-item">
-                                                8
-                                            </span>
-                                        </div>
-                                    </button>
-                                    <div className="dropdown-content mt-3 z-10 shadow bg-base-100 border-2 border-secondary rounded-box w-60">
-                                        <div className="card-body">
-                                            <span className="font-bold text-lg">
-                                                8 Items
-                                            </span>
-                                            <span className="text-info">
-                                                Subtotal: Rp99.900
-                                            </span>
-                                            <div className="card-actions">
-                                                <button className="btn btn-secondary btn-block">
-                                                    View cart
-                                                </button>
+                                {user?.role === 'customer' && (
+                                    <div className="dropdown dropdown-end">
+                                        <button
+                                            type="button"
+                                            className="btn btn-ghost btn-square"
+                                        >
+                                            <div className="indicator">
+                                                <CartSVG className="w-6 h-6 stroke-secondary" />
+                                                <span className="badge badge-sm indicator-item">
+                                                    8
+                                                </span>
+                                            </div>
+                                        </button>
+                                        <div className="dropdown-content mt-3 z-10 shadow bg-base-100 border-2 border-secondary rounded-box w-60">
+                                            <div className="card-body">
+                                                <span className="font-bold text-lg">
+                                                    8 Items
+                                                </span>
+                                                <span className="text-info">
+                                                    Subtotal: Rp99.900
+                                                </span>
+                                                <div className="card-actions">
+                                                    <button className="btn btn-secondary btn-block">
+                                                        View cart
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                )}
 
                                 {/* NOTIFICATION */}
                                 <div className="dropdown dropdown-end">
@@ -180,7 +184,7 @@ export default function Navbar() {
                                                 alt="User Avatar"
                                                 src={
                                                     user?.avatar ||
-                                                    "/assets/image/brokoli.svg"
+                                                    "/assets/image/profile.jpg"
                                                 }
                                                 width={100}
                                                 height={100}
@@ -191,6 +195,19 @@ export default function Navbar() {
                                         </span>
                                     </button>
                                     <ul className="dropdown-content mt-3 z-10 p-2 shadow bg-base-100 border-2 border-primary rounded-box w-60">
+                                        <li>
+                                            {user?.role === 'admin' && (
+                                                <LinkButton
+                                                    id="dashboard-admin-button"
+                                                    tooltip="Dashboard Admin"
+                                                    destination="/admin"
+                                                    variant="ghost"
+                                                >
+                                                    <HomeSVG className="w-6 h-6 stroke-base-content group-hover:stroke-primary" />
+                                                    <span>Dashboard Admin</span>
+                                                </LinkButton>
+                                            )}
+                                        </li>
                                         <li>
                                             <LinkButton
                                                 id="profile-button"

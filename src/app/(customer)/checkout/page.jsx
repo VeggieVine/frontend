@@ -1,8 +1,8 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import Footer from "../../__components__/Footer"
-import Navbar from "../../__components__/Navbar"
+import Footer from "@/src/app/__components__/Footer"
+import Navbar from "@/src/app/__components__/Navbar"
 
 export default function CheckoutPage() {
     const [items, setItems] = useState([])
