@@ -9,7 +9,8 @@ let snap = new Midtrans.Snap({
 
 export async function POST(request) {
     try {
-        const { items } = await request.json()
+        const { items, shippingAddress } = await request.json()
+
         const parsePrice = (price) => 
             typeof price === "string" 
                 ? parseInt(price.replace(/\./g, ""), 10) 
@@ -22,12 +23,8 @@ export async function POST(request) {
             name: item.name,
         }))
 
+        const gross_amount = item_details.reduce((sum, item) => sum + item.price * item.quantity, 0)
 
-        const gross_amount = item_details.reduce((sum, item) => {
-            const itemTotal = parsePrice(item.price) * item.quantity
-            return sum + itemTotal
-        }, 0)
-        
         let parameter = {
             transaction_details: {
                 order_id: `order-id-${Math.floor(1000000 + Math.random() * 9000000)}`,
@@ -35,10 +32,26 @@ export async function POST(request) {
             },
             item_details: item_details,
             customer_details: {
-                first_name: "John",
-                last_name: "Doe",
-                email: "john.doe@example.com",
-                phone: "081234567890",
+                first_name: shippingAddress.fullName.split(" ")[0],
+                last_name: shippingAddress.fullName.split(" ").slice(1).join(" "),
+                email: shippingAddress.email,
+                phone: shippingAddress.phone,
+                billing_address: {
+                    first_name: shippingAddress.fullName.split(" ")[0],
+                    last_name: shippingAddress.fullName.split(" ").slice(1).join(" "),
+                    email: shippingAddress.email,
+                    phone: shippingAddress.phone,
+                    address: shippingAddress.address,
+                    city: shippingAddress.city,
+                },
+                shipping_address: {
+                    first_name: shippingAddress.fullName.split(" ")[0],
+                    last_name: shippingAddress.fullName.split(" ").slice(1).join(" "),
+                    email: shippingAddress.email,
+                    phone: shippingAddress.phone,
+                    address: shippingAddress.address,
+                    city: shippingAddress.city,
+                },
             },
         }
 
