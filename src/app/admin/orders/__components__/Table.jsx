@@ -8,6 +8,7 @@ const Table = ({ data }) => {
                         <td>Nama Pembeli</td>
                         <td>Tanggal</td>
                         <td>Item</td>
+                        <td>Alamat</td>
                         <td>Total Harga</td>
                     </tr>
                 </thead>
@@ -18,6 +19,7 @@ const Table = ({ data }) => {
                             <td>{order.username}</td>
                             <td>{order.date}</td>
                             <td>{order.item}</td>
+                            <td>{order.address}</td>
                             <td>{order.totalPrice}</td>
                         </tr>
                     ))}
