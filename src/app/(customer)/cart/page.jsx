@@ -1,6 +1,6 @@
 "use client"
 
-// import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import Footer from "../../__components__/Footer"
@@ -160,7 +160,7 @@ export default function CartPage() {
     const [items, setItems] = useState(
         initialCartItems.map((item) => ({ ...item, quantity: 1 })),
     )
-    // const router = useRouter()
+    const router = useRouter()
 
     // useEffect(() => {
     //     async function fetchUser() {
@@ -170,14 +170,6 @@ export default function CartPage() {
 
     //     fetchUser()
     // }, [])
-
-    useEffect(() => {
-        console.log(
-            "Data ID produk:",
-            items.map((item) => item.id),
-        )
-        console.log("items", items)
-    }, [items])
 
     const total = items.reduce((sum, product) => {
         const price =
@@ -213,24 +205,9 @@ export default function CartPage() {
         )
     }
 
-    const handleCheckout = async () => {
+    const handleCheckout = () => {
         localStorage.setItem("cartItems", JSON.stringify(items))
-
-        const response = await fetch('/api/tokenizer', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                items,
-                total,
-            }),
-        })
-
-        const data = await response.json()
-        console.log(data)
-        window.snap.pay(data.token)
-        {/* router.push('/checkout') */}
+        router.push('/checkout')
     }
 
     useEffect(() => {
@@ -238,7 +215,7 @@ export default function CartPage() {
         script.src = 'https://app.sandbox.midtrans.com/snap/snap.js'
         script.setAttribute('data-client-key', process.env.NEXT_PUBLIC_CLIENT_KEY)
         document.body.appendChild(script)
-    }, [])
+    }, [])      
 
     return (
         <div className="w-full">
