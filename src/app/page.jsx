@@ -126,7 +126,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src="/assets/image/kentang.png"
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/kentang.png`}
                                 alt="kentang"
                                 priority
                                 fill
@@ -137,7 +137,8 @@ export default function LandingPage() {
                     </div>
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
-                            <Image src="/assets/image/daunbawang.png" 
+                            <Image 
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/daun-bawang.png`}
                                 alt="daun-bawang" 
                                 priority 
                                 fill
@@ -151,7 +152,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src="/assets/image/timun.png"
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/timun.png`}
                                 alt="timun"
                                 priority
                                 fill
@@ -163,7 +164,7 @@ export default function LandingPage() {
                     <div >
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src="/assets/image/pokcoy.png"
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/pokcoy.png`}
                                 alt="pokcoy"
                                 priority
                                 fill
@@ -182,7 +183,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src="/assets/image/persik.png"
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/persik.png`}
                                 alt="peach"
                                 priority
                                 fill
@@ -194,7 +195,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src="/assets/image/alpukat.png"
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/alpukat.png`}
                                 alt="alpukat"
                                 priority
                                 fill
@@ -206,7 +207,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src="/assets/image/kiwi.png"
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/kiwi.jpg`}
                                 alt="kiwi"
                                 priority
                                 fill
@@ -218,7 +219,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src="/assets/image/mangga.png"
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/mangga.png`}
                                 alt="mangga"
                                 priority
                                 fill
@@ -238,18 +239,18 @@ export default function LandingPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 justify-items-center items-center gap-24 mt-24">
                     <TestimonialCard
                         imageSrc="/assets/image/profile.jpg"
-                        name="John Doe"
-                        testimonial="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis mattis dolor, vel sagittis turpis tristique ac. Aenean efficitur, purus et pellentesque rhoncus, libero augue aliquam libero, eu auctor ipsum felis in leo. Etiam at lobortis erat, ac volutpat sapien. Pellentesque laoreet in magna non aliquet. Quisque et varius ligula, sit amet imperdiet lorem. Pellentesque rutrum nisl in nunc consectetur, nec sagittis enim vestibulum. Ut vel orci at libero placerat ultrices quis vitae leo. Aliquam convallis tellus ex, sed fringilla eros malesuada at. Phasellus tempus ut nibh nec lobortis. Suspendisse porttitor condimentum diam ut auctor. Sed et hendrerit tellus, eu iaculis sapien."
+                        name="Alice Doe"
+                        testimonial="Baru pertama kali belanja di VeggieVine dan saya sangat puas dengan kualitas sayur dan buah yang mereka tawarkan. Harganya pun sangat terjangkau. Terima kasih VeggieVine!"
                     />
                     <TestimonialCard
                         imageSrc="/assets/image/profile.jpg"
                         name="John Doe"
-                        testimonial="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis mattis dolor, vel sagittis turpis tristique ac. Aenean efficitur, purus et pellentesque rhoncus, libero augue aliquam libero, eu auctor ipsum felis in leo. Etiam at lobortis erat, ac volutpat sapien. Pellentesque laoreet in magna non aliquet. Quisque et varius ligula, sit amet imperdiet lorem. Pellentesque rutrum nisl in nunc consectetur, nec sagittis enim vestibulum. Ut vel orci at libero placerat ultrices quis vitae leo. Aliquam convallis tellus ex, sed fringilla eros malesuada at. Phasellus tempus ut nibh nec lobortis. Suspendisse porttitor condimentum diam ut auctor. Sed et hendrerit tellus, eu iaculis sapien."
+                        testimonial="Terima kasih VeggieVine! Saya sangat puas dengan pelayanan yang diberikan. Sayur dan buah yang saya beli sangat segar dan berkualitas. Harganya pun sangat terjangkau. Saya pasti akan belanja lagi di VeggieVine!"
                     />
                     <TestimonialCard
                         imageSrc="/assets/image/profile.jpg"
-                        name="John Doe"
-                        testimonial="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris mattis mattis dolor, vel sagittis turpis tristique ac. Aenean efficitur, purus et pellentesque rhoncus, libero augue aliquam libero, eu auctor ipsum felis in leo. Etiam at lobortis erat, ac volutpat sapien. Pellentesque laoreet in magna non aliquet. Quisque et varius ligula, sit amet imperdiet lorem. Pellentesque rutrum nisl in nunc consectetur, nec sagittis enim vestibulum. Ut vel orci at libero placerat ultrices quis vitae leo. Aliquam convallis tellus ex, sed fringilla eros malesuada at. Phasellus tempus ut nibh nec lobortis. Suspendisse porttitor condimentum diam ut auctor. Sed et hendrerit tellus, eu iaculis sapien."
+                        name="Jane Doe"
+                        testimonial="Keren banget VeggieVine! Sayur dan buah yang saya beli sangat segar dan berkualitas. Harganya pun sangat terjangkau. Saya pasti akan belanja lagi di VeggieVine!"
                     />
                 </div>
             </div>

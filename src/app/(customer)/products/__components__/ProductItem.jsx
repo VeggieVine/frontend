@@ -2,11 +2,32 @@ import React from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-const ProductItem = ({ imageSrc, name, price, renderButtons }) => {
+const ProductItem = ({ id, name, description, imageSource,  price, harvestedAt }) => {
     return (
-        <div className="w-auto h-full rounded-[16px] border-2 shadow-lg">
-            <Link href="">
-                <div className="relative flex flex-row items-center content-center justify-between px-6 py-3">
+        <div className="card max-h-96 shadow-sm shadow-primary">
+            <figure>
+                <Image
+                    src={imageSource}
+                    alt={name}
+                    priority
+                    width={250}
+                    height={250}
+                    className="w-full"
+                />
+            </figure>
+            <div className="card-body">
+                <h2 className="card-title">
+                    {name}
+                    <div className="badge badge-secondary">At: {harvestedAt}</div>
+                </h2>
+                <p className="truncate">{description}</p>
+                <div className="card-actions justify-between items-center">
+                    <h2 className="card-title text-primary">Rp.{price}</h2>
+                    <Link href={`/products/${id}`} className="btn btn-primary">Lihat Detail</Link>
+                </div>
+            </div>
+
+            {/* <div className="relative flex flex-row items-center content-center justify-between px-6 py-3">
                     <p className="text-lg font-bold">{name}</p>
                     <Image
                         src="/assets/image/logo.svg"
@@ -19,7 +40,7 @@ const ProductItem = ({ imageSrc, name, price, renderButtons }) => {
                 </div>
                 <div>
                     <Image
-                        src={imageSrc}
+                        src={imageSource}
                         alt={name}
                         width={500}
                         height={500}
@@ -34,9 +55,7 @@ const ProductItem = ({ imageSrc, name, price, renderButtons }) => {
                     <p className="text-base font-semibold text-secondary">
                         1 Pack = 950 - 1.050 gram
                     </p>
-                </div>
-            </Link>
-            {renderButtons && renderButtons()}
+                </div> */}
         </div>
     )
 }

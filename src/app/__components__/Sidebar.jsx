@@ -2,12 +2,16 @@
 
 import Link from "next/link"
 import Image from "next/image"
+
+import { useAuth } from "@/src/hooks/useAuth"
+
 import ActionButton from "@/src/app/__components__/ui/ActionButton"
 import LinkButton from "@/src/app/__components__/ui/LinkButton"
 import { ProfileSVG, ExitSVG } from "@/src/app/__components__/ui/Icons"
-import { signOut } from "next-auth/react"
 
-export default function Sidebar({ user }) {
+export default function Sidebar() {
+    const { user, logout } = useAuth({ middleware: "guest" })
+
     return (
         <>
             <nav className="navbar fixed top-0 left-0 right-0 mx-auto z-50 border-b border-[#17A04E] bg-primary px-8">
@@ -60,7 +64,7 @@ export default function Sidebar({ user }) {
                                 <ActionButton
                                     id="logout-button"
                                     variant="ghost"
-                                    onClick={() => signOut()}
+                                    onClick={() => logout()}
                                 >
                                     <ExitSVG className="w-6 h-6 stroke-base-content group-hover:stroke-primary" />
                                     <span>Logout</span>

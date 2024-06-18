@@ -93,29 +93,16 @@ export default function ProductList({products}) {
                 
                 if (filteredProducts.length > 0) {
                     return (
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-stretch items-center content-center justify-center">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-stretch items-center content-center justify-center self-center">
                             {filteredProducts.map((product) => (
                                 <ProductItem
-                                    key={product.name}
+                                    key={product.id}
+                                    id={product.id}
                                     name={product.name}
-                                    imageSrc={`http://localhost:8000/storage/product-images/${product.image}`}
+                                    description={product.description}
+                                    imageSource={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/${product.image}`}
                                     price={product.price}
-                                    renderButtons={() => (
-                                        <div className="flex justify-center mb-4 space-x-4">
-                                            <button
-                                            // onClick={() => handleDetailClick(product)}
-                                                className="px-4 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
-                                            >
-                                                Detail
-                                            </button>
-                                            <button
-                                            // onClick={() => handleAddToCart(product)}
-                                                className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
-                                            >
-                                                Add Keranjang
-                                            </button>
-                                        </div>
-                                    )}
+                                    harvestedAt={product.harvested_at}
                                 />
                             ))}
                         </div>
