@@ -1,13 +1,11 @@
 "use client"
 
-import { redirect } from "next/navigation"
 import Sidebar from "../__components__/Sidebar"
 import Card from "./__components__/Card"
 import { useAuth } from "@/src/hooks/useAuth"
-import { useEffect } from "react"
 
 export default function AdminPage() {
-    const { user } = useAuth({ middleware: "guest" })
+    const { user } = useAuth({ middleware: "auth" })
 
     const cardData = [
         {
@@ -26,12 +24,6 @@ export default function AdminPage() {
             description: "ini invoice",
         },
     ]
-
-    useEffect(() => {
-        if (user && user.role !== "admin") {
-            redirect("/")
-        }
-    }, [user])
 
     return (
         <>
