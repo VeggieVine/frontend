@@ -9,6 +9,7 @@ export default function PaymentStatusPage() {
     const searchParams = useSearchParams()
     const router = useRouter()
     const order_id = searchParams.get('order_id')
+    const status_code = searchParams.get('status_code')
     const transaction_status = searchParams.get('transaction_status')
     const [statusMessage, setStatusMessage] = useState('')
 
@@ -35,12 +36,13 @@ export default function PaymentStatusPage() {
     return (
         <div className="flex flex-col min-h-screen">
             <Navbar />
-            <main className="flex-grow container mx-auto p-4 pt-8 flex flex-col items-center justify-center">
+            <main className="flex-grow container mx-auto p-4 flex flex-col items-center justify-center">
                 <div className="bg-white rounded-lg shadow-md p-8 max-w-lg w-full text-center">
                     <h1 className="text-2xl font-bold mb-4">Status Pembayaran</h1>
                     <p className="text-gray-700 mb-6">{statusMessage}</p>
                     <div className="text-left">
                         <p><strong>Order ID:</strong> {order_id}</p>
+                        <p><strong>Status Code:</strong> {status_code}</p>
                         <p><strong>Transaction Status:</strong> {transaction_status}</p>
                     </div>
                     <button
