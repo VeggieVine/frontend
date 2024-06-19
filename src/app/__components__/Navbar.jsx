@@ -1,8 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { usePathname } from "next/navigation"
-// import { signOut } from 'next-auth/react'
+import { usePathname, useRouter } from "next/navigation"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -20,12 +19,15 @@ import {
     ProfileSVG,
     ExitSVG,
 } from "@/src/app/__components__/ui/Icons"
+import axios from "@/src/lib/axios"
 
 export default function Navbar() {
-    const [navbarBg, setNavbarBg] = useState("")
-
-    const pathname = usePathname()
     const { user, logout } = useAuth({ middleware: "guest" })
+
+    const [navbarBg, setNavbarBg] = useState("")
+    const [carts, setCarts] = useState([])
+    const pathname = usePathname()
+    const router = useRouter()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -43,6 +45,23 @@ export default function Navbar() {
             window.removeEventListener("scroll", handleScroll)
         }
     }, [])
+
+    useEffect(() => {
+        try {
+            const fetchCarts = async () => {
+                const response = await axios.get("/api/carts")
+                const data = await response.data.carts
+                setCarts(data)
+            }
+
+            if (user) {
+                fetchCarts()
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }, [user])
 
     return (
         <nav
@@ -121,20 +140,20 @@ export default function Navbar() {
                                             <div className="indicator">
                                                 <CartSVG className="w-6 h-6 stroke-secondary" />
                                                 <span className="badge badge-sm indicator-item">
-                                                    8
+                                                    {carts?.length || 0}
                                                 </span>
                                             </div>
                                         </button>
                                         <div className="dropdown-content mt-3 z-10 shadow bg-base-100 border-2 border-secondary rounded-box w-60">
                                             <div className="card-body">
                                                 <span className="font-bold text-lg">
-                                                    8 Items
+                                                    {carts?.reduce((acc, cart) => acc + cart.quantity, 0) || 0} Items
                                                 </span>
                                                 <span className="text-info">
-                                                    Subtotal: Rp99.900
+                                                    Subtotal: Rp {carts?.reduce((acc, cart) => acc + (cart.quantity * cart.product.price), 0) || 0}
                                                 </span>
                                                 <div className="card-actions">
-                                                    <button className="btn btn-secondary btn-block">
+                                                    <button className="btn btn-secondary btn-block" onClick={() => router.push('/cart')}>
                                                         View cart
                                                     </button>
                                                 </div>
@@ -159,14 +178,14 @@ export default function Navbar() {
                                     <div className="dropdown-content mt-3 z-10 shadow bg-base-100 border-2 border-accent rounded-box w-60">
                                         <div className="card-body">
                                             <span className="font-bold text-lg">
-                                                8 Items
+                                                8 Notifikasi
                                             </span>
                                             <span className="text-info">
-                                                Subtotal: Rp99.900
+                                                Anda memiliki 8 notifikasi baru
                                             </span>
                                             <div className="card-actions">
                                                 <button className="btn btn-accent btn-block">
-                                                    View cart
+                                                    Selengkapnya
                                                 </button>
                                             </div>
                                         </div>
