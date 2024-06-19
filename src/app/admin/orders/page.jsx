@@ -12,6 +12,7 @@ export default async function AdminOrdersPage() {
             date: "2023-06-01",
             item: "(2x) Mangga, (3x) Pokcoy, (1x) Semangka",
             address: "Jl. Merpati No. 123, Jakarta",
+            phoneNumber: "081234567890",
             totalPrice: 150000,
         },
         {
@@ -20,6 +21,7 @@ export default async function AdminOrdersPage() {
             date: "2023-06-02",
             item: "(1x) Mangga, (2x) Apel, (4x) Jeruk",
             address: "Jl. Kutilang No. 456, Bogor",
+            phoneNumber: "081234567891",
             totalPrice: 200000,
         },
         {
@@ -28,6 +30,7 @@ export default async function AdminOrdersPage() {
             date: "2023-06-03",
             item: "(1x) Semangka, (1x) Pisang, (1x) Pepaya",
             address: "Jl. Elang No. 789, Bekasi",
+            phoneNumber: "081234567892",
             totalPrice: 250000,
         },
     ]
