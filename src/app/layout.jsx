@@ -44,6 +44,12 @@ export default function RootLayout({ children }) {
                 <meta property="og:site_name" content={siteTitle} />
 
                 <meta property="og:type" content="website" />
+
+                <meta name="dicoding:email" content="tanfitraadhim@gmail.com" />
+
+                <meta name="dicoding:email" content="faizahkireimaharani@gmail.com" />
+
+                <meta name="dicoding:email" content="marcocaesto@gmail.com" />
             </head>
 
             <body
