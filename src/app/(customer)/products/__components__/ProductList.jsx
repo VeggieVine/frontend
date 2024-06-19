@@ -100,7 +100,7 @@ export default function ProductList({products}) {
                                     id={product.id}
                                     name={product.name}
                                     description={product.description}
-                                    imageSource={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/${product.image}`}
+                                    imageSource={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/${product.image}`}
                                     price={product.price}
                                     harvestedAt={product.harvested_at}
                                 />
