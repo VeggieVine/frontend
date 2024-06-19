@@ -61,7 +61,7 @@ export default function ProductList({products}) {
     }
 
     return (
-        <div className="flex flex-col max-w-screen-lg min-h-fit mx-auto mb-8 space-y-8 px-6 lg:px-8">
+        <div className="flex flex-col max-w-screen-lg min-h-fit mx-auto mb-8 space-y-8 px-6 lg:px-8 w-full">
             {/* CATEGORY BUTTONS */}
             <div className="flex justify-center mt-24">
                 <CategoryList categories={categories} selectedCategory={selectedCategory} onClick={(category) => handleCategory(category)}/>

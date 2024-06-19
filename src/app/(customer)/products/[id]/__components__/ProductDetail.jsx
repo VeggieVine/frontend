@@ -2,20 +2,41 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { redirect } from "next/navigation"
 
 import { useAuth } from "@/src/hooks/useAuth"
 
 import { CartSVG, InfoSVG } from "@/src/app/__components__/ui/Icons"
 import ActionButton from "@/src/app/__components__/ui/ActionButton"
+import { useRouter } from "next/navigation"
+import axios from "@/src/lib/axios"
 
 export default function ProductDetail ({ product }) {
     const { user } = useAuth({middleware: "guest"})
+    const router = useRouter()
     const [quantity, setQuantity] = useState(1)
 
-    const handleAddToCart = () => {
-        if (!user) {
-            redirect('/login')
+    const handleAddToCart = async () => {
+        if(!user) {
+            alert('Silakan login terlebih dahulu untuk menambahkan produk ke keranjang.')
+            router.push('/login')
+        } 
+        else {
+            const cartItems = {
+                customer_id: user.id, 
+                product_id: product.id, 
+                quantity: quantity
+            }
+
+            try {
+                const response = await axios.post('api/carts', cartItems)
+
+                alert(response.data.message)
+
+                router.push('/cart')
+            }
+            catch (error) {
+                console.log(error)
+            }
         }
     }
 
@@ -48,7 +69,7 @@ export default function ProductDetail ({ product }) {
     }
 
     return (
-        <div className="card  justify-center items-center border-2 border-primary shadow max-w-screen-xl mx-auto mb-8 mt-24 p-6 space-y-8 lg:space-y-0 lg:flex-row lg:gap-x-16 lg:-8  ">
+        <div className="card justify-center items-center border-2 border-primary shadow max-w-screen-xl mx-auto mt-24 p-6 space-y-8 lg:space-y-0 lg:flex-row lg:gap-x-16 lg:-8">
             <Image
                 src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/${product.image}`}
                 width={500}
@@ -90,42 +111,50 @@ export default function ProductDetail ({ product }) {
                     <InfoSVG className="w-8 h-8 stroke-warning" />
                     <div className="italic">{`Tahan ${product.storage_life} hari setelah dipanen`}</div>
                 </div>
-                {/* PAYMENT */}
-                <div className="stats">
-                    <div className="stat">
-                        <div className="stat-title">Jumlah Pembelian</div>
-                        <div className="flex justify-between items-center">
-                            <button
-                                onClick={handleDecrement}
-                                className="btn btn-square btn-primary"
-                            >
-                                -
-                            </button>
-                            <span className="stat-value">{quantity}</span>
-                            <button
-                                onClick={handleIncrement}
-                                className="btn btn-square btn-primary"
-                            >
-                                +
-                            </button>
-                        </div>
-                    </div>
-                    <div className="stat">
-                        <div className="stat-title">Total Bayar</div>
-                        <div className="stat-value">Rp. {quantity * product.price}</div>
-                    </div>
-                </div>
-                {/* ACTION BUTTON */}
-                <div className="flex self-end w-60">
-                    <ActionButton
-                        id="btn-add-to-cart" 
-                        onClick={handleAddToCart}
-                        variant={'solid'}
-                    >
-                        <CartSVG className="w-6 h-6 stroke-current" />
-                        Tambahkan Ke Keranjang
-                    </ActionButton>
-                </div>
+                {(() => {
+                    if (user?.role !== 'admin') {
+                        return (
+                            <>
+                                {/* STATS */}
+                                <div className="stats">
+                                    <div className="stat">
+                                        <div className="stat-title">Jumlah Pembelian</div>
+                                        <div className="flex justify-between items-center">
+                                            <button
+                                                onClick={handleDecrement}
+                                                className="btn btn-square btn-primary"
+                                            >
+                                                -
+                                            </button>
+                                            <span className="stat-value">{quantity}</span>
+                                            <button
+                                                onClick={handleIncrement}
+                                                className="btn btn-square btn-primary"
+                                            >
+                                                +
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className="stat">
+                                        <div className="stat-title">Total Bayar</div>
+                                        <div className="stat-value">Rp. {quantity * product.price}</div>
+                                    </div>
+                                </div>
+                                {/* ADD TO CART */}
+                                <div className="flex self-end w-60">
+                                    <ActionButton
+                                        id="btn-add-to-cart" 
+                                        onClick={(event) => handleAddToCart(event)}
+                                        variant={'solid'}
+                                    >
+                                        <CartSVG className="w-6 h-6 stroke-current" />
+                                        Tambahkan Ke Keranjang
+                                    </ActionButton>
+                                </div>
+                            </>
+                        )
+                    }
+                })()}
             </div>
         </div>
     )
