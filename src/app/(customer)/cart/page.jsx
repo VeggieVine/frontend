@@ -1,191 +1,34 @@
 "use client"
 
-// import { useRouter } from "next/navigation"
+import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { useState, useEffect } from "react"
 import Footer from "../../__components__/Footer"
 import Navbar from "../../__components__/Navbar"
-// import { auth } from "../../../../auth"
-
-const initialCartItems = [
-    {
-        id: 1,
-        name: "Apel Fuji china",
-        imageSrc: "/assets/image/apel.png",
-        price: 40000,
-    },
-    {
-        id: 2,
-        name: "Bawang Bombai",
-        imageSrc: "/assets/image/bawang bombai.jpg",
-        price: 35000,
-    },
-    {
-        id: 3,
-        name: "Apel Premium Pohon",
-        imageSrc: "/assets/image/apel pohon.jpg",
-        price: "62.000",
-    },
-    {
-        id: 4,
-        name: "Blueberry China",
-        imageSrc: "/assets/image/blueberry.jpg",
-        price: "53.000",
-    },
-    {
-        id: 5,
-        name: "Jeruk sunkist Valencia",
-        imageSrc: "/assets/image/jeruk sunkist.jpg",
-        price: "32.000",
-    },
-    {
-        id: 6,
-        name: "Jeruk Lemon",
-        imageSrc: "/assets/image/jeruk lemon.jpg",
-        price: "28.000",
-    },
-    {
-        id: 7,
-        name: "Jeruk Malang",
-        imageSrc: "/assets/image/jeruk malang.jpg",
-        price: "30.000",
-    },
-    {
-        id: 8,
-        name: "Pear Century China",
-        imageSrc: "/assets/image/pear.jpg",
-        price: "25.000",
-    },
-    {
-        id: 9,
-        name: "Kelengkeng Thailand",
-        imageSrc: "/assets/image/kelengkeng.jpg",
-        price: "34.000",
-    },
-    {
-        id: 10,
-        name: "Kiwi",
-        imageSrc: "/assets/image/kiwi.jpg",
-        price: "69.000",
-    },
-    {
-        id: 11,
-        name: "Belimbing",
-        imageSrc: "/assets/image/belimbing.jpg",
-        price: "29.000",
-    },
-    {
-        id: 12,
-        name: "Semangka",
-        imageSrc: "/assets/image/semangka.jpg",
-        price: "90.000",
-    },
-    {
-        id: 13,
-        name: "Pepaya",
-        imageSrc: "/assets/image/pepaya.jpg",
-        price: "30.000",
-    },
-    {
-        id: 14,
-        name: "Bawang Bombai",
-        imageSrc: "/assets/image/bawang bombai.jpg",
-        price: "35.000",
-    },
-    {
-        id: 15,
-        name: "Bawang Putih",
-        imageSrc: "/assets/image/bawang putih.jpg",
-        price: "37.000",
-    },
-    {
-        id: 16,
-        name: "Bawang Merah",
-        imageSrc: "/assets/image/bawang merah.jpg",
-        price: "25.000",
-    },
-    {
-        id: 17,
-        name: "Jamur",
-        imageSrc: "/assets/image/jamur.jpg",
-        price: "42.000",
-    },
-    {
-        id: 18,
-        name: "Brokoli",
-        imageSrc: "/assets/image/brokoli.jpg",
-        price: "39.000",
-    },
-    {
-        id: 19,
-        name: "Wortel",
-        imageSrc: "/assets/image/wortel.jpg",
-        price: "17.000",
-    },
-    {
-        id: 20,
-        name: "Tomat",
-        imageSrc: "/assets/image/tomat.jpg",
-        price: "25.000",
-    },
-    {
-        id: 21,
-        name: "Mentimun",
-        imageSrc: "/assets/image/timun.png",
-        price: "15.000",
-    },
-    {
-        id: 22,
-        name: "Kentang",
-        imageSrc: "/assets/image/kentang.jpeg",
-        price: "20.000",
-    },
-    {
-        id: 23,
-        name: "Oyong",
-        imageSrc: "/assets/image/oyong.jpeg",
-        price: "21.000",
-    },
-    { id: 24, name: "Kol", imageSrc: "/assets/image/kol.jpeg", price: "8.000" },
-    {
-        id: 25,
-        name: "Kol Unggu",
-        imageSrc: "/assets/image/kol unggu.jpeg",
-        price: "49.000",
-    },
-]
+import { useAuth } from "@/src/hooks/useAuth"
+import axios from "@/src/lib/axios"
 
 export default function CartPage() {
-    // const [user, setUser] = useState(null)
-    const [items, setItems] = useState(
-        initialCartItems.map((item) => ({ ...item, quantity: 1 })),
-    )
-    // const router = useRouter()
-
-    // useEffect(() => {
-    //     async function fetchUser() {
-    //         const { user } = (await auth()) || {}
-    //         setUser(user)
-    //     }
-
-    //     fetchUser()
-    // }, [])
+    const { user } = useAuth({ middleware: "auth" })
+    const [items, setItems] = useState([])
+    const router = useRouter()
 
     useEffect(() => {
-        console.log(
-            "Data ID produk:",
-            items.map((item) => item.id),
-        )
-        console.log("items", items)
-    }, [items])
+        try {
+            const fetchCarts = async () => {
+                const response = await axios.get("/api/carts")
+                const data = await response.data.carts
+                setItems(data)
+            }
 
-    const total = items.reduce((sum, product) => {
-        const price =
-            typeof product.price === "string"
-                ? parseInt(product.price.replace(/\./g, ""), 10)
-                : product.price
-        return sum + price * product.quantity
-    }, 0)
+            if (user?.role === "customer") {
+                fetchCarts()
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }, [user])
 
     const handleIncreaseQuantity = (itemId) => {
         setItems(
@@ -213,24 +56,9 @@ export default function CartPage() {
         )
     }
 
-    const handleCheckout = async () => {
+    const handleCheckout = () => {
         localStorage.setItem("cartItems", JSON.stringify(items))
-
-        const response = await fetch('/api/tokenizer', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                items,
-                total,
-            }),
-        })
-
-        const data = await response.json()
-        console.log(data)
-        window.snap.pay(data.token)
-        {/* router.push('/checkout') */}
+        router.push('/checkout')
     }
 
     useEffect(() => {
@@ -238,10 +66,10 @@ export default function CartPage() {
         script.src = 'https://app.sandbox.midtrans.com/snap/snap.js'
         script.setAttribute('data-client-key', process.env.NEXT_PUBLIC_CLIENT_KEY)
         document.body.appendChild(script)
-    }, [])
+    }, [])      
 
     return (
-        <div className="w-full">
+        <div className="flex flex-col min-h-screen justify-between gap-y-24">
             <Navbar />
             <div className="flex justify-center my-10">
                 <div className="w-full max-w-6xl">
@@ -267,7 +95,7 @@ export default function CartPage() {
                                             <div className="flex items-center space-x-4">
                                                 <div className="w-20 h-20 relative">
                                                     <Image
-                                                        src={item.imageSrc}
+                                                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/${item.product.image}`}
                                                         alt={item.name}
                                                         layout="fill"
                                                         objectFit="cover"
@@ -276,10 +104,10 @@ export default function CartPage() {
                                                 </div>
                                                 <div>
                                                     <h2 className="text-lg font-semibold">
-                                                        {item.name}
+                                                        {item.product.name}
                                                     </h2>
                                                     <p className="text-md text-gray-500">
-                                                        Rp {item.price}
+                                                        Rp {item.product.price}
                                                     </p>
                                                 </div>
                                             </div>
@@ -321,7 +149,7 @@ export default function CartPage() {
                                 <div className="flex justify-between mb-4">
                                     <span className="text-lg">Total:</span>
                                     <span className="text-lg font-semibold">
-                                        Rp {total}
+                                        Rp {items?.reduce((acc, cart) => acc + (cart.quantity * cart.product.price), 0) || 0}
                                     </span>
                                 </div>
                                 {items.length > 0 ? (

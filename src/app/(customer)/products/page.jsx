@@ -24,11 +24,11 @@ async function ProductPage() {
     const products = await fetchProducts()
 
     return (
-        <>
+        <div className="flex flex-col min-h-screen justify-between">
             <Navbar />
             <ProductList products={products} />
             <Footer />
-        </>
+        </div>
     )
 }
 
