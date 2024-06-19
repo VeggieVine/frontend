@@ -18,9 +18,9 @@ export async function POST(request) {
 
         const item_details = items.map(item => ({
             id: item.id,
-            price: parsePrice(item.price),
+            price: parsePrice(item.product.price),
             quantity: item.quantity,
-            name: item.name,
+            name: item.product.name,
         }))
 
         const gross_amount = item_details.reduce((sum, item) => sum + item.price * item.quantity, 0)

@@ -3,8 +3,12 @@
 import { useState, useEffect } from "react"
 import Footer from "@/src/app/__components__/Footer"
 import Navbar from "@/src/app/__components__/Navbar"
+import { useAuth } from "@/src/hooks/useAuth"
+import axios from "@/src/lib/axios"
 
 export default function CheckoutPage() {
+    const { user } = useAuth({ middleware: "auth" })
+
     const [items, setItems] = useState([])
     const [formData, setFormData] = useState({
         fullName: "",
@@ -16,18 +20,30 @@ export default function CheckoutPage() {
     const [formComplete, setFormComplete] = useState(false)
 
     useEffect(() => {
-        const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]")
-        setItems(cartItems)
-    }, [])
+        try {
+            const fetchCarts = async () => {
+                const response = await axios.get("/api/carts")
+                const data = await response.data.carts
+                setItems(data)
+            }
+
+            if (user?.role === "customer") {
+                fetchCarts()
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    }, [user])
 
     useEffect(() => {
         const isFormComplete = Object.values(formData).every(value => value !== "")
         setFormComplete(isFormComplete)
     }, [formData])
 
-    const total = items.reduce((sum, product) => {
-        const price = typeof product.price === "string" ? parseInt(product.price.replace(/\./g, ""), 10) : product.price
-        return sum + price * product.quantity
+    const total = items.reduce((sum, item) => {
+        const price = typeof item.product.price === "string" ? parseInt(item.product.price.replace(/\./g, ""), 10) : item.product.price
+        return sum + price * item.quantity
     }, 0)
 
     const handleChange = (e) => {
