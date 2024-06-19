@@ -1,36 +1,47 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center"><img src="./public/assets/image/logo.svg" width="400" alt="Reduxtion Logo"></p>
 
-## Getting Started
+A modern and responsive web application that serves as an online shop for local farmers in JABODETABEK, built using Next.js. It provides a platform for users to find quality fruits and vegetables fresh from the local gardens.
 
-First, run the development server:
+## `Key Features` 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- ### User Authentication
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+  Users can create accounts, log in, and manage their profiles securely.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+- ### Product Catalog
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+  Users can browse and search for various fruits and vegetables offered by local farmers.
+  
+- ### Shopping Cart
 
-## Learn More
+  Users can add desired products to their shopping cart and proceed to checkout.
 
-To learn more about Next.js, take a look at the following resources:
+- ### Secure Payments
 
--   [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
--   [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+  Integration with a payment gateway for secure online transactions.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- ### Searching and Filtering
 
-## Deploy on Vercel
+  Users can search for specific products or filter them.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- ### Notifications
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+  Users receive notifications for new orders activity. 
+
+## `Technologies Used`  
+
+- ### Next.js
+
+  A Full-stack React framework for building user interfaces. 
+
+- ### Redux
+
+  A predictable state container for managing application state. 
+
+- ### Midtrans
+
+  A secure payment gateway for building tremendous e-commerce app.
+
+- ### Vercel
+
+  For user authentication, real-time database, and hosting.
