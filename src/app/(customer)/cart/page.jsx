@@ -95,7 +95,7 @@ export default function CartPage() {
                                             <div className="flex items-center space-x-4">
                                                 <div className="w-20 h-20 relative">
                                                     <Image
-                                                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/${item.product.image}`}
+                                                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/${item.product.image}`}
                                                         alt={item.name}
                                                         layout="fill"
                                                         objectFit="cover"

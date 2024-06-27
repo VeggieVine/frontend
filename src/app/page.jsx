@@ -126,7 +126,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/kentang.png`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/kentang.png`}
                                 alt="kentang"
                                 priority
                                 fill
@@ -138,7 +138,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image 
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/daun-bawang.png`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/daun-bawang.png`}
                                 alt="daun-bawang" 
                                 priority 
                                 fill
@@ -152,7 +152,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/timun.png`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/timun.png`}
                                 alt="timun"
                                 priority
                                 fill
@@ -164,7 +164,7 @@ export default function LandingPage() {
                     <div >
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/pokcoy.png`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/pokcoy.png`}
                                 alt="pokcoy"
                                 priority
                                 fill
@@ -183,7 +183,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/persik.png`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/persik.png`}
                                 alt="peach"
                                 priority
                                 fill
@@ -195,7 +195,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/alpukat.png`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/alpukat.png`}
                                 alt="alpukat"
                                 priority
                                 fill
@@ -207,7 +207,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/kiwi.jpg`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/kiwi.jpg`}
                                 alt="kiwi"
                                 priority
                                 fill
@@ -219,7 +219,7 @@ export default function LandingPage() {
                     <div>
                         <div className="relative flex justify-center items-center content-center w-full h-64 py-4 pb-2 rounded-box shadow-sm shadow-primary">
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/mangga.png`}
+                                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/mangga.png`}
                                 alt="mangga"
                                 priority
                                 fill

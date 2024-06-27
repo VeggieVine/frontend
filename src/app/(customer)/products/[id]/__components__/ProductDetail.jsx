@@ -71,7 +71,7 @@ export default function ProductDetail ({ product }) {
     return (
         <div className="card justify-center items-center border-2 border-primary shadow max-w-screen-xl mx-auto mt-24 p-6 space-y-8 lg:space-y-0 lg:flex-row lg:gap-x-16 lg:-8">
             <Image
-                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/${product.image}`}
+                src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/${product.image}`}
                 width={500}
                 height={500}
                 alt={product.name}
