@@ -122,7 +122,7 @@ const Table = ({ data }) => {
                             <td>{item.stock}</td>
                             <td>
                                 <Image
-                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/storage/product-images/${item.image}`}
+                                    src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/${item.image}`}
                                     alt={item.name}
                                     width={100}
                                     height={100}
