@@ -37,7 +37,7 @@ export default function RootLayout({ children }) {
 
                 <meta name="keywords" content={siteKey} />
 
-                <link rel="icon" href="./assets/image/logo2.png" sizes="any" />
+                <link rel="icon" href="./assets/image/logo-white.svg" sizes="any" />
 
                 <meta property="og:url" content="" />
 

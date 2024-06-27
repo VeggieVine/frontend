@@ -1,10 +1,11 @@
+"use client"
 import { useState, useEffect } from "react"
 
 const AddItemModal = ({ onAddItem, editItem }) => {
     const [formState, setFormState] = useState({
-        itemName: "",
+        name: "",
         description: "",
-        category: "Buah",
+        category_id: "FRT01",
         price: "",
         stock: "",
         image: "",
@@ -15,9 +16,9 @@ const AddItemModal = ({ onAddItem, editItem }) => {
             setFormState(editItem)
         } else {
             setFormState({
-                itemName: "",
+                name: "",
                 description: "",
-                category: "Buah",
+                category_id: "FRT01",
                 price: "",
                 stock: "",
                 image: "",
@@ -34,13 +35,7 @@ const AddItemModal = ({ onAddItem, editItem }) => {
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
-        const newItem = {
-            ...formState,
-            id: editItem
-                ? editItem.id
-                : Math.random().toString(36).substr(2, 9),
-        }
-        onAddItem(newItem)
+        onAddItem(formState)
         document.getElementById("my_modal_5").close()
     }
 
@@ -57,8 +52,8 @@ const AddItemModal = ({ onAddItem, editItem }) => {
                         </label>
                         <input
                             type="text"
-                            name="itemName"
-                            value={formState.itemName}
+                            name="name"
+                            value={formState.name}
                             onChange={handleChange}
                             className="input input-bordered"
                             required
@@ -82,13 +77,17 @@ const AddItemModal = ({ onAddItem, editItem }) => {
                             <span className="label-text">Kategori</span>
                         </label>
                         <select
-                            name="category"
-                            value={formState.category}
+                            name="category_id"
+                            value={formState.category_id}
                             onChange={handleChange}
                             className="select select-bordered"
                         >
-                            <option value="Buah">Buah</option>
-                            <option value="Sayur">Sayur</option>
+                            <option value="FRT01">
+                                Buah (Fruits)
+                            </option>
+                            <option value="VGT01">
+                                Sayuran (Vegetables)
+                            </option>
                         </select>{" "}
                     </div>
                     <div className="form-control mb-2">
