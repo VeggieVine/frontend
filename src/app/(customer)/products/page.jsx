@@ -1,27 +1,27 @@
-import axios from "@/src/lib/axios"
+import { useEffect, useState } from 'react'
+import axios from '@/src/lib/axios'
+import Footer from '@/src/app/__components__/Footer'
+import Navbar from '@/src/app/__components__/Navbar'
+import ProductList from './__components__/ProductList'
 
-import Footer from "@/src/app/__components__/Footer"
-import Navbar from "@/src/app/__components__/Navbar"
-import ProductList from "./__components__/ProductList"
+// Component
+function ProductPage() {
+    const [products, setProducts] = useState([])
 
-// API CALLS
-async function fetchProducts() {
-    try {
-        const response = await axios.get("api/products")
-        const data = await response.data.products
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.get('api/products')
+                const data = response.data.products
+                setProducts(data)
+                console.log('Products fetched:', data)
+            } catch (error) {
+                console.error('Error fetching products:', error)
+            }
+        }
 
-        return data
-    }
-    catch (error) {
-        console.error(error)
-    }
-    finally {
-        console.log("Fetching products...")
-    }
-}
-
-async function ProductPage() {
-    const products = await fetchProducts()
+        fetchProducts()
+    }, []) // Empty dependency array ensures this effect runs only once
 
     return (
         <div className="flex flex-col min-h-screen justify-between">
