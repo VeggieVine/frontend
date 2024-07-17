@@ -1,10 +1,11 @@
+"use client"
+
 import { useEffect, useState } from 'react'
 import axios from '@/src/lib/axios'
 import Footer from '@/src/app/__components__/Footer'
 import Navbar from '@/src/app/__components__/Navbar'
 import ProductList from './__components__/ProductList'
 
-// Component
 function ProductPage() {
     const [products, setProducts] = useState([])
 
