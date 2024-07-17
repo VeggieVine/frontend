@@ -11,7 +11,6 @@ import axios from "@/src/lib/axios"
 export default function CartPage() {
     const { user } = useAuth({ middleware: "auth" })
     const [items, setItems] = useState([])
-    const [totalPrice, setTotalPrice] = useState(0)
     const router = useRouter()
 
     useEffect(() => {
@@ -20,34 +19,37 @@ export default function CartPage() {
                 const response = await axios.get("/api/carts")
                 const data = await response.data.carts
                 setItems(data)
-                updateTotalPrice(data)
             }
 
             if (user?.role === "customer") {
                 fetchCarts()
             }
-        } catch (error) {
+        }
+        catch (error) {
             console.log(error)
         }
     }, [user])
 
-    const updateTotalPrice = (items) => {
-        const total = items.reduce((acc, item) => acc + item.quantity * item.product.price, 0)
-        setTotalPrice(total)
+    const updateCartItems = async (newItems) => {
+        try {
+            await axios.post("/api/carts", { carts: newItems })
+            setItems(newItems)
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const handleIncreaseQuantity = (itemId) => {
-        const updatedItems = items.map((item) =>
+        const newItems = items.map((item) =>
             item.id === itemId
                 ? { ...item, quantity: item.quantity + 1 }
-                : item,
+                : item
         )
-        setItems(updatedItems)
-        updateTotalPrice(updatedItems)
+        updateCartItems(newItems)
     }
 
     const handleDecreaseQuantity = (itemId) => {
-        const updatedItems = items.reduce((acc, item) => {
+        const newItems = items.reduce((acc, item) => {
             if (item.id === itemId) {
                 const newQuantity = item.quantity - 1
                 if (newQuantity > 0) {
@@ -58,8 +60,7 @@ export default function CartPage() {
             }
             return acc
         }, [])
-        setItems(updatedItems)
-        updateTotalPrice(updatedItems)
+        updateCartItems(newItems)
     }
 
     const handleCheckout = () => {
@@ -72,7 +73,7 @@ export default function CartPage() {
         script.src = 'https://app.sandbox.midtrans.com/snap/snap.js'
         script.setAttribute('data-client-key', process.env.NEXT_PUBLIC_CLIENT_KEY)
         document.body.appendChild(script)
-    }, [])
+    }, [])      
 
     return (
         <div className="flex flex-col min-h-screen justify-between gap-y-24">
@@ -155,7 +156,7 @@ export default function CartPage() {
                                 <div className="flex justify-between mb-4">
                                     <span className="text-lg">Total:</span>
                                     <span className="text-lg font-semibold">
-                                        Rp {totalPrice}
+                                        Rp {items?.reduce((acc, cart) => acc + (cart.quantity * cart.product.price), 0) || 0}
                                     </span>
                                 </div>
                                 {items.length > 0 ? (
