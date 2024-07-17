@@ -1,23 +1,18 @@
 "use client"
 
+import { useRouter } from "next/navigation"
+import Image from "next/image"
 import { useState, useEffect } from "react"
-import Footer from "@/src/app/__components__/Footer"
-import Navbar from "@/src/app/__components__/Navbar"
+import Footer from "../../__components__/Footer"
+import Navbar from "../../__components__/Navbar"
 import { useAuth } from "@/src/hooks/useAuth"
 import axios from "@/src/lib/axios"
 
-export default function CheckoutPage() {
+export default function CartPage() {
     const { user } = useAuth({ middleware: "auth" })
-
     const [items, setItems] = useState([])
-    const [formData, setFormData] = useState({
-        fullName: "",
-        email: "",
-        phone: "",
-        address: "",
-        city: "",
-    })
-    const [formComplete, setFormComplete] = useState(false)
+    const [totalPrice, setTotalPrice] = useState(0)
+    const router = useRouter()
 
     useEffect(() => {
         try {
@@ -25,71 +20,51 @@ export default function CheckoutPage() {
                 const response = await axios.get("/api/carts")
                 const data = await response.data.carts
                 setItems(data)
+                updateTotalPrice(data)
             }
 
             if (user?.role === "customer") {
                 fetchCarts()
             }
-        }
-        catch (error) {
+        } catch (error) {
             console.log(error)
         }
     }, [user])
 
-    useEffect(() => {
-        const isFormComplete = Object.values(formData).every(value => value !== "")
-        setFormComplete(isFormComplete)
-    }, [formData])
-
-    const total = items.reduce((sum, item) => {
-        const price = typeof item.product.price === "string" ? parseInt(item.product.price.replace(/\./g, ""), 10) : item.product.price
-        return sum + price * item.quantity
-    }, 0)
-
-    const handleChange = (e) => {
-        const { name, value } = e.target
-        setFormData({ ...formData, [name]: value })
+    const updateTotalPrice = (items) => {
+        const total = items.reduce((acc, item) => acc + item.quantity * item.product.price, 0)
+        setTotalPrice(total)
     }
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
+    const handleIncreaseQuantity = (itemId) => {
+        const updatedItems = items.map((item) =>
+            item.id === itemId
+                ? { ...item, quantity: item.quantity + 1 }
+                : item,
+        )
+        setItems(updatedItems)
+        updateTotalPrice(updatedItems)
+    }
 
-        try {
-            const response = await fetch('/api/tokenizer', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    items,
-                    total,
-                    shippingAddress: formData,
-                }),
-            })
-
-            const data = await response.json()
-
-            if (data.token) {
-                window.snap.pay(data.token, {
-                    onSuccess: function(result) {
-                        console.log('Success:', result)
-                    },
-                    onPending: function(result) {
-                        console.log('Pending:', result)
-                    },
-                    onError: function(result) {
-                        console.log('Error:', result)
-                    },
-                    onClose: function() {
-                        console.log('Customer closed the popup without finishing the payment')
-                    },
-                })
+    const handleDecreaseQuantity = (itemId) => {
+        const updatedItems = items.reduce((acc, item) => {
+            if (item.id === itemId) {
+                const newQuantity = item.quantity - 1
+                if (newQuantity > 0) {
+                    acc.push({ ...item, quantity: newQuantity })
+                }
             } else {
-                console.error('Failed to get transaction token:', data)
+                acc.push(item)
             }
-        } catch (error) {
-            console.error('Failed to fetch:', error)
-        }
+            return acc
+        }, [])
+        setItems(updatedItems)
+        updateTotalPrice(updatedItems)
+    }
+
+    const handleCheckout = () => {
+        localStorage.setItem("cartItems", JSON.stringify(items))
+        router.push('/checkout')
     }
 
     useEffect(() => {
@@ -100,96 +75,104 @@ export default function CheckoutPage() {
     }, [])
 
     return (
-        <div className="w-full h-full">
+        <div className="flex flex-col min-h-screen justify-between gap-y-24">
             <Navbar />
-            <div className="flex justify-center my-20">
+            <div className="flex justify-center my-10">
                 <div className="w-full max-w-6xl">
-                    <h1 className="text-3xl font-bold mb-8 text-center">Checkout</h1>
+                    <h1 className="text-3xl font-bold mb-8 text-center">
+                        Keranjang Belanja
+                    </h1>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                         <div className="col-span-2">
-                            <div className="bg-white border rounded shadow-lg p-8">
-                                <h2 className="text-2xl font-semibold mb-4">Alamat Penagihan</h2>
-                                <form onSubmit={handleSubmit} className="space-y-4">
-                                    <div>
-                                        <label className="block mb-1 text-sm text-gray-700">Nama Lengkap</label>
-                                        <input
-                                            type="text"
-                                            name="fullName"
-                                            value={formData.fullName}
-                                            onChange={handleChange}
-                                            className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
-                                            required
-                                        />
+                            <div className="border p-4 bg-white shadow-md rounded-md">
+                                <h2 className="text-2xl font-semibold mb-4">
+                                    Daftar Produk
+                                </h2>
+                                {items.length === 0 ? (
+                                    <div className="text-center text-lg text-gray-600">
+                                        Keranjang Anda kosong.
                                     </div>
-                                    <div>
-                                        <label className="block mb-1 text-sm text-gray-700">Email</label>
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            value={formData.email}
-                                            onChange={handleChange}
-                                            className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
-                                            required
-                                            placeholder="example@gmail.com"
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block mb-1 text-sm text-gray-700">No Telepon</label>
-                                        <input
-                                            type="text"
-                                            name="phone"
-                                            value={formData.phone}
-                                            onChange={handleChange}
-                                            className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block mb-1 text-sm text-gray-700">Alamat Lengkap</label>
-                                        <input
-                                            type="text"
-                                            name="address"
-                                            value={formData.address}
-                                            onChange={handleChange}
-                                            className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
-                                            required
-                                        />
-                                    </div>
-                                    <div>
-                                        <label className="block mb-1 text-sm text-gray-700">Kota</label>
-                                        <select
-                                            name="city"
-                                            value={formData.city}
-                                            onChange={handleChange}
-                                            className="w-full px-4 py-2 border rounded focus:outline-none focus:border-blue-500"
-                                            required
+                                ) : (
+                                    items.map((item) => (
+                                        <div
+                                            key={item.id}
+                                            className="border-b py-4 flex items-center justify-between"
                                         >
-                                            <option value="">Pilih Kota</option>
-                                            <option value="Jakarta">Jakarta</option>
-                                            <option value="Bogor">Bogor</option>
-                                            <option value="Depok">Depok</option>
-                                            <option value="Tangerang">Tangerang</option>
-                                            <option value="Bekasi">Bekasi</option>
-                                        </select>
-                                    </div>
-                                    <button
-                                        type="submit"
-                                        disabled={!formComplete}
-                                        className={`w-full px-6 py-3 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none focus:bg-blue-600 ${!formComplete && "opacity-50 cursor-not-allowed"}`}
-                                    >
-                                        Proses Pesanan Saya
-                                    </button>
-                                </form>
+                                            <div className="flex items-center space-x-4">
+                                                <div className="w-20 h-20 relative">
+                                                    <Image
+                                                        src={`${process.env.NEXT_PUBLIC_BACKEND_URL}/public/storage/product-images/${item.product.image}`}
+                                                        alt={item.name}
+                                                        layout="fill"
+                                                        objectFit="cover"
+                                                        className="rounded-md"
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <h2 className="text-lg font-semibold">
+                                                        {item.product.name}
+                                                    </h2>
+                                                    <p className="text-md text-gray-500">
+                                                        Rp {item.product.price}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="flex items-center space-x-2">
+                                                <button
+                                                    onClick={() =>
+                                                        handleDecreaseQuantity(
+                                                            item.id,
+                                                        )
+                                                    }
+                                                    className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+                                                >
+                                                    -
+                                                </button>
+                                                <span className="px-3">
+                                                    {item.quantity}
+                                                </span>
+                                                <button
+                                                    onClick={() =>
+                                                        handleIncreaseQuantity(
+                                                            item.id,
+                                                        )
+                                                    }
+                                                    className="px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
+                                        </div>
+                                    ))
+                                )}
                             </div>
                         </div>
                         <div className="col-span-1">
-                            <div className="bg-white border rounded shadow-lg p-8">
-                                <h2 className="text-2xl font-bold mb-4">Ringkasan Pesanan</h2>
-                                <div className="flex justify-between mb-2">
-                                    <span className="text-lg font-bold">Subtotal:</span>
-                                    <span className="text-lg font-bold">Rp {total}</span>
+                            <div className="border p-4 bg-white shadow-md rounded-md">
+                                <h2 className="text-2xl font-semibold mb-4">
+                                    Ringkasan Belanja
+                                </h2>
+                                <div className="flex justify-between mb-4">
+                                    <span className="text-lg">Total:</span>
+                                    <span className="text-lg font-semibold">
+                                        Rp {totalPrice}
+                                    </span>
                                 </div>
-                                <p className="text-sm text-gray-600">Jumlah Produk : {items.length}</p>
+                                {items.length > 0 ? (
+                                    <button
+                                        onClick={handleCheckout}
+                                        className="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded-md transition duration-300"
+                                    >
+                                        Checkout
+                                    </button>
+                                ) : (
+                                    <button
+                                        disabled
+                                        className="w-full bg-gray-400 text-white py-2 rounded-md cursor-not-allowed"
+                                    >
+                                        Checkout
+                                    </button>
+                                )}
                             </div>
                         </div>
                     </div>
