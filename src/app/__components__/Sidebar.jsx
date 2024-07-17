@@ -104,12 +104,12 @@ export default function Sidebar() {
                                 3
                             </span>
                         </Link>
-                        <Link
+                        {/* <Link
                             href="/admin/invoices"
                             className="flex items-center p-2 text-gray-900 rounded-lg hover:bg-[#5CAF7D] group"
                         >
                             <span className="ms-3">Invoice</span>
-                        </Link>
+                        </Link> */}
                     </div>
                 </div>
             </aside>

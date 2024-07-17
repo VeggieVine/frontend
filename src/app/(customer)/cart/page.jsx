@@ -30,37 +30,30 @@ export default function CartPage() {
         }
     }, [user])
 
-    const updateCartItems = async (newItems) => {
-        try {
-            await axios.post("/api/carts", { carts: newItems })
-            setItems(newItems)
-        } catch (error) {
-            console.log(error)
-        }
-    }
-
     const handleIncreaseQuantity = (itemId) => {
-        const newItems = items.map((item) =>
-            item.id === itemId
-                ? { ...item, quantity: item.quantity + 1 }
-                : item
+        setItems(
+            items.map((item) =>
+                item.id === itemId
+                    ? { ...item, quantity: item.quantity + 1 }
+                    : item,
+            ),
         )
-        updateCartItems(newItems)
     }
 
     const handleDecreaseQuantity = (itemId) => {
-        const newItems = items.reduce((acc, item) => {
-            if (item.id === itemId) {
-                const newQuantity = item.quantity - 1
-                if (newQuantity > 0) {
-                    acc.push({ ...item, quantity: newQuantity })
+        setItems(
+            items.reduce((acc, item) => {
+                if (item.id === itemId) {
+                    const newQuantity = item.quantity - 1
+                    if (newQuantity > 0) {
+                        acc.push({ ...item, quantity: newQuantity })
+                    }
+                } else {
+                    acc.push(item)
                 }
-            } else {
-                acc.push(item)
-            }
-            return acc
-        }, [])
-        updateCartItems(newItems)
+                return acc
+            }, []),
+        )
     }
 
     const handleCheckout = () => {
