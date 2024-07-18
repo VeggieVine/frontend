@@ -33,11 +33,11 @@ export default function LandingPage() {
                             VeggieVine
                         </h1>
                         <h1 className="text-2xl font-semibold text-center lg:text-left">
-                            <span>"Tempatnya sayur dan buah-buahan segar yang berkualitas dari perkebunan terbaik di </span>
+                            <span>"Tempatnya sayur dan buah-buahan segar yang berkualitas dari perkebunan terbaik, untuk daerah </span>
                             <span className="underline font-black text-error">JABODETABEK</span>"
                         </h1>
                         <blockquote className="text-lg text-center lg:text-left text-wrap">
-                            Kami membantu masyarakat JABODETABEK mendapakan buah dan sayur berkualitas hanya dengan beberapa klik saja.
+                            Jelajahi berbagai pilihan buah dan sayur segar yang siap memenuhi kebutuhan harian Anda dengan kualitas terbaik.
                         </blockquote>
                     </div>
                     <Image
@@ -239,17 +239,17 @@ export default function LandingPage() {
                 <div className="grid grid-cols-1 lg:grid-cols-3 justify-items-center items-center gap-24 mt-24">
                     <TestimonialCard
                         imageSrc="/assets/image/profile.jpg"
-                        name="Alice Doe"
+                        name="Bhanuwati"
                         testimonial="Baru pertama kali belanja di VeggieVine dan saya sangat puas dengan kualitas sayur dan buah yang mereka tawarkan. Harganya pun sangat terjangkau. Terima kasih VeggieVine!"
                     />
                     <TestimonialCard
                         imageSrc="/assets/image/profile.jpg"
-                        name="John Doe"
+                        name="Danastri"
                         testimonial="Terima kasih VeggieVine! Saya sangat puas dengan pelayanan yang diberikan. Sayur dan buah yang saya beli sangat segar dan berkualitas. Harganya pun sangat terjangkau. Saya pasti akan belanja lagi di VeggieVine!"
                     />
                     <TestimonialCard
                         imageSrc="/assets/image/profile.jpg"
-                        name="Jane Doe"
+                        name="Candrawati"
                         testimonial="Keren banget VeggieVine! Sayur dan buah yang saya beli sangat segar dan berkualitas. Harganya pun sangat terjangkau. Saya pasti akan belanja lagi di VeggieVine!"
                     />
                 </div>
