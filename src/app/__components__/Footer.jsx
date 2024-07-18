@@ -6,18 +6,18 @@ export default function Footer() {
             <div className="container">
                 <div className="flex justify-between">
                     <div className="text-left">
-                        <h5 className="mb-4 text-xl font-bold">Contact</h5>
+                        <h5 className="mb-4 text-xl font-bold">Hubungi Kami</h5>
                         <ul>
                             <li>
-                                <span className="font-semibold">Address: </span>
-                                Jakarta
+                                <span className="font-semibold">Alamat: </span>
+                                Jakarta Selatan
                             </li>
                             <li>
-                                <span className="font-semibold">Phone: </span>
+                                <span className="font-semibold">Kontak: </span>
                                 08514444444
                             </li>
                             <li>
-                                <span className="font-semibold">Hours: </span>
+                                <span className="font-semibold">Jam: </span>
                                 08.00-18.00
                             </li>
                         </ul>
@@ -32,16 +32,16 @@ export default function Footer() {
                         </ul>
                     </div>
                     <div className="text-left">
-                        <h5 className="mb-4 text-xl font-bold">My Account</h5>
+                        <h5 className="mb-4 text-xl font-bold">Navigasi</h5>
                         <ul>
-                            <li>Sign In</li>
-                            <li>View Cart</li>
-                            <li>My Wishlist</li>
+                            <li>Masuk</li>
+                            <li>Produk Kami</li>
+                            <li>Keranjang Belanja</li>
                         </ul>
                     </div>
                     <div className="text-left">
                         <h5 className="mb-4 text-xl font-bold">
-                            Secured Payment Gateway
+                            Gerbang Pembayaran Aman
                         </h5>
                         <ul>
                             <li>Pembayaran aman dan terpercaya.</li>
