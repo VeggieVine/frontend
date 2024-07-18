@@ -110,18 +110,18 @@ export default function AdvantagePage() {
                                 />
                             </div>
                             <div className="lg:w-1/2 lg:ml-4"> 
-                                <p className="text-2xl font-bold text-primary mb-8">VeggieVine was born to make daily organic living possible, supporting humans to live a beautiful life.</p>
+                                <p className="text-2xl font-bold text-primary mb-8">VeggieVine hadir untuk memenuhi kebutuhan organik sehari-hari Anda dengan menyediakan sayur dan buah segar berkualitas</p>
                                 <p className="text-lg mt-4"> 
-                                    Why Should You Choose VeggieVine?
+                                    Mengapa Harus VeggieVine?
                                 </p>
                                 <p className="text-base mt-4 font-bold"> 
-                                    100% Organics & Healthy
+                                    100% Organik & Sehat
                                 </p>
                                 <p className="text-base mt-4 font-bold"> 
-                                    Premium Quality
+                                    Kualitas Premiun
                                 </p>
                                 <p className="text-base mt-4 font-bold"> 
-                                    Shopping Convenience
+                                    Kenyamanan Berbelanja
                                 </p>
                             </div>
                         </div>
