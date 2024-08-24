@@ -25,6 +25,7 @@ export default function ProductList({products}) {
 
     // EFFECTS
     useEffect(() => {
+        console.log(prooducts)
         if (searchKeyword) {
             setFilteredProducts(products.filter((product) => product.name.toLowerCase().includes(searchKeyword.toLowerCase())))
         } else {
