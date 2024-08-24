@@ -21,7 +21,7 @@ export default function ProductList({products}) {
     const [searchKeyword, setSearchKeyword] = useInput(searchParams.get('name') || '')
 
     // MODIFIED STATE
-    const categories = ['default', ...new Set(products.map((product) => product.category.type))]
+    const categories = ['default', ...new Set(filteredProducts.map((product) => product.category.type))]
 
     // EFFECTS
     useEffect(() => {
