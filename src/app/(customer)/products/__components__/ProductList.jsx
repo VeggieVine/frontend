@@ -28,7 +28,7 @@ export default function ProductList({products}) {
         if (searchKeyword) {
             setFilteredProducts(products.filter((product) => product.name.toLowerCase().includes(searchKeyword.toLowerCase())))
         } else {
-            setFilteredProducts(products)
+            setFilteredProducts(products || [])
         }
     }, [products])
 
