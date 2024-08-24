@@ -16,7 +16,7 @@ export default function ProductList({products}) {
     const pathname = usePathname()
     const searchParams = useSearchParams()
     const currentParams = new URLSearchParams(Array.from(searchParams.entries()))
-    const [filteredProducts, setFilteredProducts] = useState(products)
+    const [filteredProducts, setFilteredProducts] = useState(products || [])
     const [selectedCategory, setSelectedCategory] = useState("default")
     const [searchKeyword, setSearchKeyword] = useInput(searchParams.get('name') || '')
 
