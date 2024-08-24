@@ -9,7 +9,7 @@ import axios from "@/src/lib/axios"
 const Table = ({ data }) => {
     const { user } = useAuth({ middleware: "auth" })
 
-    const [products, setProducts] = useState(data)
+    const [products, setProducts] = useState(data || [])
     const [editItem, setEditItem] = useState(null)
 
     useEffect(() => {

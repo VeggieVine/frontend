@@ -35,7 +35,7 @@ export default function ProductDetail ({ product }) {
                 router.push('/cart')
             }
             catch (error) {
-                console.log(error)
+                alert(error.response.data.message)
             }
         }
     }
