@@ -30,7 +30,7 @@ export default function ProductList({products}) {
         } else {
             setFilteredProducts(products || [])
         }
-    }, [products])
+    }, [])
 
     // ACTIONS
     const handleSearch = (event) => {
