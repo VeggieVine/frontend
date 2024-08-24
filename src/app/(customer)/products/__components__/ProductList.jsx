@@ -21,14 +21,14 @@ export default function ProductList({products}) {
     const [searchKeyword, setSearchKeyword] = useInput(searchParams.get('name') || '')
 
     // MODIFIED STATE
-    const categories = ['default', ...new Set(filteredProducts?.map((product) => product.category.type))]
+    const categories = ['default', 'fruits', 'vegetables']
 
     // EFFECTS
     useEffect(() => {
         if (searchKeyword) {
             setFilteredProducts(products.filter((product) => product.name.toLowerCase().includes(searchKeyword.toLowerCase())))
         } else {
-            setFilteredProducts(products || [])
+            setFilteredProducts(products)
         }
     }, [products])
 
